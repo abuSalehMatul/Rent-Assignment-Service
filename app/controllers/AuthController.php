@@ -223,6 +223,7 @@ class AuthController extends Controller
 
     public function verify()
     {
+
         writerRedirect();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //            Sanitize post data
@@ -239,12 +240,38 @@ class AuthController extends Controller
             if ($verified_user) {
 
                 $fetchLoggedData = $this->userModel->fetchLoggedData($data['email']);
-                if ($fetchLoggedData) {
+              if ($fetchLoggedData->role == 1) {
 //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
-                    $this->view('backend/dashboard',$_SESSION['id']);
-                } else {
+                    $_SESSION['role'] = $fetchLoggedData->role;
+                    $this->view('root/dashboard',$_SESSION['id'], $_SESSION['role']);
+                }
+                else if ($fetchLoggedData->role == 2) {
+//                  redirect to dashboard
+
+                    $_SESSION['id'] = $fetchLoggedData->id;
+                    $_SESSION['role'] = $fetchLoggedData->role;
+                    $this->view('backend/dashboard',$_SESSION['id'], $_SESSION['role']);
+                }
+                else if ($fetchLoggedData->role == 3) {
+//                  redirect to dashboard
+
+                    $_SESSION['id'] = $fetchLoggedData->id;
+                    $_SESSION['role'] = $fetchLoggedData->role;
+                    $this->view('writer/dashboard',$_SESSION['id'], $_SESSION['role']);
+                }
+                else if ($fetchLoggedData->role == 4) {
+//                  redirect to dashboard
+
+                    $_SESSION['id'] = $fetchLoggedData->id;
+                    $_SESSION['role'] = $fetchLoggedData->role;
+                    $this->view('student/dashboard',$_SESSION['id'], $_SESSION['role']);
+                }
+
+
+
+                else {
                     $this->view('backend/verification_page');
                 }
             }
