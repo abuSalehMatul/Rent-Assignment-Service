@@ -11,3 +11,5 @@
     define('URLROOT', 'http://essay-lite.io');
 //    define site name
     define('SITENAME', 'Essay Lite');
+
+//Include Google Client Library for PHP autoload file

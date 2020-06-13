@@ -297,8 +297,8 @@
     }
 
     .h--lg {
-        color: #424b59;
-        font-weight: 300
+        color: black;
+        font-weight: 500
     }
 
     @media (max-width: 767px) {
@@ -362,7 +362,7 @@
     }
 
     .h--is-inverse {
-        color: #fff
+        color:black
     }
 
     .p--lg {
@@ -423,7 +423,7 @@
     }
 
     .p--is-inverse {
-        color: #fff
+        color:black
     }
 
     .p--new {
@@ -2965,13 +2965,14 @@
     }
 
     .c-1 {
-        width: 250px;
+        margin-left: 600px;
+        width: 350px;
         max-height: 428px;
         padding: 16px 16px 20px;
         background-color: #1b1f26;
-        background-color: rgba(27, 31, 38, .9);
+        background-color: rgba(27, 31, 40, .9);
         -webkit-border-radius: 5px;
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .c-1__header {

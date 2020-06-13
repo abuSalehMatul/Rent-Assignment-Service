@@ -44,6 +44,9 @@
                     Already have an Admin ID? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/login';?>">Sign In</a>
                 </div>
             </form>
+            <div class="text-muted text-center">
+                Want to login by Google account? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/google';?>">Google Sign In</a>
+            </div>
         </div>
 
     </div>

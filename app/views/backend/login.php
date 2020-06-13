@@ -46,6 +46,9 @@ require_once APPROOT . '/helpers/sessionHelper.php';
                 </div>
 
             </form>
+            <div class="text-muted text-center">
+                Want to login by Google account? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/google';?>">Google Sign In</a>
+            </div>
         </div>
 
     </div>

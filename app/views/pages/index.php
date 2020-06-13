@@ -11,8 +11,8 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
     <div class="p-1 main">
         <section class="s-1 pt-header">
             <picture>
-                <img src="<?php echo URLROOT.'\public\shared\images\top-background.jpg' ?>"
-                     alt="Essay Writing Resources" class="bg__image--top lazy"></picture>
+                <img src="<?php echo URLROOT.'\public\shared\images\assignments.png' ?>"
+                     alt="Essay Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important"></picture>
             <div class="l-0">
                 <div class="s-1__wrapper">
                     <div class="s-1__left"><h1 class="h--lg h--is-inverse">Top Essay Writing Service<br>with
@@ -27,147 +27,7 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
                                       data-ga-action="click" data-ga-label="Sign up"><span
                                         class="button-text">Sign up</span></span></div>
                     </div>
-                    <div class="s-1__right">
-                        <div class="c-1 js-calculator" data-component-name="c-1__as__calculator-primary">
-                            <div class="js-calculator__form">
-                                <form action="https://app.essaypro.com/auth/register" method="get">
-                                    <div class="c-1__header">
-                                        <div class="h--sm">Calculate the price</div>
-                                    </div>
-                                    <div class="c-1__main">
-                                        <div class="c-1__row" id="servicesDropdownWrap">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_service_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                            class="c-3__selected" data-calc-value="1">Writing</span> <span
-                                                            class="c-3__placeholder">Service</span> <span
-                                                            class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_service_selected_1">
-                                                    <ul class="c-3__ul"></ul>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_service_1"
-                                                                        aria-label="Calculator services"
-                                                                        class="c-3__select"></select> <span
-                                                        class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div class="c-1__row">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_type_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                            class="c-3__selected"
-                                                            data-calc-value="1">Essay (any type)</span> <span
-                                                            class="c-3__placeholder">Type of paper</span> <span
-                                                            class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_type_selected_1"><input
-                                                            id="searchTypesInput" class="c-3__search" type="text"
-                                                            placeholder="Type to find">
-                                                    <div class="c-3__ul"></div>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_type_1"
-                                                                        aria-label="Type of calculator"
-                                                                        class="c-3__select"></select> <span
-                                                        class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div class="c-1__row">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_deadline_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                            class="c-3__selected" data-calc-value="336">2 weeks</span> <span
-                                                            class="c-3__placeholder">Deadline</span> <span
-                                                            class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_deadline_selected_1">
-                                                    <ul class="c-3__ul">
-                                                        <li class="c-3__li" data-calc-value="6">6 hours</li>
-                                                        <li class="c-3__li" data-calc-value="12">12 hours</li>
-                                                        <li class="c-3__li" data-calc-value="24">1 day</li>
-                                                        <li class="c-3__li" data-calc-value="48">2 days</li>
-                                                        <li class="c-3__li" data-calc-value="72">3 days</li>
-                                                        <li class="c-3__li" data-calc-value="120">5 days</li>
-                                                        <li class="c-3__li" data-calc-value="168">7 days</li>
-                                                        <li class="c-3__li" data-calc-value="240">10 days</li>
-                                                        <li class="c-3__li" data-calc-value="336">2 weeks</li>
-                                                        <li class="c-3__li" data-calc-value="720">1 month</li>
-                                                        <li class="c-3__li" data-calc-value="1440">2 months</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_deadline_1"
-                                                                        aria-label="Calculators's deadline"
-                                                                        class="c-3__select">
-                                                    <option value="6">6 hours</option>
-                                                    <option value="12">12 hours</option>
-                                                    <option value="24">1 day</option>
-                                                    <option value="48">2 days</option>
-                                                    <option value="72">3 days</option>
-                                                    <option value="120">5 days</option>
-                                                    <option value="168">7 days</option>
-                                                    <option value="240">10 days</option>
-                                                    <option value="336" selected="selected">2 weeks</option>
-                                                    <option value="720">1 month</option>
-                                                    <option value="1440">2 months</option>
-                                                </select> <span class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div id="pages_fields_1" class="c-1__row">
-                                            <div class="c-1__group">
-                                                <div class="c-1__element">
-                                                    <button id="calculator_pages_decrement_1" type="button"
-                                                            aria-label="calculator pages decrement"
-                                                            class="c-3__button-decrement"></button>
-                                                </div>
-                                                <div class="c-1__element">
-                                                    <div class="dropdown dropdown-half">
-                                                        <button id="calculator_pages_selected_1" type="button"
-                                                                class="c-3__dropdown-half" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false"><span
-                                                                    class="c-3__selected" data-calc-value="1">1 page</span>
-                                                            <span class="c-3__placeholder">Pages</span> <span
-                                                                    class="c-3__select-arrow"></span></button>
-                                                        <div class="c-3__menu dropdown-menu"
-                                                             aria-labelledby="calculator_pages_selected_1">
-                                                            <ul class="c-3__ul pages__list">
-                                                                <li class="c-3__li" data-calc-value="1">1 page</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select"><select id="calculator_pages_1"
-                                                                                aria-label="Calculators pages"
-                                                                                class="c-3__select-half">
-                                                            <option value="1" selected="selected">1 page</option>
-                                                        </select> <span class="c-3__select-arrow"></span></div>
-                                                </div>
-                                                <div class="c-1__element">
-                                                    <button id="calculator_pages_increment_1" type="button"
-                                                            aria-label="calculator pages increment"
-                                                            class="c-3__button-increment"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-1__footer">
-                                        <div class="c-1__price">
-                                            <div class="c-1__price__wrap">
-                                                <div class="value c-1__price--min">$<span
-                                                            id="calculator_total_1">0</span></div>
-                                                <div class="c-1__price__label">Minimum Price</div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="button-filled__primary ga-event"
-                                                data-ga-category="calculator" data-ga-action="click"
-                                                data-ga-label="Continue"><span class="button-text">Continue</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="s-1__bottom">
@@ -177,9 +37,151 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
                 </div>
             </div>
         </section>
+        <section>  <div class="h--md">How We Serve</div> <div class="s-1__right">
+
+                <div class="c-1 js-calculator" data-component-name="c-1__as__calculator-primary">
+                    <div class="js-calculator__form">
+                        <form action="https://app.essaypro.com/auth/register" method="get">
+                            <div class="c-1__header">
+                                <div class="h--sm">Calculate the price</div>
+                            </div>
+                            <div class="c-1__main">
+                                <div class="c-1__row" id="servicesDropdownWrap">
+                                    <div class="c-3 dropdown">
+                                        <button id="calculator_service_selected_1" type="button"
+                                                class="c-3__dropdown" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><span
+                                                    class="c-3__selected" data-calc-value="1">Writing</span> <span
+                                                    class="c-3__placeholder">Service</span> <span
+                                                    class="c-3__select-arrow"></span></button>
+                                        <div class="c-3__menu dropdown-menu"
+                                             aria-labelledby="calculator_service_selected_1">
+                                            <ul class="c-3__ul"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="select"><select id="calculator_service_1"
+                                                                aria-label="Calculator services"
+                                                                class="c-3__select"></select> <span
+                                                class="c-3__select-arrow"></span></div>
+                                </div>
+                                <div class="c-1__row">
+                                    <div class="c-3 dropdown">
+                                        <button id="calculator_type_selected_1" type="button"
+                                                class="c-3__dropdown" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><span
+                                                    class="c-3__selected"
+                                                    data-calc-value="1">Assignment (any type)</span> <span
+                                                    class="c-3__placeholder">Type of paper</span> <span
+                                                    class="c-3__select-arrow"></span></button>
+                                        <div class="c-3__menu dropdown-menu"
+                                             aria-labelledby="calculator_type_selected_1"><input
+                                                    id="searchTypesInput" class="c-3__search" type="text"
+                                                    placeholder="Type to find">
+                                            <div class="c-3__ul"></div>
+                                        </div>
+                                    </div>
+                                    <div class="select"><select id="calculator_type_1"
+                                                                aria-label="Type of calculator"
+                                                                class="c-3__select"></select> <span
+                                                class="c-3__select-arrow"></span></div>
+                                </div>
+                                <div class="c-1__row">
+                                    <div class="c-3 dropdown">
+                                        <button id="calculator_deadline_selected_1" type="button"
+                                                class="c-3__dropdown" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><span
+                                                    class="c-3__selected" data-calc-value="336">2 weeks</span> <span
+                                                    class="c-3__placeholder">Deadline</span> <span
+                                                    class="c-3__select-arrow"></span></button>
+                                        <div class="c-3__menu dropdown-menu"
+                                             aria-labelledby="calculator_deadline_selected_1">
+                                            <ul class="c-3__ul">
+                                                <li class="c-3__li" data-calc-value="6">6 hours</li>
+                                                <li class="c-3__li" data-calc-value="12">12 hours</li>
+                                                <li class="c-3__li" data-calc-value="24">1 day</li>
+                                                <li class="c-3__li" data-calc-value="48">2 days</li>
+                                                <li class="c-3__li" data-calc-value="72">3 days</li>
+                                                <li class="c-3__li" data-calc-value="120">5 days</li>
+                                                <li class="c-3__li" data-calc-value="168">7 days</li>
+                                                <li class="c-3__li" data-calc-value="240">10 days</li>
+                                                <li class="c-3__li" data-calc-value="336">2 weeks</li>
+                                                <li class="c-3__li" data-calc-value="720">1 month</li>
+                                                <li class="c-3__li" data-calc-value="1440">2 months</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="select"><select id="calculator_deadline_1"
+                                                                aria-label="Calculators's deadline"
+                                                                class="c-3__select">
+                                            <option value="6">6 hours</option>
+                                            <option value="12">12 hours</option>
+                                            <option value="24">1 day</option>
+                                            <option value="48">2 days</option>
+                                            <option value="72">3 days</option>
+                                            <option value="120">5 days</option>
+                                            <option value="168">7 days</option>
+                                            <option value="240">10 days</option>
+                                            <option value="336" selected="selected">2 weeks</option>
+                                            <option value="720">1 month</option>
+                                            <option value="1440">2 months</option>
+                                        </select> <span class="c-3__select-arrow"></span></div>
+                                </div>
+                                <div id="pages_fields_1" class="c-1__row">
+                                    <div class="c-1__group">
+                                        <div class="c-1__element">
+                                            <button id="calculator_pages_decrement_1" type="button"
+                                                    aria-label="calculator pages decrement"
+                                                    class="c-3__button-decrement"></button>
+                                        </div>
+                                        <div class="c-1__element">
+                                            <div class="dropdown dropdown-half">
+                                                <button id="calculator_pages_selected_1" type="button"
+                                                        class="c-3__dropdown-half" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                            class="c-3__selected" data-calc-value="1">1 page</span>
+                                                    <span class="c-3__placeholder">Pages</span> <span
+                                                            class="c-3__select-arrow"></span></button>
+                                                <div class="c-3__menu dropdown-menu"
+                                                     aria-labelledby="calculator_pages_selected_1">
+                                                    <ul class="c-3__ul pages__list">
+                                                        <li class="c-3__li" data-calc-value="1">1 page</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="select"><select id="calculator_pages_1"
+                                                                        aria-label="Calculators pages"
+                                                                        class="c-3__select-half">
+                                                    <option value="1" selected="selected">1 page</option>
+                                                </select> <span class="c-3__select-arrow"></span></div>
+                                        </div>
+                                        <div class="c-1__element">
+                                            <button id="calculator_pages_increment_1" type="button"
+                                                    aria-label="calculator pages increment"
+                                                    class="c-3__button-increment"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="c-1__footer">
+                                <div class="c-1__price">
+                                    <div class="c-1__price__wrap">
+                                        <div class="value c-1__price--min">$<span
+                                                    id="calculator_total_1">0</span></div>
+                                        <div class="c-1__price__label">Minimum Price</div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="button-filled__primary ga-event"
+                                        data-ga-category="calculator" data-ga-action="click"
+                                        data-ga-label="Continue"><span class="button-text">Continue</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>  </section>
         <section class="s-16">
             <div class="container">
-                <div class="h--md">How It Works</div>
+                <div class="h--md">How We Serve</div>
                 <div class="s-16__wrap">
                     <div class="s-16__block">
                         <ul class="s-16__list">
@@ -317,243 +319,243 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
             </div>
         </section>
         <section class="s-10 shadow" data-section-name="s-10__as__market">
-            <div class="l-0">
-                <div class="s-10__content">
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__list7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Essay Writing Service With Vast Experience</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">EssayPro has been helping students with
-                                their studies since 1997. With over 20 years in the industry, we have perfected the art of
-                                essay writing. We have helped thousands of students reach their full academic potential by
-                                connecting them with the best-qualified essay writers in the business.</p>
-                            <p class="p--sm p">We offer papers of all academic levels, including high school, college,
-                                and university. Our professionals are capable of writing all types of assignments,
-                                including but not limited to case studies, research papers, assignments, dissertations,
-                                term papers, M/As, and doctorates. No matter the subject, we always deliver high-quality
-                                custom writing orders.</p>
-                            <p class="p--sm p">Every paper that our essay writing service produces is done exactly as
-                                the customer requests. Our quality assurance team makes sure each paper is done to our
-                                standards, and we guarantee no plagiarism or your money back. Our writer managers always
-                                monitor our writing team, so you can be sure each paper received will be top-notch.</p>
-                        </div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__writer7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Select Your Personal Online Essay Writer</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">Our goal is to create a user-friendly
-                                platform that has a professional catalog of top-notch essay writers. Connecting every
-                                customer with a professional writer who meets their needs is a top priority for us. Our
-                                intuitively designed platform will make the process of hiring a writer easy and painless.
-                                Browse our catalog of hundreds of writers and choose a professional who specializes in the
-                                topic of your paper. No matter the topic, we have a professional writer who specializes in
-                                it.</p>
-                            <p class="p--sm p">Each writer has their own profile where you can check their success rate,
-                                subject specification, and overall satisfaction rate from customers. Apart from that,
-                                each profile also contains a short biography of the writer to give you a deeper
-                                understanding of who they are. Also on the profile, there is a review section where you
-                                can read comments made from previous clients. All this information about the writer is
-                                here to help you make an informed decision before you place an order.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__folder7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Key Benefits of Working With a Professional Essay Writer</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">We started our writing service to help
-                                struggling students improve their academics by connecting them with the best online essay
-                                writers. Your deadlines will always be met when you hire a writer with us because even if
-                                you need your paper written in just 6 hours, our professionals can accomplish that. No
-                                matter if your deadline is in 6 hours or 2 weeks, we will have your paper ready. No matter
-                                the time or day that your paper is due, you can be sure that our writers will meet your
-                                deadline.</p>
-                            <p class="p--sm p">Users can choose from our large catalog of writers who specialize in
-                                various fields. Our professionals have many years of experience writing and even hold
-                                higher education degrees like PhDs. We will provide you with a quality paper at an
-                                affordable price. Our satisfaction guarantee promises that the paper you order will be
-                                up to your standards or your money back. We can make this promise because our quality
-                                assurance team monitors every writer’s performance.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__friendly7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">User-Friendly Essay Service</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">EssayPro boasts a very convenient,
-                                intuitive, and easy-to-use essay service website. We work hard to make sure the experience
-                                of every user is positive. Our customer support team is always standing by ready to answer
-                                any questions you may have about our service. Also, our service is 100% legitimate and
-                                legal, so you shouldn’t be concerned with ordering from us.</p>
-                            <p class="p--sm p">We also understand that transparency brings trust, so this is why we have
-                                reviews of our website and writers published our website. Feel free to browse the
-                                reviews that real users wrote about our service. We value our community and strive to
-                                make our product better with every update. We’re here to help you make an informed
-                                decision, so if you have any questions about our service, please contact our
-                                <sup>24</sup>⁄<sub>7</sub> customer support team.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__deadline7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Why Choose Our Essay Service</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">Many students don’t have much free time to
-                                do school tasks because they are balancing their student life, family life, social life, and
-                                work life. Here are the top reasons why you should use our essay service for your next
-                                assignment:</p>
-                            <ol>
-                                <li class="list__item _green"><p class="p--sm">We offer a service guarantee when you
-                                        purchase a paper. This means that you are guaranteed to get your paper finished on
-                                        or before your requested deadline.</p></li>
-                                <li class="list__item _green"><p class="p--sm">Our professional essay writing team
-                                        always provides our users with quality work. Take a look at our 93.6% satisfaction
-                                        rate according to our customer reviews.</p></li>
-                                <li class="list__item _green"><p class="p--sm">We have helped students from all over the
-                                        world get their desired grades. These countries include USA, Canada, Australia, UK,
-                                        UAE, and many more.</p></li>
-                                <li class="list__item _green"><p class="p--sm">Our papers start from as little as $11
-                                        per page.</p></li>
-                                <li class="list__item _green"><p class="p--sm">All papers are unique and never
-                                        plagiarised as we have a strict quality control team monitoring each finished
-                                        assignment.</p></li>
-                                <li class="list__item _green"><p class="p--sm">Our writers are fully qualified and have
-                                        many years in the industry.</p></li>
-                                <li class="list__item _green"><p class="p--sm"><sup>24</sup>⁄<sub>7</sub> customer is
-                                        standing by to help you with any questions or concerns you may have about our
-                                        writing service.</p></li>
-                            </ol>
-                            <p class="p--sm p">A strict deadline is an issue that every college student has to face. Our
-                                writers can write your essay in as little as 6 hours. When you use Essaypro, getting
-                                stressed over deadlines is a thing of the past.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__warning7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">What If the Paper Ordered Doesn't Meet My Expectations?</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">If you receive your paper and you are
-                                unsatisfied, there is no need to worry because we offer unlimited free revisions within the
-                                30 day period of paper completion. Also, your paper will be reviewed by other writers with
-                                higher success rates to ensure that the paper is up to academic standards. A final check by
-                                our quality assurance team will be done to make absolutely sure your paper 100% unique, and
-                                without errors.</p>
-                            <p class="p--sm p">In the case that you are completely unsatisfied with the final version,
-                                we offer a 100% money-back guarantee, which is valid within 30 days of the paper
-                                completion. We rarely have unsatisfied customers, but no matter the outcome, our essay
-                                writer service is only here to satisfy our customers. If any problem arises, contact our
-                                <sup>24</sup>⁄<sub>7</sub> customer support team.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__guarantee7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">The EssayPro Guarantee</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">Any deadlines coming up, last-minute papers
-                                due, or have trivial tasks that the teacher assigned you? Never worry about any of these
-                                issues again! We offer the best essay service that will meet all your deadlines for any
-                                task. Our professionals are ready to complete your order and send it to you whenever you
-                                request it. Here are the top reasons why you should hire a writer from EssayPro:</p>
-                            <ol>
-                                <li class="list__item _red"><p class="p--sm">We employ only professionals who hold
-                                        higher education diplomas with years of writing experience.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Our quality assurance protocol is something
-                                        every author in-app is required to follow.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Every essay writer we hire must follow a
-                                        strict writing protocol issued by our quality assurance team.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Writers never violate deadlines and follow
-                                        the requirements of the customer.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Our writer managers overlook the whole
-                                        ordering process to make sure everything is done correctly and by the customer’s
-                                        requirements.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Our writers will always strictly follow
-                                        your guidelines and meet your deadlines.</p></li>
-                                <li class="list__item _red"><p class="p--sm">We offer a <sup>24</sup>⁄<sub>7</sub>
-                                        customer support team ready to assist you with any questions you may have.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Papers are delivered on time every time to
-                                        our customers.</p></li>
-                                <li class="list__item _red"><p class="p--sm">Papers can be downloaded immediately after
-                                        the order is complete.</p></li>
-                            </ol>
-                            <p class="p--sm p">We offer unlimited revisions to your papers up to 30 days of the
-                                completed order. Because of our revision policy, our customers are never dissatisfied
-                                with the final draft of the paper they receive. We try our best to satisfy every
-                                customer, so whenever a problem arises, we try our best to solve it at that moment. You
-                                can be confident you made the right choice when ordering from us.</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__mail7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Essay Writer Service</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">We only employ writers that hold higher
-                                educational degrees, such as, a master’s or a Ph.D. The specialization of each writer
-                                varies, so no matter the subject of the essay you need to be written, you will find a writer
-                                with a vast experience in that subject.</p>
-                            <p class="p--sm p">Before submitting your order, you are able to view a list of the writers
-                                who are willing to start working on your paper. Be sure to choose the writer who has
-                                experience in your essay topic and who has good customer reviews. All our writers are
-                                native English speakers who from either the US, UK, Australia, New Zealand, Canada, and
-                                Ireland.</p>
-                            <ol>
-                                <li class="list__item _violet"><p class="p--sm">Find credible sources</p></li>
-                                <li class="list__item _violet"><p class="p--sm">The ability to approach tasks
-                                        effectively and work punctually</p></li>
-                                <li class="list__item _violet"><p class="p--sm">Approach tasks effectively and work
-                                        punctually</p></li>
-                                <li class="list__item _violet"><p class="p--sm">Maintain an open line of communication
-                                        with the customer and take all comments into account</p></li>
-                                <li class="list__item _violet"><p class="p--sm">Complete orders even in the tightest of
-                                        deadlines (6 hours)</p></li>
-                                <li class="list__item _violet"><p class="p--sm">Write any assignment topic in any
-                                        field</p></li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__service7ed5.svg?v=qqqq" alt="Icon"
-                                                             class="s-10__svg">
-                            <h2 class="h--sm">Available Subjects on Our Essay Service</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">Our professional essay writers are
-                                knowledgeable in many different subjects, and because of this, we are able to offer a wide
-                                range of subjects to choose from. No matter the topic of your essay, we have an expert
-                                writer who can complete the task on time and with excellent quality. Here is a list of the
-                                subjects we offer:</p>
-                            <ol>
-                                <li class="list__item _blue"><p class="p--sm">English</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Literature</p></li>
-                                <li class="list__item _blue"><p class="p--sm">History</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Psychology</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Sociology</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Nursing</p></li>
-                                <li class="list__item _blue"><p class="p--sm">User-Friendly Interface</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Healthcare</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Mathematics</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Politics</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Economics</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Management</p></li>
-                                <li class="list__item _blue"><p class="p--sm">Business</p></li>
-                                <li class="list__item _blue"><p class="p--sm">All branches of science</p></li>
-                                <li class="list__item _blue"><p class="p--sm">And many more…</p></li>
-                            </ol>
-                            <p class="p--sm p">Hire one of our experts today to help you with your homework!</p></div>
-                    </div>
-                    <div class="s-10__content-block">
-                        <div class="s-10__content-head"><img src="assets/icon/s-10__professional7ed5.svg?v=qqqq"
-                                                             alt="Icon" class="s-10__svg">
-                            <h2 class="h--sm">Outstanding Essay Writers &amp; High Quality Essay Service</h2></div>
-                        <div class="s-10__content__inner"><p class="p--sm p">Is your social life being taken over by
-                                your student life? Are you struggling to balance work with your academics? If this sounds
-                                like you, or you are just busy in general because of school, then you have come to the right
-                                place. Using our essay writing service, students will have the rare opportunity to relieve
-                                the stress of school and focus on work or other high priority tasks.</p>
-                            <p class="p--sm p">When students decide to hire one of our essay writers, they will no
-                                longer need to worry about their deadlines of slipping grades. Our writers are
-                                professionals who have many years of experience in the field of writing. We guarantee
-                                that the paper you receive will be 100% unique and of the highest quality. Our writers
-                                will view your guidelines and keep all your recommendations in mind when writing your
-                                paper. To help you even further, send your writer a sample of your writing, and they
-                                will even mimic your style.</p>
-                            <p class="p--sm p">The answer to all your time and academic problems is EssayPro. Don’t be
-                                bound by your homework, essays, research papers, or any type of school work ever again.
-                                What will you do with all the free time you have once you&nbsp;finish your papers early
-                                with our expert guidance?</p></div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="l-0">-->
+<!--                <div class="s-10__content">-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__list7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Essay Writing Service With Vast Experience</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">EssayPro has been helping students with-->
+<!--                                their studies since 1997. With over 20 years in the industry, we have perfected the art of-->
+<!--                                essay writing. We have helped thousands of students reach their full academic potential by-->
+<!--                                connecting them with the best-qualified essay writers in the business.</p>-->
+<!--                            <p class="p--sm p">We offer papers of all academic levels, including high school, college,-->
+<!--                                and university. Our professionals are capable of writing all types of assignments,-->
+<!--                                including but not limited to case studies, research papers, assignments, dissertations,-->
+<!--                                term papers, M/As, and doctorates. No matter the subject, we always deliver high-quality-->
+<!--                                custom writing orders.</p>-->
+<!--                            <p class="p--sm p">Every paper that our essay writing service produces is done exactly as-->
+<!--                                the customer requests. Our quality assurance team makes sure each paper is done to our-->
+<!--                                standards, and we guarantee no plagiarism or your money back. Our writer managers always-->
+<!--                                monitor our writing team, so you can be sure each paper received will be top-notch.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__writer7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Select Your Personal Online Essay Writer</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">Our goal is to create a user-friendly-->
+<!--                                platform that has a professional catalog of top-notch essay writers. Connecting every-->
+<!--                                customer with a professional writer who meets their needs is a top priority for us. Our-->
+<!--                                intuitively designed platform will make the process of hiring a writer easy and painless.-->
+<!--                                Browse our catalog of hundreds of writers and choose a professional who specializes in the-->
+<!--                                topic of your paper. No matter the topic, we have a professional writer who specializes in-->
+<!--                                it.</p>-->
+<!--                            <p class="p--sm p">Each writer has their own profile where you can check their success rate,-->
+<!--                                subject specification, and overall satisfaction rate from customers. Apart from that,-->
+<!--                                each profile also contains a short biography of the writer to give you a deeper-->
+<!--                                understanding of who they are. Also on the profile, there is a review section where you-->
+<!--                                can read comments made from previous clients. All this information about the writer is-->
+<!--                                here to help you make an informed decision before you place an order.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__folder7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Key Benefits of Working With a Professional Essay Writer</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">We started our writing service to help-->
+<!--                                struggling students improve their academics by connecting them with the best online essay-->
+<!--                                writers. Your deadlines will always be met when you hire a writer with us because even if-->
+<!--                                you need your paper written in just 6 hours, our professionals can accomplish that. No-->
+<!--                                matter if your deadline is in 6 hours or 2 weeks, we will have your paper ready. No matter-->
+<!--                                the time or day that your paper is due, you can be sure that our writers will meet your-->
+<!--                                deadline.</p>-->
+<!--                            <p class="p--sm p">Users can choose from our large catalog of writers who specialize in-->
+<!--                                various fields. Our professionals have many years of experience writing and even hold-->
+<!--                                higher education degrees like PhDs. We will provide you with a quality paper at an-->
+<!--                                affordable price. Our satisfaction guarantee promises that the paper you order will be-->
+<!--                                up to your standards or your money back. We can make this promise because our quality-->
+<!--                                assurance team monitors every writer’s performance.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__friendly7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">User-Friendly Essay Service</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">EssayPro boasts a very convenient,-->
+<!--                                intuitive, and easy-to-use essay service website. We work hard to make sure the experience-->
+<!--                                of every user is positive. Our customer support team is always standing by ready to answer-->
+<!--                                any questions you may have about our service. Also, our service is 100% legitimate and-->
+<!--                                legal, so you shouldn’t be concerned with ordering from us.</p>-->
+<!--                            <p class="p--sm p">We also understand that transparency brings trust, so this is why we have-->
+<!--                                reviews of our website and writers published our website. Feel free to browse the-->
+<!--                                reviews that real users wrote about our service. We value our community and strive to-->
+<!--                                make our product better with every update. We’re here to help you make an informed-->
+<!--                                decision, so if you have any questions about our service, please contact our-->
+<!--                                <sup>24</sup>⁄<sub>7</sub> customer support team.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__deadline7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Why Choose Our Essay Service</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">Many students don’t have much free time to-->
+<!--                                do school tasks because they are balancing their student life, family life, social life, and-->
+<!--                                work life. Here are the top reasons why you should use our essay service for your next-->
+<!--                                assignment:</p>-->
+<!--                            <ol>-->
+<!--                                <li class="list__item _green"><p class="p--sm">We offer a service guarantee when you-->
+<!--                                        purchase a paper. This means that you are guaranteed to get your paper finished on-->
+<!--                                        or before your requested deadline.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm">Our professional essay writing team-->
+<!--                                        always provides our users with quality work. Take a look at our 93.6% satisfaction-->
+<!--                                        rate according to our customer reviews.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm">We have helped students from all over the-->
+<!--                                        world get their desired grades. These countries include USA, Canada, Australia, UK,-->
+<!--                                        UAE, and many more.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm">Our papers start from as little as $11-->
+<!--                                        per page.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm">All papers are unique and never-->
+<!--                                        plagiarised as we have a strict quality control team monitoring each finished-->
+<!--                                        assignment.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm">Our writers are fully qualified and have-->
+<!--                                        many years in the industry.</p></li>-->
+<!--                                <li class="list__item _green"><p class="p--sm"><sup>24</sup>⁄<sub>7</sub> customer is-->
+<!--                                        standing by to help you with any questions or concerns you may have about our-->
+<!--                                        writing service.</p></li>-->
+<!--                            </ol>-->
+<!--                            <p class="p--sm p">A strict deadline is an issue that every college student has to face. Our-->
+<!--                                writers can write your essay in as little as 6 hours. When you use Essaypro, getting-->
+<!--                                stressed over deadlines is a thing of the past.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__warning7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">What If the Paper Ordered Doesn't Meet My Expectations?</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">If you receive your paper and you are-->
+<!--                                unsatisfied, there is no need to worry because we offer unlimited free revisions within the-->
+<!--                                30 day period of paper completion. Also, your paper will be reviewed by other writers with-->
+<!--                                higher success rates to ensure that the paper is up to academic standards. A final check by-->
+<!--                                our quality assurance team will be done to make absolutely sure your paper 100% unique, and-->
+<!--                                without errors.</p>-->
+<!--                            <p class="p--sm p">In the case that you are completely unsatisfied with the final version,-->
+<!--                                we offer a 100% money-back guarantee, which is valid within 30 days of the paper-->
+<!--                                completion. We rarely have unsatisfied customers, but no matter the outcome, our essay-->
+<!--                                writer service is only here to satisfy our customers. If any problem arises, contact our-->
+<!--                                <sup>24</sup>⁄<sub>7</sub> customer support team.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__guarantee7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">The EssayPro Guarantee</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">Any deadlines coming up, last-minute papers-->
+<!--                                due, or have trivial tasks that the teacher assigned you? Never worry about any of these-->
+<!--                                issues again! We offer the best essay service that will meet all your deadlines for any-->
+<!--                                task. Our professionals are ready to complete your order and send it to you whenever you-->
+<!--                                request it. Here are the top reasons why you should hire a writer from EssayPro:</p>-->
+<!--                            <ol>-->
+<!--                                <li class="list__item _red"><p class="p--sm">We employ only professionals who hold-->
+<!--                                        higher education diplomas with years of writing experience.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Our quality assurance protocol is something-->
+<!--                                        every author in-app is required to follow.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Every essay writer we hire must follow a-->
+<!--                                        strict writing protocol issued by our quality assurance team.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Writers never violate deadlines and follow-->
+<!--                                        the requirements of the customer.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Our writer managers overlook the whole-->
+<!--                                        ordering process to make sure everything is done correctly and by the customer’s-->
+<!--                                        requirements.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Our writers will always strictly follow-->
+<!--                                        your guidelines and meet your deadlines.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">We offer a <sup>24</sup>⁄<sub>7</sub>-->
+<!--                                        customer support team ready to assist you with any questions you may have.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Papers are delivered on time every time to-->
+<!--                                        our customers.</p></li>-->
+<!--                                <li class="list__item _red"><p class="p--sm">Papers can be downloaded immediately after-->
+<!--                                        the order is complete.</p></li>-->
+<!--                            </ol>-->
+<!--                            <p class="p--sm p">We offer unlimited revisions to your papers up to 30 days of the-->
+<!--                                completed order. Because of our revision policy, our customers are never dissatisfied-->
+<!--                                with the final draft of the paper they receive. We try our best to satisfy every-->
+<!--                                customer, so whenever a problem arises, we try our best to solve it at that moment. You-->
+<!--                                can be confident you made the right choice when ordering from us.</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__mail7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Essay Writer Service</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">We only employ writers that hold higher-->
+<!--                                educational degrees, such as, a master’s or a Ph.D. The specialization of each writer-->
+<!--                                varies, so no matter the subject of the essay you need to be written, you will find a writer-->
+<!--                                with a vast experience in that subject.</p>-->
+<!--                            <p class="p--sm p">Before submitting your order, you are able to view a list of the writers-->
+<!--                                who are willing to start working on your paper. Be sure to choose the writer who has-->
+<!--                                experience in your essay topic and who has good customer reviews. All our writers are-->
+<!--                                native English speakers who from either the US, UK, Australia, New Zealand, Canada, and-->
+<!--                                Ireland.</p>-->
+<!--                            <ol>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">Find credible sources</p></li>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">The ability to approach tasks-->
+<!--                                        effectively and work punctually</p></li>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">Approach tasks effectively and work-->
+<!--                                        punctually</p></li>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">Maintain an open line of communication-->
+<!--                                        with the customer and take all comments into account</p></li>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">Complete orders even in the tightest of-->
+<!--                                        deadlines (6 hours)</p></li>-->
+<!--                                <li class="list__item _violet"><p class="p--sm">Write any assignment topic in any-->
+<!--                                        field</p></li>-->
+<!--                            </ol>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__service7ed5.svg?v=qqqq" alt="Icon"-->
+<!--                                                             class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Available Subjects on Our Essay Service</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">Our professional essay writers are-->
+<!--                                knowledgeable in many different subjects, and because of this, we are able to offer a wide-->
+<!--                                range of subjects to choose from. No matter the topic of your essay, we have an expert-->
+<!--                                writer who can complete the task on time and with excellent quality. Here is a list of the-->
+<!--                                subjects we offer:</p>-->
+<!--                            <ol>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">English</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Literature</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">History</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Psychology</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Sociology</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Nursing</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">User-Friendly Interface</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Healthcare</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Mathematics</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Politics</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Economics</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Management</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">Business</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">All branches of science</p></li>-->
+<!--                                <li class="list__item _blue"><p class="p--sm">And many more…</p></li>-->
+<!--                            </ol>-->
+<!--                            <p class="p--sm p">Hire one of our experts today to help you with your homework!</p></div>-->
+<!--                    </div>-->
+<!--                    <div class="s-10__content-block">-->
+<!--                        <div class="s-10__content-head"><img src="assets/icon/s-10__professional7ed5.svg?v=qqqq"-->
+<!--                                                             alt="Icon" class="s-10__svg">-->
+<!--                            <h2 class="h--sm">Outstanding Essay Writers &amp; High Quality Essay Service</h2></div>-->
+<!--                        <div class="s-10__content__inner"><p class="p--sm p">Is your social life being taken over by-->
+<!--                                your student life? Are you struggling to balance work with your academics? If this sounds-->
+<!--                                like you, or you are just busy in general because of school, then you have come to the right-->
+<!--                                place. Using our essay writing service, students will have the rare opportunity to relieve-->
+<!--                                the stress of school and focus on work or other high priority tasks.</p>-->
+<!--                            <p class="p--sm p">When students decide to hire one of our essay writers, they will no-->
+<!--                                longer need to worry about their deadlines of slipping grades. Our writers are-->
+<!--                                professionals who have many years of experience in the field of writing. We guarantee-->
+<!--                                that the paper you receive will be 100% unique and of the highest quality. Our writers-->
+<!--                                will view your guidelines and keep all your recommendations in mind when writing your-->
+<!--                                paper. To help you even further, send your writer a sample of your writing, and they-->
+<!--                                will even mimic your style.</p>-->
+<!--                            <p class="p--sm p">The answer to all your time and academic problems is EssayPro. Don’t be-->
+<!--                                bound by your homework, essays, research papers, or any type of school work ever again.-->
+<!--                                What will you do with all the free time you have once you&nbsp;finish your papers early-->
+<!--                                with our expert guidance?</p></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </section>
     </div>
     <section class="s-11">

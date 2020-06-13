@@ -3134,7 +3134,7 @@
     }
 
     .p--is-inverse {
-        color: #fff
+        color: black
     }
 
     .p--new {

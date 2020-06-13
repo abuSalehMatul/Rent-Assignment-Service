@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+require_once '../vendor/autoload.php';
 class AuthController extends Controller
 {
     public function __construct()
@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        require_once '../vendor/autoload.php';
+
 
         //writerRedirect();
 //        check for post method
@@ -281,6 +281,56 @@ class AuthController extends Controller
         }
     }
 
+    public function google()
+    {
+        $g_client = new Google_Client();
+        $g_client->setClientId("882413254155-dqrcsii5mp2f40vc0v4hhj0gkacp9n1q.apps.googleusercontent.com");
+        $g_client->setClientSecret("xNA8IIyIJpOmlZ3ZgRvKX8qx");
+        $g_client->setRedirectUri("http://essay-lite.io/en/backend/dashboard");
+        $g_client->setScopes("email");
+
+//Step 2 : Create the url
+        $auth_url = $g_client->createAuthUrl();
+        echo "<a href='$auth_url' style='text-align: center; border: 2px solid cornflowerblue; border-radius: 6px; text-decoration: none; margin-bottom: 400px; padding: 20px'>Login Through Google </a>";
+
+//Step 3 : Get the authorization  code
+        $code = isset($_GET['code']) ? $_GET['code'] : NULL;
+
+//Step 4: Get access token
+        if(isset($code)) {
+
+            try {
+
+                $token = $g_client->fetchAccessTokenWithAuthCode($code);
+                $g_client->setAccessToken($token);
+
+            }catch (Exception $e){
+                echo $e->getMessage();
+            }
+
+
+
+
+            try {
+                $pay_load = $g_client->verifyIdToken();
+
+
+            }catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        } else{
+            $pay_load = null;
+        }
+
+        if(isset($pay_load)){
+
+
+
+            var_dump($pay_load['email']);
+        }
+
+    }
     public function logout()
     {
 
