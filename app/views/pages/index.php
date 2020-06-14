@@ -1,6 +1,8 @@
 <?php
 require_once APPROOT . '/views/inc/indexPage/head.php';
+require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
 ?>
+
 <body>
 <div class="wrapper">
     <?php
@@ -13,31 +15,26 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
             <picture>
                 <img src="<?php echo URLROOT.'\public\shared\images\assignments.png' ?>"
                      alt="Essay Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important"></picture>
-            <div class="l-0">
+            <div class="l-0"  style="margin-top: 40px">
                 <div class="s-1__wrapper">
-                    <div class="s-1__left"><h1 class="h--lg h--is-inverse">Top Essay Writing Service<br>with
+                    <div class="s-1__left"><h1 class="h--lg h--is-inverse" style="text-align: center">Top Assignment Service<br>with
                             Professional Essay Writers</h1>
-                        <p class="p--lg p--is-inverse">Increase your chance of success with our Essay Writing
+                        <p class="p--lg p--is-inverse" style="text-align: center">Increase your chance of success with our Assignment Writing
                             Service</p>
-                        <div class="button-group"><a href="write-my-essay.html" class="button-filled__primary ga-event"
+                        <div class="button-group" style="margin-left: 450px!important"><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/register';?>" class="button-filled__primary ga-event"
                                                      data-ga-category="home" data-ga-action="click"
-                                                     data-ga-label="Find Your Writer!"><span class="button-text">Write My Essay!</span>
-                            </a><span data-link="https://app.essaypro.com/auth/register"
-                                      class="button-filled__warning ga-event h-l" data-ga-category="home"
-                                      data-ga-action="click" data-ga-label="Sign up"><span
-                                        class="button-text">Sign up</span></span></div>
+                                                     data-ga-label="Find Your Writer!"><span class="button-text">Write my assignment</span>
+                            </a><span data-link="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/register';?>"
+                                    </div>
                     </div>
 
                 </div>
             </div>
-            <div class="s-1__bottom">
-                <div class="h--md h--is-inverse">No more sleepless nights…</div>
-                <div class="s-1__divider"></div>
-                <div class="h--sm h--is-inverse">100% Plagiarism-Free Essays.<span class="hide-for__mobile">&nbsp; Any Topic or Difficulty can be handled!</span>
-                </div>
-            </div>
+
         </section>
-        <section>  <div class="h--md">How We Serve</div> <div class="s-1__right">
+        <section>
+
+            <div class="h--md"><h3 style="text-align: center"><?php echo $lang['Choose your plan']?></h3></div>
 
                 <div class="c-1 js-calculator" data-component-name="c-1__as__calculator-primary">
                     <div class="js-calculator__form">
@@ -181,18 +178,18 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
             </div>  </section>
         <section class="s-16">
             <div class="container">
-                <div class="h--md">How We Serve</div>
+                <div class="h--md"><?php echo $lang['How We Serve']?></div>
                 <div class="s-16__wrap">
                     <div class="s-16__block">
                         <ul class="s-16__list">
                             <li class="s-16__item"><span class="s-16__item-num">1</span>
-                                <p class="s-16__text">Register For An Account</p></li>
+                                <p class="s-16__text">lorem ipsum ipsum</p></li>
                             <li class="s-16__item"><span class="s-16__item-num">2</span>
-                                <p class="s-16__text">Fill Out The Form &amp; Place an Order</p></li>
+                                <p class="s-16__text">lorem ipsum ipsum</p></li>
                             <li class="s-16__item"><span class="s-16__item-num">3</span>
-                                <p class="s-16__text">Hire and Collaborate With A Writer</p></li>
+                                <p class="s-16__text">lorem ipsum ipsum</p></li>
                             <li class="s-16__item"><span class="s-16__item-num">4</span>
-                                <p class="s-16__text">Proofread Final Version &amp; Release Payment</p></li>
+                                <p class="s-16__text">lorem ipsum ipsum</p></li>
                         </ul>
                     </div>
                     <div class="s-16__block s-16__video-wrap">
@@ -200,14 +197,14 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
                                 src="https://www.youtube.com/embed/jcVl99vP9z4" frameborder="0" style=""></iframe>
                         <span data-link="https://app.essaypro.com/#/auth/register"
                               class="button-filled__primary ga-event h-l" data-ga-action="click"
-                              data-ga-label="GET STARTED"><span class="button-text">GET STARTED</span></span></div>
+                              data-ga-label="GET STARTED"><span class="button-text">SEE OUR VIDEO</span></span></div>
                 </div>
             </div>
         </section>
         <section class="s-9">
             <div class="l-0">
                 <div class="s-9__w">
-                    <div class="h--md">As Seen On</div>
+                    <div class="h--md"><?php echo $lang['Our partners']?></div>
                     <ul class="s-9__ul">
                         <li class="s-9__li"><img
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAABOCAMAAAAaeeHAAAADAFBMVEUAAAAAAACAgICqqqqAv7+ZmZmqqqq2trafv7+qqsazs7O5ubmqv7+xscS2traqu7uvv7+0tMO4uMauvLyzv7+2tsK5ucWxvLy1v7+4wsKxusSzvca2v7+5wcGzu8S1vcW3v7+5wcG0vMO2vcW4v8azwcG1vMO3vsS5v8a0wcG2vMK4vsS5v8W1wca3vMK4vsO6v8W2wca4wse5vsO1v8S3wMW4wsa5vsO2v8S3wMW5wca6vse3v8S4wMS5wcW2vsa3v8O4wMS5wcW3vsa4v8e5wMS6wcW3wsa4v8a5wMS3wcS4wsW5v8a5wMe3wcS4wsW5v8a6wMa3wcS4wsW5v8W6wMa4wce5wcS5v8W3wMa4wca5wce6v8W4wMW4wca5wce6wsW4wMW5wca5wca4wse4wMW5wca6wca4wse5wMW5wMW6wca4wsa5wMe5wMW4wca4wsa5wMe6wMW4wcW5wca5wsa6wMe4wcW5wca5wsa4wMe5wcW5wcW6wsa4wMa5wce5wcW6wsa4wMa5wce5wce6wsW5wMa5wca6wce4wsW5wMa5wca6wce4wse5wsa5wca6wca5wce5wsW6wca4wca5wce5wse6wca5wca5wca5wse6wMW5wca5wca6wse4wMe5wca5wca6wsa5wse5wcW5wca6wsa5wse5wce6wca6wsa5wsa5wce6wce5wca5wsa5wca6wce5wca5wsa6wca6wce5wce5wsa6wca5wca5wce5wsa6wsa5wca5wce6wse6wsa5wca5wca6wse5wsa5wca5wca6wce5wse5wca6wca6wca5wse5wca6wca5wca5wse5wse6wca5wca5wsa6wse6wce5wca5wsa6wse6wce5wca5wsa6wsa5wce5wce6wsa6wsa5wce5wce6wca6wsa5wca5wce6wce5wsa5wsa6wce6wce5wsa5wsa6wca6wce5wse5wsa6wca5wce5wse6wsa6wca5wca5wse6wse6wca5wca5wse6wse6wsdd8MtbAAAA/3RSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1O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"
@@ -234,86 +231,38 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
         <section class="s-15">
             <div class="faq l-0" itemscope="" itemtype="https://schema.org/FAQPage">
                 <meta itemprop="mainEntityOfPage" content="index.html">
-                <div id="faq" class="h--md" itemprop="name">Frequently Asked Questions</div>
+                <div id="faq" class="h--md" itemprop="name"><?php echo $lang['Frequently Asked Questions'];?></div>
                 <dl class="s-15__list">
                     <div class="s-15__col">
                         <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
                                                          itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">What Is EssayPro?</span></dt></summary><dd
+                                                class="s-15__question" itemprop="name"><span class="h--sm">lorem ipsum</span></dt></summary><dd
                                             class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">EssayPro is a leading essay service which provides everybody with well-qualified results by writing essays or any other student papers of every topic or complicity. Professionalism and enthsusiasm of each employee makes EssayPro the most popular service in the field.</span></dd></details></span>
+                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi at atque debitis esse expedita facilis fugiat ipsam maiores, mollitia optio perferendis quis sapiente, sed tempora, unde velit. Ad, quaerat.</span></dd></details></span>
                         </div>
                         <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
                                                          itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">Is EssayPro Safe?</span></dt></summary><dd
+                                                class="s-15__question" itemprop="name"><span class="h--sm">lorem ipsum</span></dt></summary><dd
                                             class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Yes, EssayPro is totally safe. The absolute anonymity is guaranteed; your personal data is not transferred to third parties. Your security is our priority, so do not be afraid of any data leakage.</span></dd></details></span>
+                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus animi aperiam architecto consequuntur esse, excepturi id illo incidunt minus nam officia rem sed sequi sint. Amet aperiam nesciunt rerum.</span></dd></details></span>
                         </div>
                         <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
                                                          itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">Is Your Essay Writing Service Original?</span></dt></summary><dd
+                                                class="s-15__question" itemprop="name"><span class="h--sm">lorem ipsum</span></dt></summary><dd
                                             class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Yes. Our Essay Service is 100% original and unique. Your tutors will never guess that your work was done by anybody else. All our documents are tested for plagiarism several times before giving them to the client.</span></dd></details></span>
+                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam dicta dolore eum ipsum magnam maiores nostrum obcaecati, rerum saepe sed temporibus unde? Beatae, dolorem illum nisi officia pariatur recusandae!</span></dd></details></span>
                         </div>
                         <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
                                                          itemtype="https://schema.org/Question"><details><summary><dt
                                                 class="s-15__question" itemprop="name"><span
-                                                    class="h--sm">How Can i Hire Essay Writer?</span></dt></summary><dd class="s-15__answer"
+                                                    class="h--sm">lorem ipsum</span></dt></summary><dd class="s-15__answer"
                                                                                                                         itemprop="acceptedAnswer"
                                                                                                                         itemscope=""
                                                                                                                         itemtype="https://schema.org/Answer"><span
-                                                itemprop="text" class="p--md">Firstly, you need to register on our website, put all the details of your work, choose the writer on the website according to your preferences, and follow the instructions on the website. The process of ordering is super easy, so you will never do anything wrong. In case you do, you can contact the call-center and ask for help.</span></dd></details></span>
+                                                itemprop="text" class="p--md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, beatae consectetur dolorem eos iste provident qui quidem ratione recusandae reiciendis sint ut, veritatis voluptatibus. Culpa ducimus illum pariatur quod sunt!</span></dd></details></span>
                         </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span
-                                                    class="h--sm">Are there any free bonuses?</span></dt></summary><dd class="s-15__answer"
-                                                                                                                       itemprop="acceptedAnswer"
-                                                                                                                       itemscope=""
-                                                                                                                       itemtype="https://schema.org/Answer"><span
-                                                itemprop="text" class="p--md">In general, there are 30 days left of the free editing of papers, if suddenly something needs to be fixed or corrected. All the individual papers are discussed and solved within the shortest period.</span></dd></details></span>
-                        </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">How to get money back if essay writing service scam you?</span></dt></summary><dd
-                                            class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">In case anything went wrong or you disatisfied somehow with the quality of your ready-made papers, please let us know about that, and we will definitely refund the money in full.</span></dd></details></span>
-                        </div>
-                    </div>
-                    <div class="s-15__col">
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span
-                                                    class="h--sm">Is EssayPro Legitimate?</span></dt></summary><dd class="s-15__answer"
-                                                                                                                   itemprop="acceptedAnswer"
-                                                                                                                   itemscope=""
-                                                                                                                   itemtype="https://schema.org/Answer"><span
-                                                itemprop="text" class="p--md">Yes, it is completely legitimate. We provide materials that you can use to write and submit your work in an educational institution. We guarantee the quality of our work. and your good marks.</span></dd></details></span>
-                        </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">Is Your Essay Writing Service Fast?</span></dt></summary><dd
-                                            class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Yes, EssayPro service is really fast. However, it depends on the paper complicity, topic or field of the work. We need at least 6 hours to complete your papers with the highest quality. All the details are discussed before the papers are done to omit any misconceptions.</span></dd></details></span>
-                        </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">Is Your Essay Writing Service Cheap?</span></dt></summary><dd
-                                            class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Yes, our EssayPro service is rather cheap. The total price of the work will depend on the paper number being written. The less papers you have, the less cost you are going to pay. We have fairly low prices in comparison with other essay writing services.</span></dd></details></span>
-                        </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">How to check the uniqueness of essay?</span></dt></summary><dd
-                                            class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Checking the uniqueness of your papers is rather easy. Our writers are strictly forbidden to use someone’s materials if they have already done their work. The paper is read and completely investigated by the proofreader, checked by special tools, and only then they are either sent back for editing or sent to the client if all ok.</span></dd></details></span>
-                        </div>
-                        <div class="s-15__spoiler"><span itemprop="mainEntity" itemscope=""
-                                                         itemtype="https://schema.org/Question"><details><summary><dt
-                                                class="s-15__question" itemprop="name"><span class="h--sm">How to get the perfect done work?</span></dt></summary><dd
-                                            class="s-15__answer" itemprop="acceptedAnswer" itemscope=""
-                                            itemtype="https://schema.org/Answer"><span itemprop="text" class="p--md">Well, as a rule, everything you need is following all the instructions you got and add some creativity or research to your papers. All types of the papers are done immediately and with no hesitations. The quality is warranted as well.</span></dd></details></span>
-                        </div>
+
+
                     </div>
                 </dl>
             </div>
@@ -558,157 +507,8 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
 <!--            </div>-->
         </section>
     </div>
-    <section class="s-11">
-        <div class="l-0">
-            <div class="text-block"><img src="assets/footer/how_used.png" class="how_used"
-                                         alt="How Our Service Is Used"></div>
-            <div class="order-block">
-                <div class="h--md">Order a Custom Academic Paper!</div>
-                <p class="p--md">Calculate the approximate cost of your paper</p>
-                <div class="button-group"><a
-                            href="https://app.essaypro.com/auth/register?_ga=2.89219291.1381202132.1544004610-800698181.1544004610"
-                            class="button-filled__primary ga-event" data-ga-category="home" data-ga-action="click"
-                            data-ga-label="Place an order"><span class="button-text">Place an order</span></a></div>
-                <div class="s-11__c">
-                    <div class="c-2 js-calculator-secondary" data-component-name="c-2__as__calculator-secondary">
-                        <div class="js-calculator-secondary__form">
-                            <form action="https://app.essaypro.com/auth/register" method="get" class="c-2__form">
-                                <div class="c-2__main">
-                                    <div class="c-2__row" id="servicesDropdownWrapSecondary">
-                                        <div class="c-3 dropdown">
-                                            <button id="calculator_service_selected_999999" type="button"
-                                                    class="c-3__dropdown" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"><span class="c-3__selected"
-                                                                                data-calc-value="1">Writing</span> <span
-                                                        class="c-3__placeholder">Service</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                            <div class="c-3__menu dropdown-menu"
-                                                 aria-labelledby="calculator_service_selected_999999">
-                                                <ul class="c-3__ul"></ul>
-                                            </div>
-                                        </div>
-                                        <div class="select"><select id="calculator_service_999999"
-                                                                    aria-label="Calculator services"
-                                                                    class="c-3__select"></select> <span
-                                                    class="c-3__select-arrow"></span></div>
-                                    </div>
-                                    <div class="c-2__row">
-                                        <div class="c-3 dropdown">
-                                            <button id="calculator_type_selected_999999" type="button"
-                                                    class="c-3__dropdown" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"><span class="c-3__selected"
-                                                                                data-calc-value="1">Essay (any type)</span>
-                                                <span class="c-3__placeholder">Type of paper</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                            <div class="c-3__menu dropdown-menu"
-                                                 aria-labelledby="calculator_type_selected_999999"><input
-                                                        id="searchTypesInputSecondary" class="c-3__search" type="text"
-                                                        placeholder="Type to find">
-                                                <div class="c-3__ul"></div>
-                                            </div>
-                                        </div>
-                                        <div class="select"><select id="calculator_type_999999"
-                                                                    aria-label="Type of calculator"
-                                                                    class="c-3__select"></select> <span
-                                                    class="c-3__select-arrow"></span></div>
-                                    </div>
-                                    <div class="c-2__row">
-                                        <div class="c-3 dropdown">
-                                            <button id="calculator_deadline_selected_999999" type="button"
-                                                    class="c-3__dropdown" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"><span class="c-3__selected"
-                                                                                data-calc-value="336">2 weeks</span>
-                                                <span class="c-3__placeholder">Deadline</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                            <div class="c-3__menu dropdown-menu"
-                                                 aria-labelledby="calculator_deadline_selected_999999">
-                                                <ul class="c-3__ul">
-                                                    <li class="c-3__li" data-calc-value="6">6 hours</li>
-                                                    <li class="c-3__li" data-calc-value="12">12 hours</li>
-                                                    <li class="c-3__li" data-calc-value="24">1 day</li>
-                                                    <li class="c-3__li" data-calc-value="48">2 days</li>
-                                                    <li class="c-3__li" data-calc-value="72">3 days</li>
-                                                    <li class="c-3__li" data-calc-value="120">5 days</li>
-                                                    <li class="c-3__li" data-calc-value="168">7 days</li>
-                                                    <li class="c-3__li" data-calc-value="240">10 days</li>
-                                                    <li class="c-3__li" data-calc-value="336">2 weeks</li>
-                                                    <li class="c-3__li" data-calc-value="720">1 month</li>
-                                                    <li class="c-3__li" data-calc-value="1440">2 months</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="select"><select id="calculator_deadline_999999"
-                                                                    aria-label="Calculators's deadline"
-                                                                    class="c-3__select">
-                                                <option value="6">6 hours</option>
-                                                <option value="12">12 hours</option>
-                                                <option value="24">1 day</option>
-                                                <option value="48">2 days</option>
-                                                <option value="72">3 days</option>
-                                                <option value="120">5 days</option>
-                                                <option value="168">7 days</option>
-                                                <option value="240">10 days</option>
-                                                <option value="336" selected="selected">2 weeks</option>
-                                                <option value="720">1 month</option>
-                                                <option value="1440">2 months</option>
-                                            </select> <span class="c-3__select-arrow"></span></div>
-                                    </div>
-                                    <div id="pages_fields_999999" class="c-2__row">
-                                        <div class="c-2__group">
-                                            <div class="c-2__element">
-                                                <button id="calculator_pages_decrement_999999" type="button"
-                                                        aria-label="calculator pages decrement"
-                                                        class="c-3__button-decrement"></button>
-                                            </div>
-                                            <div class="c-2__element">
-                                                <div class="dropdown dropdown-half">
-                                                    <button id="calculator_pages_selected_999999" type="button"
-                                                            class="c-3__dropdown-half" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false"><span
-                                                                class="c-3__selected" data-calc-value="1">1 page</span>
-                                                        <span class="c-3__placeholder">Pages</span> <span
-                                                                class="c-3__select-arrow"></span></button>
-                                                    <div class="c-3__menu dropdown-menu"
-                                                         aria-labelledby="calculator_pages_selected_999999">
-                                                        <ul class="c-3__ul pages__list">
-                                                            <li class="c-3__li" data-calc-value="1">1 page</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="select"><select id="calculator_pages_999999"
-                                                                            aria-label="Calculators pages"
-                                                                            class="c-3__select-half">
-                                                        <option value="1" selected="selected">1 page</option>
-                                                    </select> <span class="c-3__select-arrow"></span></div>
-                                            </div>
-                                            <div class="c-2__element">
-                                                <button id="calculator_pages_increment_999999" type="button"
-                                                        aria-label="calculator pages increment"
-                                                        class="c-3__button-increment"></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="c-2__result">
-                                    <div class="c-2__price">
-                                        <div class="c-2__price__wrap">
-                                            <div class="value c-2__price--min">$<span
-                                                        id="calculator_total_999999">0</span></div>
-                                            <div class="c-2__price__label">Minimum Price</div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="button-filled__primary ga-event"
-                                            data-ga-category="calculator" data-ga-action="click"
-                                            data-ga-label="Continue"><span class="button-text">Continue</span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <p></p>
+
+
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?GTM-KZ3B2L" height="0" width="0"
                 style="display:none;visibility:hidden"></iframe>

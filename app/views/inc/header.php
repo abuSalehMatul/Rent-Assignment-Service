@@ -1,6 +1,111 @@
 <?php
 require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
 ?>
+<style>
+
+
+    @import url('https://fonts.googleapis.com/css?family=Muli');
+    body {
+        font-family: Arial;
+        font-family: 'Muli', sans-serif;
+    }
+    .nav-wrapper {
+        width: 300px;
+        margin: 100px auto;
+        text-align: center;
+    }
+    .sl-nav {
+        display: inline;
+    }
+    .sl-nav ul {
+        margin:0;
+        padding:0;
+        list-style: none;
+        position: relative;
+        display: inline-block;
+    }
+    .sl-nav li {
+        cursor: pointer;
+        padding-bottom:10px;
+    }
+    .sl-nav li ul {
+        display: none;
+    }
+    .sl-nav li:hover ul {
+        position: absolute;
+        top:29px;
+        right:-15px;
+        display: block;
+        background: #fff;
+        width: 120px;
+        padding-top: 0px;
+        z-index: 1;
+        border-radius:5px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+    }
+    .sl-nav li:hover .triangle {
+        position: absolute;
+        top: 15px;
+        right: -10px;
+        z-index:10;
+        height: 14px;
+        overflow:hidden;
+        width: 30px;
+        background: transparent;
+    }
+    .sl-nav li:hover .triangle:after {
+        content: '';
+        display: block;
+        z-index: 20;
+        width: 15px;
+        transform: rotate(45deg) translateY(0px) translatex(10px);
+        height: 15px;
+        background: #fff;
+        border-radius:2px 0px 0px 0px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+    }
+    .sl-nav li ul li {
+        position: relative;
+        text-align: left;
+        background: transparent;
+        padding: 15px 15px;
+        padding-bottom:0;
+        z-index: 2;
+        font-size: 15px;
+        color: #3c3c3c;
+    }
+    .sl-nav li ul li:last-of-type {
+        padding-bottom: 15px;
+    }
+    .sl-nav li ul li span {
+        padding-left: 5px;
+    }
+    .sl-nav li ul li span:hover, .sl-nav li ul li span.active {
+        color: #146c78;
+    }
+    .sl-flag {
+        display: inline-block;
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+        width: 15px;
+        height: 15px;
+        background: #aaa;
+        border-radius: 50%;
+        position: relative;
+        top: 2px;
+        overflow: hidden;
+    }
+    .flag-de {
+        /*background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAPUlEQVQ4T+3HMQ0AIBTE0NOHM8x9B7hgh71bIWGieUvze1m7kHGBr/AVvsJX+EpmP5dV5/gKX+ErfIUvVDYcX2NMxQC8PAAAAABJRU5ErkJggg==');*/
+        background-size: cover;
+        background-position: center center;
+    }
+    .flag-usa {
+        background-size: cover;
+        background-position: center center;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAABhUlEQVQ4T2Ows82PjGixsc4LD2tysC/09Kjw8622tyuICG8u0w/cpGSCBzF4e1VmZkzw9anOzOj38a4KCW4IC22ECHYk1l9tn4gHMeTlTnZxLikvm+XiUpKW2hvgX+vnV5OVOQEoOGfOtv94AYOzU3Fd7XxHh6Lq6rlurqUx0W0J8Z1AnbW18yotonaYuOJBDBXls4A+bGpaBCTz86YEBtQCvVBSPAPIbY0oP1/aiAcxABU1Ny+2tclvbFjo5FgUF9uenNwNDLnmpkWEnV1TPRcY1O1tS4H6i4umA/0MDK2K8tlAwRqHpP1uoXgQKKraWpcClTY3LQZaCLQ5NaUX5OaWJY3++SeTC/AgBmA4AXUClUJs9ver8fKsAAYEUJCws4G21dXNB1oFdD/Qz8DQTk4C+bm2dn6DZ9bRiDQ8iAEYt8CoBpK5YBIYw0AEEZwSXX4oMB4PYoC6gCzAcDqrjGzEsMfen2xEmbMv1rSTjRi26dqRjShz9o2+6WQjBrSShQSkZAIADvW/HLrLY6cAAAAASUVORK5CYII=');
+    }
+
+</style>
 <header class="header">
     <div class="header__mobile-buttons">
         <div id="mNavMain" class="m-nav__button for__m-nav-main"><i class="n--icon n--icon__main-nav"></i> <i
@@ -11,78 +116,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     <div class="m-nav m-nav__main">
         <div class="m-nav__main-ul">
             <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon017ed5.png?v=qqqq"
-                              srcset="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon01.png?v=qqqq, assets/icon/mobile-menu__icon01@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-01"></picture>
-                <a href="<?php echo URLROOT . "/ourTeam"?>" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click"
-                   data-ga-label="home-header Our Team click">Our Team</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon027ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon02.png?v=qqqq, assets/icon/mobile-menu__icon02@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-02"></picture>
-                <a href="order-an-essay.html" class="m-nav__a ga-event" data-ga-category="home"
-                   data-ga-action="click" data-ga-label="home-header How to Order click">How to Order</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon037ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon03.png?v=qqqq, assets/icon/mobile-menu__icon03@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-03"></picture>
-                <a href="#subnav-1" class="m-nav__parent ga-event" data-ga-category="home" data-ga-action="click"
-                   data-ga-label="home-header Learn click">Writing services</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon047ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon04.png?v=qqqq, assets/icon/mobile-menu__icon04@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-04"></picture>
-                <a href="custom-essay-writing-reviews.html" class="m-nav__a ga-event" data-ga-category="home"
-                   data-ga-action="click" data-ga-label="home-header Reviews click">Reviews</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon077ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon07.png?v=qqqq, assets/icon/mobile-menu__icon07@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-07"></picture>
-                <a href="#subnav-2" class="m-nav__parent ga-event" data-ga-category="home" data-ga-action="click"
-                   data-ga-label="home-header About us click">About us</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon067ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon06.png?v=qqqq, assets/icon/mobile-menu__icon06@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-06"></picture>
-                <a href="blog/index.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click"
-                   data-ga-label="home-header Blog click">Blog</a></div>
-            <div class="m-nav__divider"></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon087ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon08.png?v=qqqq, assets/icon/mobile-menu__icon08@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-08"></picture>
-                <a href="become-a-writer.html" class="m-nav__a ga-event" data-ga-category="home"
-                   data-ga-action="click" data-ga-label="home-header Become a writer click">Become a writer</a>
-            </div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon107ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon10.png?v=qqqq, assets/icon/mobile-menu__icon10@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-10"></picture>
-                <a href="https://essaypro.com/terms-and-conditions.html" class="m-nav__a ga-event"
-                   data-ga-category="home" data-ga-action="click"
-                   data-ga-label="home-header Terms and Conditions click">Terms and Conditions</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon107ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon10.png?v=qqqq, assets/icon/mobile-menu__icon10@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-10"></picture>
-                <a href="https://essaypro.com/refund-policy.html" class="m-nav__a ga-event" data-ga-category="home"
-                   data-ga-action="click" data-ga-label="home-header Refund Policy click">Refund Policy</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon117ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon11.png?v=qqqq, assets/icon/mobile-menu__icon11@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-11"></picture>
-                <a href="https://essaypro.com/privacy-policy.html" class="m-nav__a ga-event" data-ga-category="home"
-                   data-ga-action="click" data-ga-label="home-header Privacy Policy click">Privacy Policy</a></div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/mobile-menu__icon097ed5.png?v=qqqq"
-                              srcset="assets/icon/mobile-menu__icon09.png?v=qqqq, assets/icon/mobile-menu__icon09@2x.png?v=qqqq 2x"
-                              alt="Icon" class="m-nav__img img-09"></picture>
-                <a href="https://intercom.help/essaypro" rel="nofollow" class="m-nav__a ga-event"
-                   data-ga-category="home" data-ga-action="click" data-ga-label="home-header FAQ click">FAQ</a>
-            </div>
-            <div class="m-nav__b">
-                <picture><img src="<?php echo URLROOT.'/';?>assets/icon/telephone-book7ed5.svg?v=qqqq" alt="Icon" class="m-nav__img img-07">
-                </picture>
+
                 <a href="https://essaypro.com/contact-us.html" class="m-nav__a ga-event" data-ga-category="home"
                    data-ga-action="click" data-ga-label="home-header Contact us click">Contact us</a></div>
         </div>
@@ -137,7 +171,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     <div class="m-nav__overlay"></div>
     <div class="header__main">
         <div class="header__logo"><a class="logo ga-event" data-ga-category="home" data-ga-action="click"
-                                     data-ga-label="home-header logo click" href="<?php echo URLROOT;?>"><img src="<?php echo URLROOT.'/';?>assets/header/logo.svg"
+                                     data-ga-label="home-header logo click" href="<?php echo URLROOT;?>"><img src="<?php echo URLROOT.'\public\shared\images\AG .png' ?>"
                                                                                  class="logo_img"
                                                                                  alt="EssayPro"></a></div>
         <div class="header__nav">
@@ -157,7 +191,20 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
             </nav>
         </div>
     </div>
-    <div class="header__inner--right"><span class="header__dba">DBA: EPRO</span>
+    <div class="header__inner--right"><div class="nav-wrapper">
+            <div class="sl-nav">
+
+                <ul>
+                    <li style="color: floralwhite"><b>Select language</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <div class="triangle"></div>
+                        <ul>
+                            <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active"><a href="<?php echo URLROOT.'/ar/';?>">Arabian</a></span></li>
+                            <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <a href="<?php echo URLROOT.'/en/';?>"><span>English</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="header__auth">
             <nav class="n--auth"><span data-link="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/login';?>"
                                        class="n--auth__link ga-event h-l" data-ga-category="home"

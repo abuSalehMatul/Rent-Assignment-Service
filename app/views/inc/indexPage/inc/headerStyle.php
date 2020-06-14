@@ -362,7 +362,7 @@
     }
 
     .h--is-inverse {
-        color:black
+        color:floralwhite;
     }
 
     .p--lg {
@@ -423,7 +423,7 @@
     }
 
     .p--is-inverse {
-        color:black
+        color:floralwhite;
     }
 
     .p--new {
@@ -2970,7 +2970,7 @@
         max-height: 428px;
         padding: 16px 16px 20px;
         background-color: #1b1f26;
-        background-color: rgba(27, 31, 40, .9);
+        background-color: rgb(74, 117, 125);
         -webkit-border-radius: 5px;
         border-radius: 5px;
     }
