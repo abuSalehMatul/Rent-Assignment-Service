@@ -5,6 +5,7 @@
  */
 
 class Controller{
+    public $data =[];
 //    Load model
     public function model($model){
 //        require the model

@@ -11,3 +11,5 @@
     define('URLROOT', 'http://essay-lite.io');
 //    define site name
     define('SITENAME', 'Essay Lite');
+
+    define('COPYRIGHT', 'Copy Right Reserved @'. date("Y"). '. Developed by saleh.matul@gmail.com');
