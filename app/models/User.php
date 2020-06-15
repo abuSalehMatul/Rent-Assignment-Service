@@ -49,12 +49,6 @@ class User
 //    backend login
     public function login($email, $pass)
     {
-
-
-//        echo "<pre>";
-//        print_r($hashedPass);
-//        echo "</pre>";
-//        exit();
         $this->db->query('SELECT * FROM user WHERE email = :email AND password= :password');
         $this->db->bind(':email', $email);
         $hashedPass = md5($pass);
@@ -89,12 +83,6 @@ class User
     }
     public function verify($email, $token)
     {
-
-
-//        echo "<pre>";
-//        print_r($hashedPass);
-//        echo "</pre>";
-//        exit();
         $changeToken = 0;
         $this->db->query('UPDATE user SET token='.$changeToken.' WHERE email=:email AND token=:token');
         $this->db->bind(':email', $email);
@@ -124,5 +112,35 @@ class User
         } else {
             return false;
         }
+    }
+
+    public function findUserById($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getTotalOrderByUserId($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM orders WHERE `student_id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->rowCount();
+    }
+
+    public function getTotalCompletedOrderByUserId($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM orders
+         WHERE `student_id` = ? AND `status` = ?");
+        $stmt->execute([$userId, 'completed']);
+        return $stmt->rowCount();
+    }
+
+    public function getTotalCanceledOrderByUserId($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM orders
+        WHERE `student_id` = ? AND `status` = ?");
+       $stmt->execute([$userId, 'canceled']);
+       return $stmt->rowCount();
     }
 }
