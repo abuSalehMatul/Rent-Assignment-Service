@@ -90,6 +90,84 @@ class User
             return false;
         }
     }
+    public function total_users()
+    {
+        $this->db->query('SELECT * FROM user');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function total_order()
+    {
+        $this->db->query('SELECT * FROM order_request');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function total_visitor()
+    {
+        $this->db->query('SELECT * FROM visit');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function total_transaction()
+    {
+        $this->db->query('SELECT * FROM payment');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function update_writer_info($id, $data)
+    {
+        $changeToken = 0;
+        $this->db->query('UPDATE user SET f_name=:f_name,l_name=:l_name,email=:email,address=:address,phone_number=:phone_number,title=:title  WHERE id='.$id.'.');
+        $this->db->bind(':f_name', $data['f_name']);
+        $this->db->bind(':l_name', $data['l_name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':phone_number', $data['phone_number']);
+        $this->db->bind(':title', $data['title']);
+
+
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    public function update_active_status($id)
+    {
+
+        $this->db->query('UPDATE user SET status=0  WHERE id='.$id.'.');
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    public function update_deactive_status($id)
+    {
+
+        $this->db->query('UPDATE user SET status=1  WHERE id='.$id.'.');
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 
     //    Check if email already exists
     public function checkEmail($email)
@@ -111,12 +189,82 @@ class User
         $stmt->execute([$userId]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+    public function get_writer_list($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+    public function get_student_list($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+    public function get_writer_list_id()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user_role WHERE `role_id` = 3");
+        $stmt->execute();
+        $result =  $stmt->fetchAll();
+        $get = [];
+        foreach( $result as $row ) {
+
+            array_push($get,$row['user_id']);
+        }
+        return $get;
+    }
+    public function get_student_list_id()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user_role WHERE `role_id` = 4");
+        $stmt->execute();
+        $result =  $stmt->fetchAll();
+        $get = [];
+        foreach( $result as $row ) {
+
+            array_push($get,$row['user_id']);
+        }
+        return $get;
+    }
+    public function get_message_list()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM message");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
+    public function get_submission_list()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM submission");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
+    public function get_transaction_list()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM payment");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
+    public function get_order_list_id()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM order_request");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
 
     public function getTotalOrderByUserId($userId)
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM orders WHERE `student_id` = ?");
         $stmt->execute([$userId]);
         return $stmt->rowCount();
+    }
+    public function edit_writer_list_id($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
     }
 
     public function getTotalCompletedOrderByUserId($userId)
@@ -161,5 +309,23 @@ class User
             return true;
         }
         return false;
+    }
+    public function deleteWriter($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM user WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function delete_order($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM order_request WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function deleteStudent($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM user WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
     }
 }

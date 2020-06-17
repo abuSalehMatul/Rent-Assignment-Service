@@ -18,6 +18,11 @@ class OrderRequest
         $this->db = new Database();
     }
 
+    public function getByUserId($userId)
+    {
+
+    }
+
     public function draftSave($userId, $type, $page, $lavel, $service, $language = "en", $day)
     {
         $stmt = $this->db->dbConnection->prepare("INSERT INTO order_request 
@@ -53,9 +58,9 @@ class OrderRequest
     public function onProcessSave($draftId, $subject, $style = "", $topic = "", $resource = "")
     {
         $stmt = $this->db->dbConnection->prepare("UPDATE order_request SET `subject`=?, `style`=?,
-        `topic` =? , `	source` =?
+        `topic` =? , `source` =? , `status`= ?
          WHERE `id` = ?");
-        $stmt->execute([$subject, $style, $topic, $resource, $draftId]);
+        $stmt->execute([$subject, $style, $topic, $resource, 'progress', $draftId]);
         if ($stmt->rowCount() > 0) {
             $_SESSION['order_request'] = $this->db->dbConnection->lastInsertId();
             return true;

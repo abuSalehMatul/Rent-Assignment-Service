@@ -89,9 +89,9 @@ class StudentController extends Controller
                 $this->validator($_POST['style']),
                 $this->validator($_POST['topic']),
                 $this->validator($_POST['resource'])
-
+               
             );
-            
+            print_r('successfully request saved');
         } else {
             print_r('all data required');
         }

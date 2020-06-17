@@ -3,8 +3,8 @@
 
         <ul class="nav" id="side-menu">
             <li style="padding: 115px 0 0;">
-                <a href="dashboard.html" class="waves-effect">
-                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;&nbsp;My Order</a>
+                <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/Order/myOrder'; ?>" class="waves-effect">
+                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo $lang['My Order']; ?></a>
             </li>
             <li style="">
                 <a href="dashboard.html" class="waves-effect">

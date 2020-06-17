@@ -21,6 +21,7 @@ $lang = array(
     'Title' => '',
     'Log Out' => "",
     'Start A Order' => '',
-    'Start' => ''
+    'Start' => '',
+    'My Order' => ''
 
 );
