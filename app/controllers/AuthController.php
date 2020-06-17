@@ -291,7 +291,7 @@ class AuthController extends Controller
 
 //Step 2 : Create the url
         $auth_url = $g_client->createAuthUrl();
-        echo "<a href='$auth_url' style='text-align: center; border: 2px solid cornflowerblue; border-radius: 6px; text-decoration: none; margin-bottom: 400px; padding: 20px'>Login Through Google </a>";
+        echo "<div style='margin: 300px!important;'></div> <a href='$auth_url' style='text-align: center; border: 2px solid cornflowerblue; border-radius: 6px; text-decoration: none; margin: 655px; padding: 20px'>Login Through Google </a></div>";
 
 //Step 3 : Get the authorization  code
         $code = isset($_GET['code']) ? $_GET['code'] : NULL;

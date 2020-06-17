@@ -53,6 +53,36 @@ class DemoTestController extends Controller
 
         $this->view('/backend/admin_dashboard', $data);
     }
+    public function dash()
+    {
+
+        $data['get_writer_list_id'] = $this->userModel->get_writer_list_id();
+        $data['get_student_list_id'] = $this->userModel->get_student_list_id();
+        $data['get_message_list'] = $this->userModel->get_message_list();
+        $data['get_submission_list'] = $this->userModel->get_submission_list();
+        $data['get_transaction_list'] = $this->userModel->get_transaction_list();
+        $data['total_users'] = $this->userModel->total_users();
+        $data['total_order'] = $this->userModel->total_order();
+        $data['total_visitor'] = $this->userModel->total_visitor();
+        $data['total_transaction'] = $this->userModel->total_transaction();
+        $data['writer'] = [];
+        $data['student'] = [];
+
+
+        foreach ($data['get_writer_list_id'] as $writers) {
+            $data['get_writer_list'] = $this->userModel->get_writer_list($writers);
+
+            array_push($data['writer'], $data['get_writer_list']);
+        }
+
+        foreach ($data['get_student_list_id'] as $students) {
+            $data['get_student_list'] = $this->userModel->get_student_list($students);
+
+            array_push($data['student'], $data['get_student_list']);
+        }
+
+        $this->view('/backend/admin_dash',$data);
+    }
     public function order()
     {
 
