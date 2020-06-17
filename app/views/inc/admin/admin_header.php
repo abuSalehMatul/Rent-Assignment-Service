@@ -161,7 +161,7 @@
                             Dashboard </a>
 
                     </li>
-                    <li aria-haspopup="true"><a href="widgets.html" class=""><i class="fe fe-grid"></i> widgets</a>
+                    <li aria-haspopup="true"><a href="widgets.html" class=""><i class="fe fe-grid"></i> Orders requests</a>
                     </li>
                     <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-life-buoy"></i> Pages
                             <i class="fa fa-angle-down horizontal-icon"></i></a>
