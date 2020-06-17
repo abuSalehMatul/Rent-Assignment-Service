@@ -1,8 +1,6 @@
-/**
- * jQuery toast plugin created by Kamran Ahmed copyright MIT license 2014
- */
+/* * * jQuery toast plugin created by Kamran Ahmed copyright MIT license 2014 */
 
-
+*/
 /* .jq-toast-wrap {
     display: block;
     position: fixed;
@@ -38,6 +36,8 @@
 
 /* .jq-toast-wrap.top-right { top: 20px; right: 40px; } */
 
+
+/* 
 .jq-toast-single {
     display: block;
     box-shadow: 1px 0px 30px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
     pointer-events: all !important;
     background-color: #fff;
     color: #2b2b2b;
-}
+} */
 
 
 /* .jq-toast-single h2 {
@@ -74,7 +74,8 @@
     font-size: 12px;
 } */
 
-.jq-toast-single ul {
+
+/* .jq-toast-single ul {
     margin: 0px 0px 0px 15px;
     background: none;
     padding: 0px;
@@ -87,17 +88,19 @@
     margin: 0;
     padding: 0;
     letter-spacing: normal;
-}
+} */
 
-.close-jq-toast-single {
+
+/* .close-jq-toast-single {
     position: absolute;
     top: 3px;
     right: 7px;
     font-size: 14px;
     cursor: pointer;
-}
+} */
 
-.jq-toast-loader {
+
+/* .jq-toast-loader {
     display: block;
     position: absolute;
     bottom: -3px;
@@ -106,9 +109,10 @@
     left: 0;
     border-radius: 5px;
     background: red;
-}
+} */
 
-.jq-toast-loaded {
+
+/* .jq-toast-loaded {
     width: 100%;
 }
 
@@ -116,7 +120,7 @@
     padding: 10px 10px 10px 50px;
     background-repeat: no-repeat;
     background-position: 10px;
-}
+} */
 
 
 /* .jq-icon-info {
@@ -146,4 +150,4 @@
     color: #dff0d8;
     background-color: #3c763d;
     border-color: #d6e9c6;
-} */
+}

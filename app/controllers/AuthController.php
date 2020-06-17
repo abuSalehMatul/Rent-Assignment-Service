@@ -3,13 +3,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 require_once '../vendor/autoload.php';
 class AuthController extends Controller
 {
     public function __construct()
     {
         $this->userModel = $this->model('User');
-
     }
 
     public function faker()
@@ -27,14 +27,14 @@ class AuthController extends Controller
 
 
         //writerRedirect();
-//        check for post method
+        //        check for post method
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//            process form data
+            //            process form data
             // echo "nishan";
             // exit();
 
             $token = mt_rand(100000, 999999);;
-//            Sanitize post data
+            //            Sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             extract($_POST);
             $data = [
@@ -68,7 +68,7 @@ class AuthController extends Controller
                                 )
                             );
                             $mail->IsSMTP(); // enable SMTP
-//                            $mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
+                            //                            $mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
                             $mail->SMTPAuth = true;
 
                             $mail->Host = 'smtp.gmail.com';
@@ -89,7 +89,6 @@ class AuthController extends Controller
                         } catch (Exception $e) {
                             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                         }
-
                     }
                 }
             }
@@ -104,33 +103,27 @@ class AuthController extends Controller
     public function login()
     {
 
-        if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role']==1) {
+        if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role'] == 1) {
             //session is set
+            $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
             $this->view('root/dashboard');
-        }
-
-        else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role']==2) {
+        } else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role'] == 2) {
             //session is set
+            $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
             $this->view('backend/dashboard');
-        }
-
-        else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role']==3) {
+        } else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role'] == 3) {
             //session is set
-            $this->view('writer/dashboard');
-        }
-
-
-        else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role']==4) {
+            $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
+            header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/writer/dashboard");
+        } else if (isset($_SESSION['id']) && $_SESSION['id'] != null && isset($_SESSION['role']) && $_SESSION['role'] == 4) {
             //session is set
-            $this->view('student/dashboard');
-        }
-
-
-        else if (!isset($_SESSION['id']) || (isset($_SESION['id']) && empty($_SESSION['id']))) {
+            $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
+            header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
+        } else if (!isset($_SESSION['id']) || (isset($_SESSION['id']) && empty($_SESSION['id']))) {
             //session is not set
             writerRedirect();
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//            Sanitize post data
+                //            Sanitize post data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 extract($_POST);
                 $data = [
@@ -154,45 +147,42 @@ class AuthController extends Controller
                             if ($loggedInUser->token != 0) {
                                 $this->view('backend/verification_page');
                             } else {
-
+                                $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
                                 if ($loggedInUser->role == 2) {
 
                                     $_SESSION['id'] = $loggedInUser->id;
                                     $_SESSION['role'] = $loggedInUser->role;
+                                   
 
-//                        redirect to dashboard
-                                    $this->view('backend/dashboard', $_SESSION['id'],$_SESSION['role']);
-                                }
-                                else if ($loggedInUser->role == 3) {
-
-                                    $_SESSION['id'] = $loggedInUser->id;
-                                    $_SESSION['role'] = $loggedInUser->role;
-
-//                        redirect to writer dashboard
-                                    $this->view('writer/dashboard', $_SESSION['id'],$_SESSION['role']);
-                                }
-                                else if ($loggedInUser->role == 4) {
+                                    //                        redirect to dashboard
+                                    $this->view('backend/dashboard', $_SESSION['id'], $_SESSION['role']);
+                                } else if ($loggedInUser->role == 3) {
 
                                     $_SESSION['id'] = $loggedInUser->id;
                                     $_SESSION['role'] = $loggedInUser->role;
 
-//                        redirect to student dashboard
-                                    $this->view('student/dashboard', $_SESSION['id'],$_SESSION['role']);
-                                }
-                                else if ($loggedInUser->role == 1) {
+                                    //                        redirect to writer dashboard
+                                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/writer/dashboard");
+                                     //$this->view('writer/dashboard', $_SESSION['id'],$_SESSION['role']);
+                                } else if ($loggedInUser->role == 4) {
 
                                     $_SESSION['id'] = $loggedInUser->id;
                                     $_SESSION['role'] = $loggedInUser->role;
 
-//                        redirect to root dashboard
-                                    $this->view('root/dashboard', $_SESSION['id'],$_SESSION['role']);
-                                }
+                                    //                        redirect to student dashboard
+                                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
+                                    // $this->view('student/dashboard', $_SESSION['id'],$_SESSION['role']);
+                                } else if ($loggedInUser->role == 1) {
 
-                                else {
+                                    $_SESSION['id'] = $loggedInUser->id;
+                                    $_SESSION['role'] = $loggedInUser->role;
+
+                                    //                        redirect to root dashboard
+                                    $this->view('root/dashboard', $_SESSION['id'], $_SESSION['role']);
+                                } else {
                                     $this->view('backend/login');
                                 }
                             }
-
                         } else {
                             $data['pass_err'] = 'Incorrect Password';
                         }
@@ -216,9 +206,7 @@ class AuthController extends Controller
                 ];
                 $this->view('/backend/login', $data);
             }
-
         }
-
     }
 
     public function verify()
@@ -226,7 +214,7 @@ class AuthController extends Controller
 
         writerRedirect();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//            Sanitize post data
+            //            Sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             extract($_POST);
             $data = [
@@ -240,42 +228,34 @@ class AuthController extends Controller
             if ($verified_user) {
 
                 $fetchLoggedData = $this->userModel->fetchLoggedData($data['email']);
-              if ($fetchLoggedData->role == 1) {
-//                  redirect to dashboard
+                if ($fetchLoggedData->role == 1) {
+                    //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('root/dashboard',$_SESSION['id'], $_SESSION['role']);
-                }
-                else if ($fetchLoggedData->role == 2) {
-//                  redirect to dashboard
+                    $this->view('root/dashboard', $_SESSION['id'], $_SESSION['role']);
+                } else if ($fetchLoggedData->role == 2) {
+                    //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('backend/dashboard',$_SESSION['id'], $_SESSION['role']);
-                }
-                else if ($fetchLoggedData->role == 3) {
-//                  redirect to dashboard
+                    $this->view('backend/dashboard', $_SESSION['id'], $_SESSION['role']);
+                } else if ($fetchLoggedData->role == 3) {
+                    //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('writer/dashboard',$_SESSION['id'], $_SESSION['role']);
-                }
-                else if ($fetchLoggedData->role == 4) {
-//                  redirect to dashboard
+                    $this->view('writer/dashboard', $_SESSION['id'], $_SESSION['role']);
+                } else if ($fetchLoggedData->role == 4) {
+                    //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('student/dashboard',$_SESSION['id'], $_SESSION['role']);
-                }
-
-
-
-                else {
+                    $this->view('student/dashboard', $_SESSION['id'], $_SESSION['role']);
+                } else {
                     $this->view('backend/verification_page');
                 }
-            }
-            else {
+            } else {
                 $this->view('backend/verification_page');
             }
         }
@@ -289,22 +269,21 @@ class AuthController extends Controller
         $g_client->setRedirectUri("http://essay-lite.io/en/backend/dashboard");
         $g_client->setScopes("email");
 
-//Step 2 : Create the url
+        //Step 2 : Create the url
         $auth_url = $g_client->createAuthUrl();
         echo "<a href='$auth_url' style='text-align: center; border: 2px solid cornflowerblue; border-radius: 6px; text-decoration: none; margin-bottom: 400px; padding: 20px'>Login Through Google </a>";
 
-//Step 3 : Get the authorization  code
+        //Step 3 : Get the authorization  code
         $code = isset($_GET['code']) ? $_GET['code'] : NULL;
 
-//Step 4: Get access token
-        if(isset($code)) {
+        //Step 4: Get access token
+        if (isset($code)) {
 
             try {
 
                 $token = $g_client->fetchAccessTokenWithAuthCode($code);
                 $g_client->setAccessToken($token);
-
-            }catch (Exception $e){
+            } catch (Exception $e) {
                 echo $e->getMessage();
             }
 
@@ -313,23 +292,19 @@ class AuthController extends Controller
 
             try {
                 $pay_load = $g_client->verifyIdToken();
-
-
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 echo $e->getMessage();
             }
-
-        } else{
+        } else {
             $pay_load = null;
         }
 
-        if(isset($pay_load)){
+        if (isset($pay_load)) {
 
 
 
             var_dump($pay_load['email']);
         }
-
     }
     public function logout()
     {
@@ -341,6 +316,4 @@ class AuthController extends Controller
         header("Location: login");
         exit;
     }
-
-
 }

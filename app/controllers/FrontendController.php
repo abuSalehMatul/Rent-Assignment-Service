@@ -31,5 +31,16 @@ class FrontendController extends Controller
         $this->view('pages/aboutUs');
 
     }
+    public function logout()
+    {
+        if (!empty($_POST['token'])) {
+            if (!hash_equals($_SESSION['token'], $_POST['token'])) {
+                echo "un-authentic access.. ";
+                die();
+            }
+        }
+        session_destroy();
+        header("Location: ".URLROOT."/".$_SESSION['lang']. "/");
+    }
 
 }

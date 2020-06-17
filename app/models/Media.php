@@ -16,4 +16,9 @@ class MediA{
 
     }
 
+    public function saveMedia($tableName, $id)
+    {
+
+    }
+
 }

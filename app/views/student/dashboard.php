@@ -62,8 +62,8 @@ require_once APPROOT . '/views/inc/panelHead.php';
                 <div class="row">
                     <div class="col-md-4 col-sm6">
                         <div class="white-box" style="height: 200px; margin-top:20px;">
-                        <h3 class="box-title">Start A Order</h3>
-                        <a class="btn btn-success" role="button" href="">Start</a>
+                        <h3 class="box-title"><?php echo $lang['Start A Order']?></h3>
+                        <a class="btn btn-success" role="button" href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/Student/StartOrderRequest';  ?>"><?php echo $lang['Start']?></a>
                         </div> 
                     </div> 
                     <div class="col-md-4 col-sm6">
@@ -75,8 +75,8 @@ require_once APPROOT . '/views/inc/panelHead.php';
                     <div class="col-md-4 col-sm6">
                         <div class="white-box" style="height: 200px; margin-top:20px;">
 
-                        <h3 class="box-title">My Profile</h3>
-                        <a class="btn btn-success" role="button" href="">My Profile</a>
+                        <h3 class="box-title"><?php echo $lang['my Profile']?></h3>
+                        <a class="btn btn-success" role="button" href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/User/findProfile';?>"><?php echo $lang['my Profile']?></a>
                         </div> 
                     </div> 
                 </div>

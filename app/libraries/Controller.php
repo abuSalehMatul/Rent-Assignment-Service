@@ -29,4 +29,12 @@ class Controller{
     public function Return404Page(){
         require_once '../app/views/pages/error.php';
     }
+
+    public function required($data)
+    {
+        if(isset($data) && $data != null){
+            return true;
+        }
+        return false;
+    }
 }

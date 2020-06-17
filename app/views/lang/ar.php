@@ -17,5 +17,10 @@ $lang = array(
     'Our partners' => 'شركائنا',
     'Log In' => 'تسجيل الدخول',
     'Frequently Asked Questions' => 'أسئلة مكررة',
+    'my Profile' => '',
+    'Title' => '',
+    'Log Out' => "",
+    'Start A Order' => '',
+    'Start' => ''
 
 );

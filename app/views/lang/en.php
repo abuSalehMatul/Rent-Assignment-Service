@@ -17,5 +17,10 @@ $lang = array(
     'Our partners' => 'Our partners',
     'Log In' => 'Log In',
     'Frequently Asked Questions' => 'Frequently Asked Questions',
+    'my Profile' => 'My Profile',
+    'Title' => 'Title',
+    'Log Out' => 'Log Out',
+    'Start A Order' => 'Start A Order',
+    'Start' => 'Start'
 );
 

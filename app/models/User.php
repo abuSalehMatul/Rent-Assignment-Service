@@ -15,13 +15,13 @@ class User
     {
         $this->db->query('INSERT INTO user (email, password, role, token) VALUES (:email, :password, :role, :token)');
 
-//        Bind values
+        //        Bind values
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['pass']);
         $this->db->bind(':role', $data['role']);
         $this->db->bind(':token', $data['token']);
 
-//        Execute
+        //        Execute
         if ($this->db->execute()) {
 
             return $this->db->last_insert();
@@ -34,11 +34,11 @@ class User
     {
         $this->db->query('INSERT INTO user_role (user_id, role_id) VALUES (:user_id, :role_id)');
 
-//        Bind values
+        //        Bind values
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':role_id', $data['role_id']);
 
-//        Execute
+        //        Execute
         if ($this->db->execute()) {
             return true;
         } else {
@@ -46,7 +46,7 @@ class User
         }
     }
 
-//    backend login
+    //    backend login
     public function login($email, $pass)
     {
         $this->db->query('SELECT * FROM user WHERE email = :email AND password= :password');
@@ -55,12 +55,9 @@ class User
         $this->db->bind(':password', $hashedPass);
         $this->db->execute();
         $count = $this->db->rowCount();
-        if($count > 0)
-        {
+        if ($count > 0) {
             return $this->db->single();
-        }
-
-        else {
+        } else {
             return false;
         }
     }
@@ -72,35 +69,29 @@ class User
 
         $this->db->execute();
         $count = $this->db->rowCount();
-        if($count > 0)
-        {
+        if ($count > 0) {
             return $this->db->single();
-        }
-
-        else {
+        } else {
             return false;
         }
     }
     public function verify($email, $token)
     {
         $changeToken = 0;
-        $this->db->query('UPDATE user SET token='.$changeToken.' WHERE email=:email AND token=:token');
+        $this->db->query('UPDATE user SET token=' . $changeToken . ' WHERE email=:email AND token=:token');
         $this->db->bind(':email', $email);
         $this->db->bind(':token', $token);
 
 
 
-        if( $this->db->execute())
-        {
+        if ($this->db->execute()) {
             return true;
-        }
-
-        else {
+        } else {
             return false;
         }
     }
 
-//    Check if email already exists
+    //    Check if email already exists
     public function checkEmail($email)
     {
         $this->db->query('SELECT * FROM user WHERE email = :email');
@@ -140,7 +131,35 @@ class User
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM orders
         WHERE `student_id` = ? AND `status` = ?");
-       $stmt->execute([$userId, 'canceled']);
-       return $stmt->rowCount();
+        $stmt->execute([$userId, 'canceled']);
+        return $stmt->rowCount();
+    }
+
+    public function saveImage($userId, $fileName)
+    {
+        $stmt = $this->db->dbConnection->prepare("UPDATE `user` SET `profile_image` = ? WHERE `id` = ?");
+        $stmt->execute([$fileName, $userId]);
+        if ($stmt->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function editUser(
+        $id,
+        $f_name = "",
+        $l_name = "",
+        $email = "",
+        $phone = "",
+        $title = "",
+        $description = ""
+    ) {
+        $stmt = $this->db->dbConnection->prepare("UPDATE `user` SET `f_name` = ? , 
+        `l_name` =? , `email`= ?, `phone_number`=? , `title`=?, `description` =? WHERE `id` = ?");
+        $stmt->execute([$f_name, $l_name, $email, $phone, $title, $description, $id]);
+        if ($stmt->rowCount() > 0) {
+            return true;
+        }
+        return false;
     }
 }
