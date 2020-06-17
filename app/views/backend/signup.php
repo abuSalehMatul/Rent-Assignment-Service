@@ -33,9 +33,9 @@
                 <div class="form-group">
                     <label>Please Select Your Registration Type<span class="text-danger">*</span></label><br>
                     <input type="radio" name="role" value="3">
-                    <label for="male">Customer Account</label><br>
+                    <label for="male">Writer Account</label><br>
                     <input type="radio"  name="role" value="4">
-                    <label for="female">Writer Account</label><br>
+                    <label for="female">Customer Account</label><br>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Sign Up</button>

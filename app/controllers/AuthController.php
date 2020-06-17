@@ -39,7 +39,7 @@ class AuthController extends Controller
             extract($_POST);
             $data = [
                 'email' => trim($email),
-                'pass' => md5($pass),
+                'pass' => hash($pass),
                 'role' => $role,
                 'email_err' => '',
                 'pass_err' => '',
@@ -161,7 +161,7 @@ class AuthController extends Controller
                                     $_SESSION['role'] = $loggedInUser->role;
 
 //                        redirect to dashboard
-                                    $this->view('backend/dashboard', $_SESSION['id'],$_SESSION['role']);
+                                    $this->view('backend/admin_dashboard', $_SESSION['id'],$_SESSION['role']);
                                 }
                                 else if ($loggedInUser->role == 3) {
 

@@ -16,7 +16,11 @@ class FrontendController extends Controller
 
     }
     public function dashboard(){
-        $this->view('backend/dashboard');
+        $this->view('backend/admin_dashboard');
+
+    }
+    public function team(){
+        $this->view('pages/team');
 
     }
     public function services(){

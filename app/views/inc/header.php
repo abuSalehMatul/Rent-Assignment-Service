@@ -1,6 +1,10 @@
+
+
+
 <?php
 require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
 ?>
+
 <style>
 
 
@@ -108,69 +112,109 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
 </style>
 <header class="header">
     <div class="header__mobile-buttons">
-        <div id="mNavMain" class="m-nav__button for__m-nav-main"><i class="n--icon n--icon__main-nav"></i> <i class="n--icon n--icon__main-nav--tablet"></i> <i class="n--icon n--icon__nav-close"></i></div>
-        <div id="mNavUser" class="m-nav__button for__m-nav-user"><i class="n--icon n--icon__user-nav"></i> <i class="n--icon n--icon__nav-close"></i></div>
+        <div id="mNavMain" class="m-nav__button for__m-nav-main"><i class="n--icon n--icon__main-nav"></i> <i
+                    class="n--icon n--icon__main-nav--tablet"></i> <i class="n--icon n--icon__nav-close"></i></div>
+        <div id="mNavUser" class="m-nav__button for__m-nav-user"><i class="n--icon n--icon__user-nav"></i> <i
+                    class="n--icon n--icon__nav-close"></i></div>
     </div>
     <div class="m-nav m-nav__main">
         <div class="m-nav__main-ul">
-            <div class="m-nav__b">
+
+            <div class="m-nav__divider"></div>
+
         </div>
-        <div id="subnav-1" class="m-nav__sub-ul"><a href="#" class="m-nav__back">Back</a> <a href="custom-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Custom Essay Writing click">Custom Essay Writing</a> <a href="custom-dissertation-writing-service.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Dissertation Writing Services click">Dissertation
-                Writing Services</a> <a href="custom-research-paper.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Research Paper Writing click">Research Paper
-                Writing</a> <a href="term-paper.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Term Paper Writing click">Term Paper
-                Writing</a> <a href="write-my-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Write My Essay click">Write My
-                Essay</a> <a href="admission-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Admission Essay Writing click">Admission
+        <div id="subnav-1" class="m-nav__sub-ul"><a href="#" class="m-nav__back">Back</a> <a
+                    href="custom-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click"
+                    data-ga-label="home-header Custom Essay Writing click">Custom Essay Writing</a> <a
+                    href="custom-dissertation-writing-service.html" class="m-nav__a ga-event" data-ga-category="home"
+                    data-ga-action="click" data-ga-label="home-header Dissertation Writing Services click">Dissertation
+                Writing Services</a> <a href="custom-research-paper.html" class="m-nav__a ga-event"
+                                        data-ga-category="home" data-ga-action="click"
+                                        data-ga-label="home-header Research Paper Writing click">Research Paper
+                Writing</a> <a href="term-paper.html" class="m-nav__a ga-event" data-ga-category="home"
+                               data-ga-action="click" data-ga-label="home-header Term Paper Writing click">Term Paper
+                Writing</a> <a href="write-my-essay.html" class="m-nav__a ga-event" data-ga-category="home"
+                               data-ga-action="click" data-ga-label="home-header Write My Essay click">Write My
+                Essay</a> <a href="admission-essay.html" class="m-nav__a ga-event" data-ga-category="home"
+                             data-ga-action="click" data-ga-label="home-header Admission Essay Writing click">Admission
                 Essay Writing</a></div>
-        <div id="subnav-2" class="m-nav__sub-ul"><a href="#" class="m-nav__back">Back</a> <a href="https://essaypro.com/about-our-service.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header About EssayPro click">About EssayPro</a> <a href="college-essay-writing-service.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header College Essay Help click">College Essay Help</a>
-            <a href="buy-an-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Buy an Essay click">Buy an Essay</a> <a href="essay-help.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Essay Writing Help click">Essay
+        <div id="subnav-2" class="m-nav__sub-ul"><a href="#" class="m-nav__back">Back</a> <a
+                    href="https://essaypro.com/about-our-service.html" class="m-nav__a ga-event" data-ga-category="home"
+                    data-ga-action="click" data-ga-label="home-header About EssayPro click">About EssayPro</a> <a
+                    href="college-essay-writing-service.html" class="m-nav__a ga-event" data-ga-category="home"
+                    data-ga-action="click" data-ga-label="home-header College Essay Help click">College Essay Help</a>
+            <a href="buy-an-essay.html" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click"
+               data-ga-label="home-header Buy an Essay click">Buy an Essay</a> <a href="essay-help.html"
+                                                                                  class="m-nav__a ga-event"
+                                                                                  data-ga-category="home"
+                                                                                  data-ga-action="click"
+                                                                                  data-ga-label="home-header Essay Writing Help click">Essay
                 Writing Help</a></div>
         <div class="m-nav__app"><a class="m-nav__app__btn app-store">
                 <picture>
-                    <source data-srcset="<?php echo URLROOT . '/'; ?>/assets/footer/app__store__icon.png?v=qqqq, /assets/footer/app__store__icon__2x.png?v=qqqq 2x">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8VA8AAikBU9RsF2cAAAAASUVORK5CYII=" data-src="<?php echo URLROOT . '/'; ?>/assets/footer/app__store__icon.png?v=qqqq" class="m-nav__app__logo lazy" alt="App Store"></picture>
+                    <source data-srcset="<?php echo URLROOT.'/';?>/assets/footer/app__store__icon.png?v=qqqq, /assets/footer/app__store__icon__2x.png?v=qqqq 2x">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8VA8AAikBU9RsF2cAAAAASUVORK5CYII="
+                         data-src="<?php echo URLROOT.'/';?>/assets/footer/app__store__icon.png?v=qqqq" class="m-nav__app__logo lazy"
+                         alt="App Store"></picture>
                 <div class="m-nav__app__info"><span>Download on the</span> <span class="title">App Store</span></div>
             </a><a class="m-nav__app__btn google-play">
                 <picture>
                     <source data-srcset="/assets/footer/google__play__icon.png?v=qqqq, /assets/footer/google__play__icon__2x.png?v=qqqq 2x">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8VA8AAikBU9RsF2cAAAAASUVORK5CYII=" data-src="/assets/footer/google__play__icon.png?v=qqqq" class="m-nav__app__logo lazy" alt="Google Play"></picture>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8VA8AAikBU9RsF2cAAAAASUVORK5CYII="
+                         data-src="/assets/footer/google__play__icon.png?v=qqqq" class="m-nav__app__logo lazy"
+                         alt="Google Play"></picture>
                 <div class="m-nav__app__info"><span>get it on</span> <span class="title">Google Play</span></div>
             </a></div>
     </div>
-    <div class="m-nav m-nav__user"><a href="<?php echo URLROOT . '/'; ?>backend/login" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header login click">Log In</a> <a href="https://app.essaypro.com/auth/register" class="m-nav__a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Sign Up click">Sign Up</a></div>
+    <div class="m-nav m-nav__user"><a href="https://app.essaypro.com/auth/login" class="m-nav__a ga-event"
+                                      data-ga-category="home" data-ga-action="click"
+                                      data-ga-label="home-header login click">Log In</a> <a
+                href="https://app.essaypro.com/auth/register" class="m-nav__a ga-event" data-ga-category="home"
+                data-ga-action="click" data-ga-label="home-header Sign Up click">Sign Up</a></div>
     <div class="m-nav__overlay"></div>
     <div class="header__main">
-
         <div class="header__logo"><a class="logo ga-event" data-ga-category="home" data-ga-action="click"
-                                     data-ga-label="home-header logo click" href="<?php echo URLROOT;?>"><img src="<?php echo URLROOT.'\public\shared\images\AG .png' ?>"
-                                                                                 class="logo_img"
-                                                                                 alt="EssayPro"></a></div>
+                                     data-ga-label="home-header logo click" href="<?php echo URLROOT.'/'.$_SESSION['lang'];?>"><img src="<?php echo URLROOT.'\public\shared\images\AG .png'?>"
+                                                                                                              class="logo_img"
+                                                                                                              alt="EssayPro"></a></div>
         <div class="header__nav">
             <nav class="nav">
                 <ul class="nav-ul">
-                    <li class="nav-li"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/'; ?>ourTeam" class="nav-a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Our Team click"><?php echo $lang['Our Team'] ?></a></li>
-                    <li class="nav-li"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/'; ?>services" class="nav-a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Our Team click"><?php echo $lang['Why Us'] ?></a></li>
-                    <li class="nav-li"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/'; ?>reviews" class="nav-a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Reviews click"><?php echo $lang['Reviews'] ?></a></li>
-                    <li class="nav-li"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/'; ?>aboutUs" class="nav-a ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Reviews click"><?php echo $lang['About us'] ?></a></li>
+                    <li class="nav-li"><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/';?>team" class="nav-a ga-event" data-ga-category="home"
+                                          data-ga-action="click" data-ga-label="home-header Our Team click"><?php echo $lang['Our Team']?></a></li>
+                    <li class="nav-li"><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/';?>services" class="nav-a ga-event" data-ga-category="home"
+                                          data-ga-action="click" data-ga-label="home-header Our Team click"><?php echo $lang['Why Us']?></a></li>
+                    <li class="nav-li"><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/';?>reviews" class="nav-a ga-event"
+                                          data-ga-category="home" data-ga-action="click"
+                                          data-ga-label="home-header Reviews click"><?php echo $lang['Reviews']?></a></li>
+                    <li class="nav-li"><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/';?>aboutUs" class="nav-a ga-event"
+                                          data-ga-category="home" data-ga-action="click"
+                                          data-ga-label="home-header Reviews click"><?php echo $lang['About us']?></a></li>
                 </ul>
             </nav>
         </div>
     </div>
-    <div class="header__inner--right"><div class="nav-wrapper">
-            <div class="sl-nav">
+    <div class="sl-nav">
 
+        <ul>
+            <li style="color: floralwhite"><b>Select language</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <div class="triangle"></div>
                 <ul>
-                    <li style="color: floralwhite"><b>Select language</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        <div class="triangle"></div>
-                        <ul>
-                            <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active"><a href="<?php echo URLROOT.'/ar/';?>">Arabian</a></span></li>
-                            <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <a href="<?php echo URLROOT.'/en/';?>"><span>English</span></a></li>
-                        </ul>
-                    </li>
+                    <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active"><a href="<?php echo URLROOT.'/ar/';?>">Arabian</a></span></li>
+                    <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <a href="<?php echo URLROOT.'/en/';?>"><span>English</span></a></li>
                 </ul>
-            </div>
-        </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="header__inner--right">
         <div class="header__auth">
-            <nav class="n--auth"><span data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/login'; ?>" class="n--auth__link ga-event h-l" data-ga-category="home" data-ga-action="click" data-ga-label="home-header login click">Log In </span><span data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/register'; ?>" class="button-filled__warning--small ga-event h-l" data-ga-category="home" data-ga-action="click" data-ga-label="home-header Sign Up click"><span class="button-text">Sign Up</span></span>
+            <nav class="n--auth"><span data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/login'; ?>"
+                                       class="n--auth__link ga-event h-l" data-ga-category="home"
+                                       data-ga-action="click" data-ga-label="home-header login click">Log In </span><span
+                        data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/register'; ?>"
+                        class="button-filled__warning--small ga-event h-l" data-ga-category="home"
+                        data-ga-action="click" data-ga-label="home-header Sign Up click"><span class="button-text">Register</span></span>
             </nav>
         </div>
     </div>
