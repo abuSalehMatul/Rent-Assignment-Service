@@ -23,6 +23,7 @@
 <!-- CHARTJS CHART JS-->
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/chart/chart.bundle.js';?>"></script>
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/chart/utils.js';?>"></script>
+<script src="<?php echo URLROOT.'/public/admin/assets/js/chart.js';?>"></script>
 
 <!-- INTERNAL PIETY CHART JS-->
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/peitychart/jquery.peity.min.js';?>"></script>
@@ -35,6 +36,10 @@
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/apexcharts/apexcharts.js';?>"></script>
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/apexcharts/irregular-data-series.js';?>"></script>
 
+<script src="<?php echo URLROOT.'/public/admin/assets/plugins/time-picker/time-picker.js';?>"></script>
+<script src="<?php echo URLROOT.'/public/admin/assets/plugins/time-picker/toggles.min.js';?>"></script>
+<script src="<?php echo URLROOT.'/public/admin/assets/plugins/date-picker/date-picker.js';?>"></script>
+<script src="<?php echo URLROOT.'/public/admin/assets/plugins/date-picker/jquery-ui.js';?>"></script>
 <!-- INTERNAL FLOT JS JS-->
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/flot/flot.js';?>"></script>
 <script src="<?php echo URLROOT.'/public/admin/assets/plugins/flot/flot.pie.js';?>"></script>
@@ -62,6 +67,7 @@
 
 <!-- CUSTOM JS -->
 <script src="<?php echo URLROOT.'/public/admin/assets/js/custom.js';?>"></script>
+<script src="<?php echo URLROOT.'/public/admin/assets/js/formelements.js';?>"></script>
 
 
 

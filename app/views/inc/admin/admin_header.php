@@ -7,8 +7,9 @@
         <div class="d-flex header-nav">
             <a id="horizontal-navtoggle" class="animated-arrow hor-toggle"><span></span></a>
             <div class="color-headerlogo">
-                <a class="header-desktop" href="index.html"></a>
-                <a class="header-mobile" href="index.html"></a>
+                <a  href="<?php echo URLROOT.'/'.$_SESSION['lang'];?>"><img src="<?php echo URLROOT.'\public\shared\images\AG.png'?>"
+
+                                                                                                                  alt="Assignment-Guru" style="height: 50px!important; width: 90px!important"></a>
             </div><!-- Color LOGO -->
             <div class="">
                 <form class="form-inline">
@@ -157,55 +158,46 @@
         <div class="horizontal-mainwrapper container clearfix">
             <nav class="horizontalMenu clearfix">
                 <ul class="horizontalMenu-list">
-                    <li aria-haspopup="true"><a href="#" class="sub-icon active"><i class="fe fe-home"></i>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/dashboard' ?>" class="sub-icon active"><i class="fe fe-home"></i>
                             Dashboard </a>
 
                     </li>
-                    <li aria-haspopup="true"><a href="widgets.html" class=""><i class="fe fe-grid"></i> Orders requests</a>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/order' ?>" class=""><i class="fe fe-grid"></i> Orders requests</a>
                     </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-life-buoy"></i> Pages
-                            <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/transaction' ?>" class="sub-icon"><i class="fe fe-life-buoy"></i> Transaction summary
+                        </a>
 
-                            <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/order' ?>">Order Requests</a></li>
-
-                        </ul>
                     </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-pie-chart"></i> Charts
-                            <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
-                            <li aria-haspopup="true"><a href="#">lorem</a></li>
-
-                        </ul>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/submission' ?>" class="sub-icon"><i class="fe fe-pie-chart"></i> Submission history
+                        </a>
                     </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-package"></i> UI
-                            Elements <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
-                            <li aria-haspopup="true"><a href="#">lorem</a></li>
-
-                        </ul>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/messages' ?>" class="sub-icon"><i class="fe fe-package"></i> Messages list
+                        </a>
                     </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-layers"></i>Components
-                            <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
-                            <li aria-haspopup="true"><a href="#">lorem</a></li>
-
-                        </ul>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/see_reviews' ?>" class="sub-icon"><i class="fe fe-package"></i> Review
+                        </a>
                     </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-file-text"></i> Forms
-                            <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
-                            <li aria-haspopup="true"><a href="#">lorem</a></li>
-
-                        </ul>
-                    </li>
-                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-stop-circle"></i>
-                            Icons <i class="fa fa-angle-down horizontal-icon"></i></a>
-                        <ul class="sub-menu">
-                            <li aria-haspopup="true"><a href="#">lorem</a></li>
-
-                        </ul>
-                    </li>
+<!--                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-layers"></i>Components-->
+<!--                            <i class="fa fa-angle-down horizontal-icon"></i></a>-->
+<!--                        <ul class="sub-menu">-->
+<!--                            <li aria-haspopup="true"><a href="#">lorem</a></li>-->
+<!---->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-file-text"></i> Forms-->
+<!--                            <i class="fa fa-angle-down horizontal-icon"></i></a>-->
+<!--                        <ul class="sub-menu">-->
+<!--                            <li aria-haspopup="true"><a href="#">lorem</a></li>-->
+<!---->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-stop-circle"></i>-->
+<!--                            Icons <i class="fa fa-angle-down horizontal-icon"></i></a>-->
+<!--                        <ul class="sub-menu">-->
+<!--                            <li aria-haspopup="true"><a href="#">lorem</a></li>-->
+<!---->
+<!--                        </ul>-->
+<!--                    </li>-->
                 </ul>
             </nav>
             <!-- NAV END -->

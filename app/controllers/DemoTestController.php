@@ -28,9 +28,6 @@ class DemoTestController extends Controller
 
         $data['get_writer_list_id'] = $this->userModel->get_writer_list_id();
         $data['get_student_list_id'] = $this->userModel->get_student_list_id();
-        $data['get_message_list'] = $this->userModel->get_message_list();
-        $data['get_submission_list'] = $this->userModel->get_submission_list();
-        $data['get_transaction_list'] = $this->userModel->get_transaction_list();
         $data['total_users'] = $this->userModel->total_users();
         $data['total_order'] = $this->userModel->total_order();
         $data['total_visitor'] = $this->userModel->total_visitor();
@@ -58,7 +55,7 @@ class DemoTestController extends Controller
 
         $data['get_writer_list_id'] = $this->userModel->get_writer_list_id();
         $data['get_student_list_id'] = $this->userModel->get_student_list_id();
-        $data['get_message_list'] = $this->userModel->get_message_list();
+
         $data['get_submission_list'] = $this->userModel->get_submission_list();
         $data['get_transaction_list'] = $this->userModel->get_transaction_list();
         $data['total_users'] = $this->userModel->total_users();
@@ -98,6 +95,53 @@ class DemoTestController extends Controller
 //        }
 
         $this->view('/backend/order_requests', $data);
+    }
+    public function messages()
+    {
+
+
+        $data['get_message_list'] = $this->userModel->get_message_list();
+        $this->view('/backend/messages',$data);
+
+    }
+    public function submission()
+    {
+
+
+        $data['get_submission_list'] = $this->userModel->get_submission_list();
+        $this->view('/backend/submission',$data);
+
+    }
+    public function transaction()
+    {
+
+
+        $data['get_transaction_list'] = $this->userModel->get_transaction_list();
+        $this->view('/backend/transaction',$data);
+
+    }
+    public function chart()
+    {
+       $data =array();
+
+        $data['total_writer'] = $this->userModel->get_total_writer();
+        $data['total_student'] = $this->userModel->get_total_student();
+
+        echo json_encode($data);
+
+    }
+    public function orderChart()
+    {
+       $data =array();
+
+        $data['draft'] = $this->userModel->get_total_draft();
+        $data['completed'] = $this->userModel->get_total_completed();
+        $data['progress'] = $this->userModel->get_total_progress();
+        $data['canceled'] = $this->userModel->get_total_canceled();
+        $data['deactivated'] = $this->userModel->get_total_deactivated();
+
+        echo json_encode($data);
+
     }
 
     public function see_more_writer()
@@ -147,6 +191,60 @@ class DemoTestController extends Controller
 //        echo '</pre>';
         $this->view('/backend/student_page', $data);
     }
+    public function see_reviews()
+    {
+
+
+        $data['review'] = $this->userModel->see_reviews();
+
+        $this->view('/backend/review', $data);
+    }
+    public function add_review()
+    {
+        $this->view('/backend/add_review');
+    }
+    public function insert_review()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            extract($_POST);
+            $data = [
+                'customer_name' => $customer_name,
+                'writer_name' => $writer_name,
+                'topic' => $topic,
+                'comment' => $comment,
+                'rating' => $rating,
+                'date' => $date,
+
+            ];
+        }
+
+//        echo '<pre>';
+//
+//        print_r($data);
+//        exit();
+//        echo '</pre>';
+
+//
+        $update = $this->userModel->add_review($data);
+        if ($update == true) {
+            $this->see_reviews();
+        } else {
+            echo 'error';
+        }
+    }
+    public function see_review_info($root, $opt, $id)
+    {
+
+        $data = $this->userModel->review_info_list_id($id);
+
+
+        $this->view('/backend/review_page_edit', $data);
+    }
+
 
     public function edit_writer($root, $opt, $id)
     {
@@ -186,6 +284,35 @@ class DemoTestController extends Controller
 
         if ($data == true) {
             echo json_encode(array("statusCode" => 200));
+        }
+
+    }
+    public function edit_review($root, $opt, $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            extract($_POST);
+            $data = [
+                'customer_name' => $customer_name,
+                'writer_name' => $writer_name,
+                'topic' => $topic,
+                'comment' => $comment,
+                'rating' => $rating,
+                'date' => $date,
+
+            ];
+        }
+
+        $update = $this->userModel->edit_review($id,$data);
+
+        if ($update == true) {
+           $this->see_reviews();
+        }
+
+        else {
+            $this->edit_review();
         }
 
     }
@@ -348,6 +475,41 @@ class DemoTestController extends Controller
 
         if ($delete == true) {
             $this->see_more_student();
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    public function delete_messages($root, $opt, $id)
+    {
+
+
+//        echo '<pre>';
+//
+//        print_r($id);
+//        exit();
+//        echo '</pre>';
+
+
+        $delete = $this->userModel->deleteMessages($id);
+
+        if ($delete == true) {
+            $this->messages();
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    public function delete_review($root, $opt, $id)
+    {
+
+
+        $delete = $this->userModel->delete_review($id);
+
+        if ($delete == true) {
+            $this->see_reviews();
         } else {
             echo 'error';
         }

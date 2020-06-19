@@ -42,20 +42,9 @@
             <div class="page-header">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Add review</li>
                 </ol>
-                <div class="ml-auto">
-                    <a href="#" class="btn btn-primary btn-icon btn-sm text-white mr-2">
-									<span>
-										<i class="fe fe-plus"></i>
-									</span> Add Account
-                    </a>
-                    <a href="#" class="btn btn-secondary btn-icon  btn-sm text-white">
-									<span>
-										<i class="fe fe-log-in"></i>
-									</span> Export
-                    </a>
-                </div>
+
             </div>
             <!-- PAGE-HEADER END -->
 
@@ -64,49 +53,50 @@
             <!-- ROW-1 END -->
 
             <!-- ROW-2 -->
-            <?php foreach ($data as $key=>$val){ ?>
-                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_student_info/'.$val['id'];?>" method="POST" name="edit_form">
+
+                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/insert_review/';?>" method="POST" name="edit_form">
                     <div class="row">
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">First name</label>
-                                <input type="text" class="form-control" name="f_name" placeholder="Enter first name.." value="<?php echo $val['f_name']?>">
+                                <label class="form-label">customer name</label>
+                                <input type="text" class="form-control" name="customer_name" placeholder="Enter customer name.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Last name</label>
-                                <input type="text" class="form-control" name="l_name" placeholder="Text.." value="<?php echo $val['l_name']?>">
+                                <label class="form-label">writer name</label>
+                                <input type="text" class="form-control" name="writer_name" placeholder="Writer name.."  >
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Text.." value="<?php echo $val['email']?>">
+                                <label class="form-label">Topic</label>
+                                <input type="text" class="form-control" name="topic" placeholder="Topic.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Address</label>
-                                <input type="text" class="form-control" name="address" placeholder="Text.." value="<?php echo $val['address']?>">
+                                <label class="form-label">Comment</label>
+                                <input type="text" class="form-control" name="comment" placeholder="comment.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" name="phone_number" placeholder="Text.." value="<?php echo $val['phone_number']?>">
+                                <label class="form-label">Rating</label>
+                                <input type="number" class="form-control" name="rating" placeholder="rating.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title" placeholder="Text.." value="<?php echo $val['title']?>">
+                                <label class="form-label">Date</label>
+                                <input class="form-control fc-datepicker" name="date" placeholder="MM/DD/YYYY"  type="text">
+<!--                                <input type="text" class="form-control" name="date" placeholder="Date..">-->
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Update</button>
+                            <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">ADD</button>
                         </div>
                         <!--                <div class="col-lg-6">-->
                         <!--                    <div class="form-group">-->
@@ -118,7 +108,7 @@
 
                     </div>
                 </form>
-            <?php } ?>
+
         </div>
         <!-- ROW-2 END -->
 

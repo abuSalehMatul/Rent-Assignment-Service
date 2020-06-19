@@ -22,6 +22,8 @@
 <link href="<?php echo URLROOT.'/public/admin/assets/css/style.css';?>" rel="stylesheet"/>
 <link href="<?php echo URLROOT.'/public/admin/assets/css/skins-modes.css';?>" rel="stylesheet"/>
 <link href="<?php echo URLROOT.'/public/admin/assets/css/boxed.css';?>" rel="stylesheet"/>
+<link href="<?php echo URLROOT.'/public/admin//assets/plugins/date-picker/date-picker.css';?>" rel="stylesheet"/>
+<link href="<?php echo URLROOT.'/public/admin//assets/plugins/time-picker/time-picker.css';?>" rel="stylesheet"/>
 
 <!-- HORIZONTAL-MENU CSS -->
 <link href="<?php echo URLROOT.'/public/admin/assets/plugins/horizontal-menu/dropdown-effects/fade-down.css';?>" rel="stylesheet">

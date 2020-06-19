@@ -4,7 +4,7 @@
 class FrontendController extends Controller
 {
     function __construct(){
-
+        $this->userModel = $this->model('User');
     }
 
     public function index(){
@@ -28,7 +28,8 @@ class FrontendController extends Controller
 
     }
     public function reviews(){
-        $this->view('pages/reviews');
+        $data['review'] = $this->userModel->see_reviews();
+        $this->view('pages/reviews',$data);
 
     }
     public function aboutUs(){

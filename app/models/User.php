@@ -29,6 +29,26 @@ class User
             return false;
         }
     }
+    public function add_review($data)
+    {
+        $this->db->query('INSERT INTO review (customer_name, writer_name, topic, comment,rating,date) VALUES (:customer_name,:writer_name, :topic, :comment, :rating, :date)');
+
+        //        Bind values
+        $this->db->bind(':customer_name', $data['customer_name']);
+        $this->db->bind(':writer_name', $data['writer_name']);
+        $this->db->bind(':topic', $data['topic']);
+        $this->db->bind(':comment', $data['comment']);
+        $this->db->bind(':rating', $data['rating']);
+        $this->db->bind(':date', $data['date']);
+
+        //        Execute
+        if ($this->db->execute()) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function setUserRole($data)
     {
@@ -140,6 +160,28 @@ class User
             return false;
         }
     }
+    public function edit_review($id, $data)
+    {
+        $changeToken = 0;
+        $this->db->query('UPDATE review SET customer_name=:customer_name,writer_name=:writer_name,topic=:topic,comment=:comment,rating=:rating,date=:date  WHERE id='.$id.'.');
+        $this->db->bind(':customer_name', $data['customer_name']);
+        $this->db->bind(':writer_name', $data['writer_name']);
+        $this->db->bind(':topic', $data['topic']);
+        $this->db->bind(':comment', $data['comment']);
+        $this->db->bind(':rating', $data['rating']);
+        $this->db->bind(':date', $data['date']);
+
+
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
     public function update_active_status($id)
     {
 
@@ -191,7 +233,7 @@ class User
     }
     public function get_writer_list($userId)
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user  WHERE `id` = ? ");
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
@@ -201,6 +243,73 @@ class User
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
+    public function review_info_list_id($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM review WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+
+
+    //get total value for charts
+    public function get_total_student()
+    {
+        $this->db->query('SELECT * FROM user_role WHERE `role_id`=4');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_writer()
+    {
+        $this->db->query('SELECT * FROM user_role WHERE `role_id`=3');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_draft()
+    {
+        $this->db->query('SELECT * FROM order_request WHERE `status`=:draft');
+        $this->db->bind(':draft', 'draft');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_completed()
+    {
+        $this->db->query('SELECT * FROM order_request WHERE `status`=:completed');
+        $this->db->bind(':completed', 'completed');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_progress()
+    {
+        $this->db->query('SELECT * FROM order_request WHERE `status`=:progress');
+        $this->db->bind(':progress', 'on-going');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_canceled()
+    {
+        $this->db->query('SELECT * FROM order_request WHERE `status`=:canceled');
+        $this->db->bind(':canceled', 'canceled');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    public function get_total_deactivated()
+    {
+        $this->db->query('SELECT * FROM order_request WHERE `status`=:deactivated');
+        $this->db->bind(':deactivated', 'denied');
+        $this->db->execute();
+        $total_row = $this->db->rowCount();
+        return $total_row;
+    }
+    //end of total data
+
+
+
     public function get_writer_list_id()
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM user_role WHERE `role_id` = 3");
@@ -228,6 +337,13 @@ class User
     public function get_message_list()
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM message");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
+    public function see_reviews()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM review");
         $stmt->execute();
         return  $stmt->fetchAll();
 
@@ -325,6 +441,18 @@ class User
     public function deleteStudent($userId)
     {
         $stmt = $this->db->dbConnection->prepare("DELETE FROM user WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function deleteMessages($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM message WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function delete_review($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM review WHERE id=?");
        $stmt->execute([$userId]);
        return true;
     }

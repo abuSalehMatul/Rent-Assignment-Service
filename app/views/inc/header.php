@@ -174,7 +174,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     <div class="m-nav__overlay"></div>
     <div class="header__main">
         <div class="header__logo"><a class="logo ga-event" data-ga-category="home" data-ga-action="click"
-                                     data-ga-label="home-header logo click" href="<?php echo URLROOT.'/'.$_SESSION['lang'];?>"><img src="<?php echo URLROOT.'\public\shared\images\AG .png'?>"
+                                     data-ga-label="home-header logo click" href="<?php echo URLROOT.'/'.$_SESSION['lang'];?>"><img src="<?php echo URLROOT.'\public\shared\images\AG.png'?>"
                                                                                                               class="logo_img"
                                                                                                               alt="EssayPro"></a></div>
         <div class="header__nav">

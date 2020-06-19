@@ -158,7 +158,7 @@
 
                 <!-- ROW-2 -->
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="card overflow-hidden">
                             <div class="card-header">
                                 <div class="card-title">Sales Statistics</div>
@@ -176,44 +176,32 @@
                             </div>
                         </div>
                     </div><!-- COL END -->
-                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
 
-                        <div class="row">
-                            <div class="col-md-12">
+                </div>
+                <div class="row">
+
+
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <div class="card overflow-hidden">
                                     <div class="card-body">
-                                        <div class="">
-                                            <p class="mb-1">Total Revenue of the Year</p>
-                                            <h4 class="mb-1"><span class="number-font">&#36;<span
-                                                            class="counter">35,786</span></span></h4>
-                                            <p class="mb-0 text-muted "><span
-                                                        class="text-danger fs-13 mr-2">(-0.05%)</span> than Last Year
-                                            </p>
-                                        </div>
+                                        <canvas id="myChart" width="50" height="50"></canvas>
                                     </div>
-                                    <div class="chart-wrapper">
-                                        <div id="flotChart2" class="flot-chart h-350"></div>
-                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <div class="card overflow-hidden">
                                     <div class="card-body">
-                                        <div class="">
-                                            <p class="mb-1">Monthly Sales Growth</p>
-                                            <h4 class="mb-1"><span class="number-font"><span class="counter">45</span>&#37; </span>
-                                            </h4>
-                                            <p class="mb-0 text-muted "><span
-                                                        class="text-success fs-13 mr-2">(+12%)</span> than Last Year</p>
-                                        </div>
+                                        <canvas id="myStatusChart" width="50" height="50"></canvas>
                                     </div>
-                                    <div class="chart-wrapper">
-                                        <div id="flotChart1" class="flot-chart"></div>
-                                    </div>
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
+
+
+
+
                 </div>
                 <!-- ROW-2 END -->
 
@@ -283,7 +271,10 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="list-group list-lg-group list-group-flush">
-                                    <?php foreach ($data['writer'] as $writers) {
+                                    <?php
+                                    $i =0;
+
+                                    foreach ($data['writer'] as $writers) {
                                     foreach ($writers as $key => $val) {
 
 
@@ -307,7 +298,11 @@
                                             </div>
                                         </div>
                                         <?php
+
                                     }
+                                        if($i++ == 5){
+                                            break;
+                                        }
                                     } ?>
 
                                 </div>
@@ -329,7 +324,9 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="list-group list-lg-group list-group-flush">
-                                    <?php foreach ($data['student'] as $writers) {
+                                    <?php
+                                    $i =0;
+                                    foreach ($data['student'] as $writers) {
                                                                 foreach ($writers as $key => $val) {
 
 
@@ -352,7 +349,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php }} ?>
+                                    <?php }
+                                    if($i++ == 5) {
+                                        break;
+                                    }
+                                    } ?>
 
                                 </div>
                             </div>
@@ -365,183 +366,7 @@
                 </div>
                 <!-- ROW-3 END -->
 
-                <!-- ROW-4 -->
-                <div class="row">
-                    <div class="col-12 col-sm-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <div class="card-title mb-0">Messages Summary</div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-nowrap mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th>Sender ID</th>
-                                            <th>Reciever ID</th>
-                                            <th>Chatroom ID</th>
-                                            <th>Messages</th>
-                                            <th>Status</th>
 
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php if(!empty($data['get_message_list'])){
-
-                                            foreach ($data['get_message_list'] as $key=>$val){
-
-                                              ?>
-
-
-                                        <tr>
-                                            <td><?php echo $val['sender_id'];?></td>
-                                            <td><?php echo $val['receiver_id'];?></td>
-                                            <td><?php echo $val['chat_room_id'];?></td>
-                                            <td><?php echo $val['message'];?></td>
-                                            <td><?php echo $val['status'];?></td>
-<!--                                            <td><span class="badge badge-success">Delivered</span></td>-->
-                                            <?php
-                                            }
-
-
-                                            }
-
-
-                                            else{
-                                                ?>
-
-                                                <h3>There is no messages here</h3>
-
-                                            <?php }
-                                            ?>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- COL END -->
-                </div><!-- ROW-4 END -->
-                <div class="row">
-                    <div class="col-12 col-sm-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <div class="card-title mb-0">Submission Summary</div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-nowrap mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th>Submission Time</th>
-                                            <th>Notes</th>
-                                            <th>Status</th>
-                                            <th>Order ID</th>
-
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php if(!empty($data['get_submission_list'])){
-
-                                            foreach ($data['get_submission_list'] as $key=>$val){
-
-                                              ?>
-
-
-                                        <tr>
-                                            <td><?php echo $val['stubmissionTime'];?></td>
-                                            <td><?php echo $val['note'];?></td>
-                                            <td><?php echo $val['status'];?></td>
-                                            <td><?php echo $val['order_id'];?></td>
-
-<!--                                            <td><span class="badge badge-success">Delivered</span></td>-->
-                                            <?php
-                                            }
-
-
-                                            }
-
-
-                                            else{
-                                                ?>
-
-                                                <h3>There is no submission here</h3>
-
-                                            <?php }
-                                            ?>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- COL END -->
-                </div><!-- ROW-4 END -->
-                <div class="row">
-                    <div class="col-12 col-sm-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <div class="card-title mb-0">Transaction Summary</div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-nowrap mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th>Payment Type</th>
-                                            <th>Currency</th>
-                                            <th>Transaction ID</th>
-                                            <th>Medium</th>
-                                            <th>Amount</th>
-
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php if(!empty($data['get_transaction_list'])){
-
-                                            foreach ($data['get_transaction_list'] as $key=>$val){
-
-                                              ?>
-
-
-                                        <tr>
-                                            <td><?php echo $val['payment_type'];?></td>
-                                            <td><?php echo $val['currency'];?></td>
-                                            <td><?php echo $val['transaction_id'];?></td>
-                                            <td><?php echo $val['medium'];?></td>
-                                            <td><?php echo $val['ammount'];?></td>
-
-<!--                                            <td><span class="badge badge-success">Delivered</span></td>-->
-                                            <?php
-                                            }
-
-
-                                            }
-
-
-                                            else{
-                                                ?>
-
-                                                <h3>There is no submission here</h3>
-
-                                            <?php }
-                                            ?>
-                                        </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- COL END -->
-                </div><!-- ROW-4 END -->
             </div>
             <!-- CONTAINER END -->
         </div>
@@ -1021,6 +846,78 @@ require_once APPROOT . '/views/inc/admin/scripts.php';
 
 
 ?>
+<script>
+
+
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "<?php echo URLROOT.'/'.$_SESSION['lang'] ?>/DemoTest/chart",
+            cache: false,
+            success: function(data){
+                const obj = JSON.parse(data);
+                var total_writer = obj.total_writer;
+                var total_student = obj.total_student;
+console.log(total_student)
+
+                new Chart(document.getElementById("myChart"), {
+                    type: 'pie',
+                    data: {
+                        labels: ["student","writer"],
+                        datasets: [{
+                            label: "Writer VS Student",
+                            backgroundColor: ["#fca242","#edca4a"],
+                            data: [total_student,total_writer]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Student VS Writer'
+                        }
+                    }
+                });
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "<?php echo URLROOT.'/'.$_SESSION['lang'] ?>/DemoTest/orderChart",
+            cache: false,
+            success: function(data){
+                const obj = JSON.parse(data);
+                var draft = obj.draft;
+                var completed = obj.completed;
+                var progress = obj.progress;
+                var canceled = obj.canceled;
+                var deactivated = obj.deactivated;
+
+
+
+                new Chart(document.getElementById("myStatusChart"), {
+                    type: 'pie',
+                    data: {
+                        labels: ["draft","completed","canceled","progress","deactivated"],
+                        datasets: [{
+                            label: "Writer VS Student",
+                            backgroundColor: ["#56b1db","#6fc970","#b83616","#dbcc56","#db9456"],
+                            data: [draft,completed,canceled,progress,deactivated]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Total status charts'
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+</script>
 
 </body>
 </html>
