@@ -11,249 +11,107 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
     <div class="p-1 main">
         <section class="s-1 pt-header">
             <picture>
-                <img src="<?php echo URLROOT.'\public\shared\images\about.png' ?>"
-                     alt="Assignment Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important"></picture>
+                <img src="<?php echo URLROOT . '\public\shared\images\about.png' ?>"
+                     alt="Assignment Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important">
+            </picture>
             <div class="l-0">
                 <div class="s-1__wrapper">
-                    <div class="s-1__left"><h1 class="h--lg h--is-inverse" >Top Assignment Writing Service with
-                            Professional Assignment Writers</h1>
-                        <p class="p--lg p--is-inverse" >Increase your chance of success with our Assignment Writing
-                            Service</p>
+                    <div class="s-1__left"  style="margin-top: 100px!important;"><h1 class="h--lg h--is-inverse" style="font-size: 70px!important;text-align: center">About Us</h1>
+                        <br>
+                        <p class="p--lg p--is-inverse" style="font-size: 30px!important;">The Assignment Guru is a professional team of hand-picked authors, editors, and
+                            proofreaders, available 24/7 and ready to handle any written assignment in any subject. Our custom
+                            essay writing service and tutoring, and homework help are popular among students from all over the
+                            world. </p>
 
                     </div>
-                    <div class="s-1__right">
-                        <div class="c-1 js-calculator" data-component-name="c-1__as__calculator-primary">
-                            <div class="js-calculator__form">
-                                <form action="https://app.Assignment.IO.com/auth/register" method="get">
-                                    <div class="c-1__header">
-                                        <div class="h--sm">Calculate the price</div>
-                                    </div>
-                                    <div class="c-1__main">
-                                        <div class="c-1__row" id="servicesDropdownWrap">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_service_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                        class="c-3__selected" data-calc-value="1">Writing</span> <span
-                                                        class="c-3__placeholder">Service</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_service_selected_1">
-                                                    <ul class="c-3__ul"></ul>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_service_1"
-                                                                        aria-label="Calculator services"
-                                                                        class="c-3__select"></select> <span
-                                                    class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div class="c-1__row">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_type_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                        class="c-3__selected"
-                                                        data-calc-value="1">Assignment (any type)</span> <span
-                                                        class="c-3__placeholder">Type of paper</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_type_selected_1"><input
-                                                        id="searchTypesInput" class="c-3__search" type="text"
-                                                        placeholder="Type to find">
-                                                    <div class="c-3__ul"></div>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_type_1"
-                                                                        aria-label="Type of calculator"
-                                                                        class="c-3__select"></select> <span
-                                                    class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div class="c-1__row">
-                                            <div class="c-3 dropdown">
-                                                <button id="calculator_deadline_selected_1" type="button"
-                                                        class="c-3__dropdown" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                        class="c-3__selected" data-calc-value="336">2 weeks</span> <span
-                                                        class="c-3__placeholder">Deadline</span> <span
-                                                        class="c-3__select-arrow"></span></button>
-                                                <div class="c-3__menu dropdown-menu"
-                                                     aria-labelledby="calculator_deadline_selected_1">
-                                                    <ul class="c-3__ul">
-                                                        <li class="c-3__li" data-calc-value="6">6 hours</li>
-                                                        <li class="c-3__li" data-calc-value="12">12 hours</li>
-                                                        <li class="c-3__li" data-calc-value="24">1 day</li>
-                                                        <li class="c-3__li" data-calc-value="48">2 days</li>
-                                                        <li class="c-3__li" data-calc-value="72">3 days</li>
-                                                        <li class="c-3__li" data-calc-value="120">5 days</li>
-                                                        <li class="c-3__li" data-calc-value="168">7 days</li>
-                                                        <li class="c-3__li" data-calc-value="240">10 days</li>
-                                                        <li class="c-3__li" data-calc-value="336">2 weeks</li>
-                                                        <li class="c-3__li" data-calc-value="720">1 month</li>
-                                                        <li class="c-3__li" data-calc-value="1440">2 months</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="select"><select id="calculator_deadline_1"
-                                                                        aria-label="Calculators's deadline"
-                                                                        class="c-3__select">
-                                                    <option value="6">6 hours</option>
-                                                    <option value="12">12 hours</option>
-                                                    <option value="24">1 day</option>
-                                                    <option value="48">2 days</option>
-                                                    <option value="72">3 days</option>
-                                                    <option value="120">5 days</option>
-                                                    <option value="168">7 days</option>
-                                                    <option value="240">10 days</option>
-                                                    <option value="336" selected="selected">2 weeks</option>
-                                                    <option value="720">1 month</option>
-                                                    <option value="1440">2 months</option>
-                                                </select> <span class="c-3__select-arrow"></span></div>
-                                        </div>
-                                        <div id="pages_fields_1" class="c-1__row">
-                                            <div class="c-1__group">
-                                                <div class="c-1__element">
-                                                    <button id="calculator_pages_decrement_1" type="button"
-                                                            aria-label="calculator pages decrement"
-                                                            class="c-3__button-decrement"></button>
-                                                </div>
-                                                <div class="c-1__element">
-                                                    <div class="dropdown dropdown-half">
-                                                        <button id="calculator_pages_selected_1" type="button"
-                                                                class="c-3__dropdown-half" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false"><span
-                                                                class="c-3__selected" data-calc-value="1">1 page</span>
-                                                            <span class="c-3__placeholder">Pages</span> <span
-                                                                class="c-3__select-arrow"></span></button>
-                                                        <div class="c-3__menu dropdown-menu"
-                                                             aria-labelledby="calculator_pages_selected_1">
-                                                            <ul class="c-3__ul pages__list">
-                                                                <li class="c-3__li" data-calc-value="1">1 page</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select"><select id="calculator_pages_1"
-                                                                                aria-label="Calculators pages"
-                                                                                class="c-3__select-half">
-                                                            <option value="1" selected="selected">1 page</option>
-                                                        </select> <span class="c-3__select-arrow"></span></div>
-                                                </div>
-                                                <div class="c-1__element">
-                                                    <button id="calculator_pages_increment_1" type="button"
-                                                            aria-label="calculator pages increment"
-                                                            class="c-3__button-increment"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-1__footer">
-                                        <div class="c-1__price">
-                                            <div class="c-1__price__wrap">
-                                                <div class="value c-1__price--min">$<span
-                                                        id="calculator_total_1">0</span></div>
-                                                <div class="c-1__price__label">Minimum Price</div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="button-filled__primary ga-event"
-                                                data-ga-category="calculator" data-ga-action="click"
-                                                data-ga-label="Continue"><span class="button-text">Continue</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
         </section>
-        <section class="s-2 bggrey">
+
+        <section class="s-2 bggrey" style="text-align: center">
             <div class="l-0">
-                <div class="h--md">All services from Assignment.IO</div>
-                <p class="p--md">Our Assignment writers can help with these assignments and more:</p>
+                <h3><b>Rely on The Assignment Guru if:</b></h3>
+                <p>Mur Assignment writers can help with these assignments and more:</p>
+      <br>
                 <div class="s-2__w">
                     <div class="s-2__c">
-                        <ul class="s-2__ul">
-                            <li class="s-2__li">Custom Assignment (any type)</li>
-                            <li class="s-2__li">Business Plan</li>
-                            <li class="s-2__li">Literature Review</li>
-                            <li class="s-2__li">Research Paper</li>
-                            <li class="s-2__li">Admission Assignment</li>
-                            <li class="s-2__li">Case Study</li>
-                            <li class="s-2__li">Multiple Choice Questions</li>
-                            <li class="s-2__li">Research Proposal</li>
-                            <li class="s-2__li">Annotated Bibliography</li>
-                            <li class="s-2__li">Coursework</li>
-                            <li class="s-2__li">Presentation or Speech</li>
-                            <li class="s-2__li">Term Paper</li>
-                            <li class="s-2__li">Article Review</li>
-                            <li class="s-2__li">Creative Writing</li>
-                            <li class="s-2__li">Reflective Writing</li>
-                            <li class="s-2__li">Thesis / Dissertation</li>
-                            <li class="s-2__li">Book / Movie Review</li>
-                            <li class="s-2__li">Critical Thinking / Review</li>
-                            <li class="s-2__li">Report</li>
-                            <li class="s-2__li">Editing and proofreading</li>
+                        <ul style="list-style: none">
+                            <li>Drowning in assignments</li>
+                            <li>Struggling to meet the deadlines</li>
+                            <li>Don’t know how to start your paper</li>
+                            <li>    Suffering from a writer’s block</li>
+                            <li>Need an expert to take over</li>
+                            <li>You need a high-quality, plagiarism-free paper that follows your
+                                instructions
+                            </li>
+
                         </ul>
                     </div>
                 </div>
-                <div class="s-2__b-g"><span data-link="https://app.Assignment.IO.com/auth/register"
-                                            class="button-filled__primary ga-event h-l" data-ga-category=""
-                                            data-ga-action="click" data-ga-label="order now"><span class="button-text">order now</span></span>
-                </div>
+                <h3><b>Our performance speaks for itself:</b></h3>
+                <p>Many of our clients have been with us for years, and they keep coming back for more! </p>
+                <br>
+                <h3><b>We're up and running, no matter what! </b></h3>
+                <p>All of our services are accessible. All our writers are always available. </p>
+                <p>Relax and take care of yourself while we take care of your paper. </p>
             </div>
         </section>
+
         <section class="s-4 pb-0">
             <div class="l-0">
                 <div class="s-4__w">
-                    <div class="h--md _c--primary">Features of Our Assignment Writing Service</div>
-                    <ul class="s-4__ul">
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__deadline"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Any Deadline - Any Subject</div>
-                                <p class="p--sm">Our professional writers can complete any assignment, regardless of
-                                    topic, difficulty, or deadline.</p></div>
+                    <div class="h--md _c--primary">How it works<p class="p__sm" style="font-size: 17px;">In 4 simple and easy steps </p></div>
+
+                    <ul class="s-6__ul" style="list-style: none;text-align: center">
+                        <li class="s-6__li">
+                            <div class="s-6__i" ><i class="icon features-icon__deadline"></i></div>
+                            <div class="s-6__d">
+                                <div class="h--sm">Start an order:</div>
+                                <p class="p--sm"> in the order by completing the requirements section and uploading the documents with your instructions and set the deadline. </p></div>
                         </li>
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__notifications"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Email and SMS Notifications</div>
-                                <p class="p--sm">Stay informed <sup>24</sup>⁄<sub>7</sub> about every update of the
-                                    whole ordering process.</p></div>
+                        <br>
+                        <li class="s-6__li">
+                            <div class="s-6__i"><i class="icon features-icon__notifications"></i></div>
+                            <div class="s-6__d">
+                                <div class="h--sm">Wait for a response:</div>
+                                <p class="p--sm">Once you have completed the order, it will take a few minutes for our system to match your order with the most suitable writer. You can chat with the writer, and once you feel confident that the writer will be able to handle your essay, you can go ahead and deposit the money so that the writer can start working on your order. Your money will be on hold, and we will only pay the writer once you are satisfied and have marked the order as complete. </p></div>
                         </li>
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__chat"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Chat With Your Writer</div>
-                                <p class="p--sm">Communicate directly with your writer anytime regarding assignment
-                                    details, edit requests, etc.</p></div>
+                        <br>
+                        <li class="s-6__li">
+                            <div class="s-6__i"><i class="icon features-icon__chat"></i></div>
+                            <div class="s-6__d">
+                                <div class="h--sm">Monitor the process:</div>
+                                <p class="p--sm">Communicate with the writer whenever you want using secure chat and keep track of the writing progress. The writer will upload the process; however, you will not be able to download the essay or screenshot it because it will have a watermark, meaning you can only access it once you’ve marked the order as complete. You will only be able to see the progress to guide the writer. </p></div>
                         </li>
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__profiles"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Detailed Writer Profiles</div>
-                                <p class="p--sm">Browse ratings, reviews, number of completed assignments, and subject
-                                    proficiency regarding our Assignment writers.</p></div>
+                        <br>
+                        <li class="s-6__li">
+                            <div class="s-6__i"><i class="icon features-icon__profiles"></i></div>
+                            <div class="s-6__d">
+                                <div class="h--sm">Download your paper</div>
+
                         </li>
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__plagiarism"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Plagiarism Free Papers</div>
-                                <p class="p--sm">Our quality assurance team reviews every paper completed to make sure
-                                    each paper written by our writers is unique and not plagiarised.</p></div>
-                        </li>
-                        <li class="s-4__li">
-                            <div class="s-4__i"><i class="icon features-icon__prices"></i></div>
-                            <div class="s-4__d">
-                                <div class="h--sm">Affordable Prices</div>
-                                <p class="p--sm">We offer the lowest prices per page in the industry with an average of
-                                    $11 per page.</p></div>
-                        </li>
+
                     </ul>
                 </div>
             </div>
         </section>
-<section>   </section>
+        <br>
+        <br>
+        <section class="s-2 bggrey">
+            <div class="l-0">
+                <div class="h--md"><b>Is it safe to buy an essay from us?</b></div>
+                <p class="p--md">In short, absolutely!
+                    We guarantee that no one will know that you are using our service. All the information you provide to us is highly confidential. We will only ask you to share your essay paper instructions, a username, and an email to create an account. This data, as well as your chats with the assigned paper writer, will be secured with Data Encryption.
+                    Our policy is simple: We don’t store or resell papers. Your custom essay will be deleted 30 days after the delivery. We don’t give your personal information to any third parties under any circumstances. There is no chance for it to ever appear on the web. That is why none of our clients were caught using our essay writing service.
+                    Our security methods include: Confidential orders and chats. We communicate with our clients on a no-name basis and never ask them to specify their personal details. We won’t know your full name, the name of your college or city.
+                    Reliable payment methods. We work only with reliable payment companies, i.e., MasterCard and Visa, escrow to ensure safe payments for your orders.
+                </p>
+
+            </div>
+        </section>
+
     </div>
     <p></p>
     <noscript>

@@ -110,7 +110,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     }
 
 </style>
-<header class="header">
+<header class="header" style="background: #236896!important;">
     <div class="header__mobile-buttons">
         <div id="mNavMain" class="m-nav__button for__m-nav-main"><i class="n--icon n--icon__main-nav"></i> <i
                     class="n--icon n--icon__main-nav--tablet"></i> <i class="n--icon n--icon__nav-close"></i></div>
@@ -174,9 +174,9 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     <div class="m-nav__overlay"></div>
     <div class="header__main">
         <div class="header__logo"><a class="logo ga-event" data-ga-category="home" data-ga-action="click"
-                                     data-ga-label="home-header logo click" href="<?php echo URLROOT.'/'.$_SESSION['lang'];?>"><img src="<?php echo URLROOT.'\public\shared\images\AG.png'?>"
+                                     data-ga-label="home-header logo click" href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/';?>"><img src="<?php echo URLROOT.'\public\shared\images\AG.png'?>"
                                                                                                               class="logo_img"
-                                                                                                              alt="EssayPro"></a></div>
+                                                                                                              alt="Assignment guru" style="width: 70px!important;height: 50px!important;"></a></div>
         <div class="header__nav">
             <nav class="nav">
                 <ul class="nav-ul">
@@ -194,21 +194,23 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
             </nav>
         </div>
     </div>
-    <div class="sl-nav">
 
-        <ul>
-            <li style="color: floralwhite"><b>Select language</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
-                <div class="triangle"></div>
-                <ul>
-                    <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active"><a href="<?php echo URLROOT.'/ar/';?>">Arabian</a></span></li>
-                    <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <a href="<?php echo URLROOT.'/en/';?>"><span>English</span></a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
 
     <div class="header__inner--right">
+
         <div class="header__auth">
+            <div class="sl-nav" style="margin-right: 22px!important;">
+
+                <ul>
+                    <li style="color: floralwhite;padding: 5px;border: 2px solid white; border-radius: 6px" >Select language <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <div class="triangle"></div>
+                        <ul>
+                            <li><i class="sl-flag flag-de"><div id="germany"></div></i> <span class="active"><a href="<?php echo URLROOT.'/ar/';?>">Arabian</a></span></li>
+                            <li><i class="sl-flag flag-usa"><div id="germany"></div></i> <a href="<?php echo URLROOT.'/en/';?>"><span>English</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <nav class="n--auth"><span data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/login'; ?>"
                                        class="n--auth__link ga-event h-l" data-ga-category="home"
                                        data-ga-action="click" data-ga-label="home-header login click">Log In </span><span

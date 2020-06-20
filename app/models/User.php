@@ -49,6 +49,25 @@ class User
             return false;
         }
     }
+    public function add_contact($data)
+    {
+        $this->db->query('INSERT INTO contact_us (name, email, phone_number, message) VALUES (:name, :email, :phone_number, :message)');
+
+        //        Bind values
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':phone_number', $data['phone_number']);
+        $this->db->bind(':message', $data['message']);
+
+
+        //        Execute
+        if ($this->db->execute()) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function setUserRole($data)
     {
@@ -355,6 +374,13 @@ class User
         return  $stmt->fetchAll();
 
     }
+    public function get_contact_us()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM contact_us");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
     public function get_transaction_list()
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM payment");
@@ -447,6 +473,12 @@ class User
     public function deleteMessages($userId)
     {
         $stmt = $this->db->dbConnection->prepare("DELETE FROM message WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function delete_contact($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM contact_us WHERE id=?");
        $stmt->execute([$userId]);
        return true;
     }

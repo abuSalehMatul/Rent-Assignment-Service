@@ -77,7 +77,7 @@
                                         <th class="border-bottom-0 border-top-0">writer</th>
                                         <th class="border-bottom-0 border-top-0">Topic</th>
                                         <th class="border-bottom-0 border-top-0">comment</th>
-                                        <th class="border-bottom-0 border-top-0">5</th>
+                                        <th class="border-bottom-0 border-top-0">Rating</th>
                                         <th class="border-bottom-0 border-top-0">date</th>
                                         <th class="border-bottom-0 border-top-0">Action</th>
                                     </tr>

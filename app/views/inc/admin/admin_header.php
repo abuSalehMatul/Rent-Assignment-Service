@@ -164,7 +164,7 @@
                     </li>
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/order' ?>" class=""><i class="fe fe-grid"></i> Orders requests</a>
                     </li>
-                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/transaction' ?>" class="sub-icon"><i class="fe fe-life-buoy"></i> Transaction summary
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/transaction' ?>" class="sub-icon"><i class="fe fe-life-buoy"></i> Transactions
                         </a>
 
                     </li>
@@ -175,6 +175,9 @@
                         </a>
                     </li>
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/see_reviews' ?>" class="sub-icon"><i class="fe fe-package"></i> Review
+                        </a>
+                    </li>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/contact_us' ?>" class="sub-icon"><i class="fe fe-bookmark"></i> Contacts
                         </a>
                     </li>
 <!--                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-layers"></i>Components-->

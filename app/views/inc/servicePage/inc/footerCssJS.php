@@ -3017,7 +3017,7 @@
     }
 
     .sb-3__n {
-        min-width: 32px;
+        /*min-width: 32px;*/
         height: 32px;
         margin-right: 24px;
         background-color: #0282d5;
@@ -3026,6 +3026,7 @@
         color: #fff;
         font-size: 20px;
         font-weight: 300;
+
         line-height: 32px;
         text-align: center
     }

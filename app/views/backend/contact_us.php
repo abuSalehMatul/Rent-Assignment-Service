@@ -69,44 +69,27 @@
                                 <table id="example-1" class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
-                                        <th class="border-bottom-0 border-top-0">First name</th>
-                                        <th class="border-bottom-0 border-top-0">Last name</th>
+                                        <th class="border-bottom-0 border-top-0">Name</th>
                                         <th class="border-bottom-0 border-top-0">Email</th>
-                                        <th class="border-bottom-0 border-top-0">Address</th>
                                         <th class="border-bottom-0 border-top-0">Phone Number</th>
-                                        <th class="border-bottom-0 border-top-0">Image</th>
+                                        <th class="border-bottom-0 border-top-0">Messages</th>
                                         <th class="border-bottom-0 border-top-0">Action</th>
-                                        <th class="border-bottom-0 border-top-0"></th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($data['student'] as $writers) {
+                                    <?php foreach ($data['contact_us'] as $writers) {
                                         foreach ($writers as $key => $val) {
 
 
                                             ?>
                                             <tr>
-                                                <td><?php echo $val['f_name']; ?></td>
-                                                <td><?php echo $val['l_name']; ?></td>
+                                                <td><?php echo $val['name']; ?></td>
                                                 <td><?php echo $val['email']; ?></td>
-                                                <td><?php echo $val['address']; ?></td>
                                                 <td><?php echo $val['phone_number']; ?></td>
-                                                <td><?php if($val['status'] == 1){
+                                                <td><?php echo $val['message']; ?></td>
+                                                <td><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_contact/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
 
-                                                    echo "<a class='btn btn-light btn-sm' id='".$val['id']."' onclick='changeActive(this.id)'>Active</a>";
-
-                                                    }
-                                                    else{
-                                                        echo "<a class='btn btn-warning btn-sm'>Deactivate</a>";
-                                                    }
-
-
-                                                     ?></td>
-                                                <td><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_student/'.$val['id'];?>"  class="btn btn-sm btn-primary badge"  style="color: white;">Edit</a>
-                                                    <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_student/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
-                                                <td style="display: table!important; margin: 10px">
-
-                                                </td>
 
 
                                             </tr>
@@ -132,10 +115,10 @@
     <footer class="footer">
         <div class="container">
             <div class="row align-items-center flex-row-reverse">
-<!--                <div class="col-md-12 col-sm-12 text-center">-->
-<!--                    Copyright © 2020 <a href="#">Dashmint</a>. Designed by <a href="https://spruko.com/">Spruko-->
-<!--                        Technologies Pvt.Ltd</a> All rights reserved.-->
-<!--                </div>-->
+                <!--                <div class="col-md-12 col-sm-12 text-center">-->
+                <!--                    Copyright © 2020 <a href="#">Dashmint</a>. Designed by <a href="https://spruko.com/">Spruko-->
+                <!--                        Technologies Pvt.Ltd</a> All rights reserved.-->
+                <!--                </div>-->
             </div>
         </div>
     </footer>

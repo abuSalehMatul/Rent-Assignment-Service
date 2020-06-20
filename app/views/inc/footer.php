@@ -6,7 +6,7 @@
 
 
             <div class="footer__g">
-                <div class="footer__logo"><a><img src="<?php echo URLROOT.'\public\shared\images\AG .png' ?>" width="80" alt="EssayPro"></a></div>
+                <div class="footer__logo"><a><img src="<?php echo URLROOT.'\public\shared\images\AG.png' ?>" width="80" alt="EssayPro"></a></div>
                 &nbsp;&nbsp;&nbsp;  <div class="footer__n"><span data-link="https://essaypro.com/become-a-writer.html"
                                              class="footer__n-a ga-event h-l" data-ga-category="home"
                                              data-ga-action="click" data-ga-label="home-header Become a writer click">Become a writer</span>
@@ -39,8 +39,8 @@
 <!--                        aria-label="twitter"></span></div>-->
 <!--            </div>-->
             <div class="footer__bottom">
-                <div class="footer__c">© 2020 EssayPro. All rights reserved.</div>
-                <div class="footer__statement">EssayPro will be listed as ‘EPRO’ on your bank statement.</div>
+                <div class="footer__c">© 2020 Assignment Guru. All rights reserved.</div>
+                <div class="footer__statement">Assignment Guru will be listed on your bank statement.</div>
             </div>
         </div>
     </div>

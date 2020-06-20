@@ -17,12 +17,6 @@ class DemoTestController extends Controller
         header('location: /');
     }
 
-//    public function dashboard(){
-//        guestRedirect();
-//        $appointments = $this->appointments->getAll();
-//        $this->view('/backend/dashboard', $appointments, 'appointments');
-//
-//    }
     public function dashboard()
     {
 
@@ -110,6 +104,14 @@ class DemoTestController extends Controller
 
         $data['get_submission_list'] = $this->userModel->get_submission_list();
         $this->view('/backend/submission',$data);
+
+    }
+    public function contact_us()
+    {
+
+
+        $data['contact_us'] = $this->userModel->get_contact_us();
+        $this->view('/backend/contact_us',$data);
 
     }
     public function transaction()
@@ -232,6 +234,37 @@ class DemoTestController extends Controller
         $update = $this->userModel->add_review($data);
         if ($update == true) {
             $this->see_reviews();
+        } else {
+            echo 'error';
+        }
+    }
+    public function contact()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            extract($_POST);
+            $data = [
+                'name' => $name,
+                'email' => $email,
+                'phone_number' => $phone_number,
+                'message' => $message,
+
+            ];
+        }
+
+//        echo '<pre>';
+//
+//        print_r($data);
+//        exit();
+//        echo '</pre>';
+
+//
+        $update = $this->userModel->add_contact($data);
+        if ($update == true) {
+            $this->view('pages/services');
         } else {
             echo 'error';
         }
@@ -507,6 +540,20 @@ class DemoTestController extends Controller
 
 
         $delete = $this->userModel->delete_review($id);
+
+        if ($delete == true) {
+            $this->see_reviews();
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    public function delete_contact($root, $opt, $id)
+    {
+
+
+        $delete = $this->userModel->delete_contact($id);
 
         if ($delete == true) {
             $this->see_reviews();

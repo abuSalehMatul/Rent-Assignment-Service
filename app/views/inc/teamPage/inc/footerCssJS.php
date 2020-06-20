@@ -662,7 +662,7 @@
 <script src="../www.googleadservices.com/pagead/f.txt" async=""></script>
 <style>.footer {
         position: relative;
-        background-color: #242a35;
+        background-color: #203645;
         border-top: 1px solid #3a3f4a;
         color: #a1a9b3;
         font-size: 14px;
