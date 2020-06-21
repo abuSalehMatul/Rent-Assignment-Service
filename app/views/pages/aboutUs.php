@@ -128,6 +128,15 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
 <?php
 require_once APPROOT . '/views/inc/footer.php';
 ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170165335-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-170165335-1');
+</script>
 
 </body>
 

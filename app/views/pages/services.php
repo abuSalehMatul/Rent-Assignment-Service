@@ -160,16 +160,16 @@ require_once APPROOT . '/views/inc/servicePage/head.php';
             </div>
         </section>
         <section class="s-3--3">
-            <div class="container">
+            <div class="l-0">
                 <div class="h--md"><b>Why us</b>
                 </div>
                 <div class="s-3--3__inner">
                     <div class="s-3--3__text-wrap">
-                        <div class="s-3--3__text"> Your order will be written, edited, and proofread by the deadline you set. The final copy will be available for download at your profile. Check it for compliance with initial instructions and, if necessary, request a free revision.
+                        <p class="p--md"> Your order will be written, edited, and proofread by the deadline you set. The final copy will be available for download at your profile. Check it for compliance with initial instructions and, if necessary, request a free revision.
                             Get professional help from academic writers. 100% unique and quality papers. Our Quality Assurance Team checks every paper for plagiarism and consistency before final delivery. You are guaranteed to receive an original piece with properly cited sources.
                             No matter what kind of academic paper you need, it is simple and secure to hire an essay writer for a price you can afford at The Assignment Guru. Spend more time focusing on yourself!
                             Stay in touch with the writer and be up to date with the working process from start to finish. We care about our customers and want them to be 100% satisfied with our paper writing service.Use our essay writing service to score better and meet your deadlines.
-                        </div>
+                        </p>
 
 
                     </div>
@@ -849,6 +849,15 @@ require_once APPROOT . '/views/inc/servicePage/head.php';
     <?php
     require_once APPROOT . '/views/inc/footer.php';
     ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170165335-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-170165335-1');
+</script>
 
 </body>
 

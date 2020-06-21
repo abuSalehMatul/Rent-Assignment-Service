@@ -36,6 +36,10 @@ class FrontendController extends Controller
         $this->view('pages/aboutUs');
 
     }
+    public function oauth(){
+        $this->view('backend/oauth');
+
+    }
     public function logout()
     {
         if (!empty($_POST['token'])) {
