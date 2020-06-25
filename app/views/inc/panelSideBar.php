@@ -6,19 +6,17 @@
                 <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/Order/myOrder'; ?>" class="waves-effect">
                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo $lang['My Order']; ?></a>
             </li>
+            <?php if($_SESSION['role'] == 4): ?>
             <li style="">
-                <a href="dashboard.html" class="waves-effect">
-                    <i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Draft</a>
+                <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/student/draft'; ?>" class="waves-effect">
+                    <i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><?php echo $lang['Draft'];?></a>
             </li>
+            
             <li>
-                <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" 
-                aria-hidden="true"></i>Bidding</a>
+                <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/student/inProgress'; ?>" class="waves-effect"><i class="fa fa-font fa-fw" 
+                aria-hidden="true"></i> <?php echo $lang['In Progress']; ?></a>
             </li>
-            <li>
-                <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" 
-                aria-hidden="true"></i> In Progress</a>
-            </li>
-
+            <?php endif; ?>
             <li>
                 <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" 
                 aria-hidden="true"></i>Completed</a>

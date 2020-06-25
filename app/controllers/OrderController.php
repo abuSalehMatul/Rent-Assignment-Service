@@ -9,9 +9,9 @@ class OrderController extends Controller {
 
 
 //    backend logout
-    public function myOrder(){
-       $this->data['order_request'] = $this->orderRequestModel->getByUserId($_SESSION['id']);
+    // public function myOrderRequest(){
+    //    return $this->orderRequestModel->getByUserId($_SESSION['id']);
+    // }
 
-       $this->view('order/allOrder', $this->data, 'data');
-    }
+    
 }

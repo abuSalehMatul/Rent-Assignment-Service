@@ -18,9 +18,21 @@ class OrderRequest
         $this->db = new Database();
     }
 
+    public function deleteById($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM order_request WHERE `id` =?;");
+        $stmt->execute([$id]);
+        return true;
+    }
+
     public function getByUserId($userId)
     {
-
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM order_request WHERE `user_id` = ? ");
+        $stmt->execute([$userId]);
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        }
+        return false;
     }
 
     public function draftSave($userId, $type, $page, $lavel, $service, $language = "en", $day)
@@ -33,6 +45,13 @@ class OrderRequest
             $_SESSION['draft_id'] = $this->db->dbConnection->lastInsertId();
             return true;
         }
+    }
+
+    public function getByStatusAndUser($userId, $status)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM order_request WHERE `user_id` = ? AND `status` =?");
+        $stmt->execute([$userId, $status]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function calculatePrice($requestId)

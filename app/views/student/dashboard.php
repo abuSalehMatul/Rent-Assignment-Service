@@ -82,6 +82,33 @@ require_once APPROOT . '/views/inc/panelHead.php';
                 </div>
                
             </div>
+            
+            <div class="white-box">
+                            <h3 class="box-title"><?php echo $lang['My Request']; ?></h3>
+                            <div class="table-responsive">
+                                <?php if(isset($data['order_request'][0])) : ?>
+                                <table class="table">
+                                    <tbody>
+                                    <?php  foreach($data['order_request'] as $request): ?>
+                                        <tr>
+                                            <td><span class="badge badge-info"><?php echo $request['subject']; ?></span></td>
+                                            <td><?php echo $lang['Type']. ': '. $request['type']; ?></td>
+                                            <td ><span class="badge badge-secondary"><?php echo $lang['Duration']. ': ' .$request['duration']. $lang['Day']; ?></span></td>
+                                            <td><?php echo $lang['Service']. ': '. $request['service']; ?></td>
+                                            <td><?php echo $lang['Style']. ': '. $request['style']; ?></td>
+                                            <td><?php echo $lang['Price']. ' $'. $request['price']; ?></td>
+
+                                            <td>
+                                                <button onclick="deleteRequest(<?php echo $request['id']; ?>)" class="btn btn-danger"><?php echo $lang['Delete']; ?></button>
+                                            </td>
+                        
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <?php endif; ?>
+                            </div>
+                        </div>
             <!-- /.container-fluid -->
             <footer class="footer text-center">
                 <?php echo COPYRIGHT; ?>

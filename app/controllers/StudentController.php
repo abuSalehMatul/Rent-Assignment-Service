@@ -91,9 +91,35 @@ class StudentController extends Controller
                 $this->validator($_POST['resource'])
                
             );
-            print_r('successfully request saved');
+            header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
         } else {
             print_r('all data required');
+        }
+    }
+
+    private function draft()
+    {
+        $this->data['draft'] = $this->orderRequestModel->getByStatusAndUser($_SESSION['id'], 'draft');
+        $this->view('student/draft', $this->data, 'data');
+    }
+
+    private function inProgress()
+    {
+        $this->data['progress'] = $this->orderRequestModel->getByStatusAndUser($_SESSION['id'], 'progress');
+        $this->view('student/progress', $this->data, 'data');
+    }
+
+    private function RequestDelete()
+    {  
+        if (!empty($_POST['token'])) {
+            if (!hash_equals($_SESSION['token'], $_POST['token'])) {
+                return "un-authentic access.. ";
+                die();
+            }
+        }
+       
+        if ($this->required($_POST['id'])){
+           return $this->orderRequestModel->deleteById($_POST['id']);
         }
     }
 
@@ -129,6 +155,7 @@ class StudentController extends Controller
         $this->data['total_order'] = $this->userModel->getTotalOrderByUserId($_SESSION['id']);
         $this->data['canceled_order'] = $this->userModel->getTotalCanceledOrderByUserId($_SESSION['id']);
         $this->data['completed_order'] = $this->userModel->getTotalCompletedOrderByUserId($_SESSION['id']);
+        $this->data['order_request'] = $this->orderRequestModel->getByStatusAndUser($_SESSION['id'], 'progress');
         $this->view('student/dashboard', $this->data, 'data');
     }
 

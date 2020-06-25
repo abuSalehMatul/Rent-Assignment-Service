@@ -7,7 +7,6 @@ require_once APPROOT . '/views/inc/panelHead.php';
         font-size: 34px;
         line-height: 14px;
         font-weight: 600;
-        font-family: cursive;
         font-style: oblique;
         font-variant: all-petite-caps;
     }
@@ -102,7 +101,7 @@ require_once APPROOT . '/views/inc/panelHead.php';
                             </select>
                         </div>
                     </form>
-                    <button class="btn btn-success" style="padding: 10px 150px" id="orderRequestDetails" onclick="phaseChange(1)">Confirm</button>
+                    <button class="btn btn-success" style="padding: 10px 39%" id="orderRequestDetails" onclick="phaseChange(1)">Confirm</button>
                 </div>
 
 
@@ -176,8 +175,8 @@ require_once APPROOT . '/views/inc/panelHead.php';
                             <h5 class="text-center text-capitalize"><b>File</b></h5>
                             <input type="file" name="file" class="form-control">
                         </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-success" onclick="saveOrder()" style="padding:10px 150px; margin:10px">Save</button>
+                        <div class="col-md-12">
+                            <button class="btn btn-success col-md-10" onclick="saveOrder()" style="padding:10px; margin:10px;">Save</button>
                         </div>
                     </form>
                 </div>
@@ -199,8 +198,6 @@ require_once APPROOT . '/views/inc/panelHead.php';
         var calculatdPrice = 0;
 
         function phaseChange(currentPhase) {
-            console.log("#form" + currentPhase);
-
             var form = $("#form" + currentPhase);
             var url = form.attr('action');
             $.ajax({

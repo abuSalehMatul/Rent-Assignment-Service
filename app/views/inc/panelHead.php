@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,32 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
     <title>Assignment</title>
+
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
     <!-- toast CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- morris CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- chartist CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="<?php echo URLROOT.'/';?>panel/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <!-- animation CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/css/animate.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/css/style.css" rel="stylesheet">
+    <link href="<?php echo URLROOT . '/'; ?>panel/css/style.css" rel="stylesheet">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
     <!-- color CSS -->
-    <link href="<?php echo URLROOT.'/';?>panel/css/colors/default.css" id="theme" rel="stylesheet">
-    
+    <link href="<?php echo URLROOT . '/'; ?>panel/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> -->
+    <style>
+        .cursor {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <?php
 require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
