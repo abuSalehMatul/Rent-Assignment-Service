@@ -32,20 +32,20 @@
                 </div>
                 <div class="form-group">
                     <label>Please Select Your Registration Type<span class="text-danger">*</span></label><br>
-                    <input type="radio" name="role" value="3">
+                    <input type="radio" name="role" value="3" onclick="getId()">
                     <label for="male">Writer Account</label><br>
-                    <input type="radio"  name="role" value="4">
+                    <input type="radio"  name="role" value="4" onclick="getId()">
                     <label for="female">Customer Account</label><br>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-info btn-lg fs-15px fw-500 btn-block">Sign Up</button>
                 </div>
                 <div class="text-muted text-center">
                     Already have an Admin ID? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/login';?>">Sign In</a>
                 </div>
             </form>
             <div class="text-muted text-center">
-                Want to login by Google account? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/google';?>">Google Sign In</a>
+                <a class="btn btn-primary btn-lg fs-15px fw-500 btn-block" href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/auth/google'?>">Google Sign In</a>
             </div>
         </div>
 
@@ -67,9 +67,27 @@
 
 	  ga('create', 'UA-53034621-1', 'auto');
 	  ga('send', 'pageview');
+	</script>ap
+<script>
 
-	</script>
+    function getId() {
+
+        var id  = document.getElementById('role').val();
+        console.log(id)
+
+    }
+
+</script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d4d06c1928e59f8d7c6803c1-|49" defer=""></script></body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170165335-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-170165335-1');
+</script>
 
 <!-- Mirrored from seantheme.com/studio/page_register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jun 2020 05:08:42 GMT -->
 </html>

@@ -1,11 +1,47 @@
 
 <?php
-
+require_once '../vendor/autoload.php';
 require_once APPROOT . '/helpers/sessionHelper.php';
 //SessionHandler::createAdminSession();
 //session_start();
 //session_destroy();
-
+//$g_client = new Google_Client();
+//$g_client->setClientId("882413254155-dqrcsii5mp2f40vc0v4hhj0gkacp9n1q.apps.googleusercontent.com");
+//$g_client->setClientSecret("xNA8IIyIJpOmlZ3ZgRvKX8qx");
+//$g_client->setRedirectUri("http://essay-lite.io/en/student/dashboard");
+//$g_client->setScopes("email");
+//$auth_url = $g_client->createAuthUrl();
+//$code = isset($_GET['code']) ? $_GET['code'] : NULL;
+//
+////Step 4: Get access token
+//if (isset($code)) {
+//
+//    try {
+//
+//        $token = $g_client->fetchAccessTokenWithAuthCode($code);
+//        $g_client->setAccessToken($token);
+//    } catch (Exception $e) {
+//        echo $e->getMessage();
+//    }
+//
+//
+//
+//
+//    try {
+//        $pay_load = $g_client->verifyIdToken();
+//    } catch (Exception $e) {
+//        echo $e->getMessage();
+//    }
+//} else {
+//    $pay_load = null;
+//}
+//
+//if (isset($pay_load)) {
+//
+//
+//
+//    var_dump($pay_load['email']);
+//}
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +78,12 @@ require_once APPROOT . '/helpers/sessionHelper.php';
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-secondary btn-lg fs-15px fw-500 btn-block">Sign Up</button>
                 </div>
 
             </form>
             <div class="text-muted text-center">
-                Want to login by Google account? <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/google';?>">Google Sign In</a>
+                <a class="btn btn-primary btn-lg fs-15px fw-500 btn-block" href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/auth/google'?>">Google Sign In</a>
             </div>
         </div>
 
@@ -71,6 +107,16 @@ require_once APPROOT . '/helpers/sessionHelper.php';
 	  ga('send', 'pageview');
 
 	</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170165335-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-170165335-1');
+</script>
+
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d4d06c1928e59f8d7c6803c1-|49" defer=""></script></body>
 
 <!-- Mirrored from seantheme.com/studio/page_register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jun 2020 05:08:42 GMT -->
