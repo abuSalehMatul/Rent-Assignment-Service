@@ -88,17 +88,21 @@ class User
     //    backend login
     public function login($email, $pass)
     {
-        $this->db->query('SELECT * FROM user WHERE email = :email AND password= :password');
-        $this->db->bind(':email', $email);
-        $hashedPass = md5($pass);
-        $this->db->bind(':password', $hashedPass);
-        $this->db->execute();
-        $count = $this->db->rowCount();
-        if ($count > 0) {
-            return $this->db->single();
-        } else {
-            return false;
+        $user= $this->fetchLoggedData($email);
+        if(password_verify ( $pass , $user->password )){
+            return $user;
         }
+        // $this->db->query('SELECT * FROM user WHERE email = :email AND password= :password');
+        // $this->db->bind(':email', $email);
+        // $hashedPass = md5($pass);
+        // $this->db->bind(':password', $hashedPass);
+        // $this->db->execute();
+        // $count = $this->db->rowCount();
+        // if ($count > 0) {
+        //     return $this->db->single();
+        // } else {
+        //     return false;
+        // }
     }
     public function fetchLoggedData($email)
     {

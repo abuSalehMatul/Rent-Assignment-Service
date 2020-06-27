@@ -32,27 +32,30 @@ require_once APPROOT . '/views/inc/panelHead.php';
             <hr>
             <div class="container card white-box">
                 <div class="card-title">
-                    <h3 class="text-capitalize text-center create-a-request-text">Create A Request...</h3>
+                    <h3 class="text-capitalize text-center create-a-request-text"><?php echo $lang['Create A Request']; ?>...</h3>
                     <hr>
                 </div>
                 <div class="col-md-12 card" id="phase1">
-                    <h4 class="text-center">Order Details.</h4>
+                    <h4 class="text-center"><?php echo $lang['Order Details']; ?></h4>
                     <hr>
                     <form id="form1" method="POST" action="<?php echo URLROOT . '/Student/draftSave'; ?>" class="row">
                         <input type="hidden" name="token" value="<?php echo $token; ?>">
                         <div class="form-group col-md-5 col-sm-12">
-                            <h5 class="text-center"><b>Type</b></h5>
+                            <h5 class="text-center"><b><?php echo $lang['Type']; ?></b></h5>
                             <select class="form-control" id="type" name="type">
-                                <option value="Essay">Essay</option>
-                                <option value="Article">Article</option>
-                                <option value="MLA">MLA</option>
-                                <option value="Case Study">Case Study</option>
-                                <option value="Creative Writing">Creative Writing</option>
-                                <option value="Report">Report</option>
-                                <option value="Research Paper">Research Paper</option>
-                                <option value="Term Paper">Term Paper</option>
-                                <option value="Review Paper">Review Paper</option>
-                                <option value="Other">Other</option>
+                                <option value="Essay"><?php echo $lang['Essay']; ?></option>
+                                <option value="Article_Review"><?php echo $lang['Article_Review']; ?></option>
+                                <option value="Book_Review"><?php echo $lang['Book_Review']; ?></option>
+                                <option value="Business_Plan"><?php echo $lang['Business_Plan']; ?></option>
+                                <option value="Creative_Writing"> <?php echo $lang['Creative_Writing']; ?></option>
+                                <option value="Case_Study"><?php echo $lang['Case_Study']; ?></option>
+                                <option value="Literature_Review"> <?php echo $lang['Literature_Review']; ?></option>
+                                <option value="Assignment"><?php echo $lang['Assignment']; ?> </option>
+                                <option value="Presentation"> <?php echo $lang['Presentation']; ?></option>
+                                <option value="Report"><?php echo $lang['Report']; ?></option>
+                                <option value="Thesis_paper"><?php echo $lang['Thesis_paper']; ?></option>
+                                <option value="Home_Work"><?php echo $lang['Home_Work']; ?></option>
+                                <option value="Other"><?php echo $lang['Other']; ?></option>
                             </select>
                         </div>
                         <div class="form-group col-md-5 col-sm-12">
@@ -74,27 +77,27 @@ require_once APPROOT . '/views/inc/panelHead.php';
                             </select>
                         </div>
                         <div class="form-group col-md-5 col-sm-12">
-                            <h5 class="text-center"><b>Lavel</b> </h5>
+                            <h5 class="text-center"><b><?php echo $lang['Lavel']; ?></b> </h5>
                             <select class="form-control" id="lavel" name="lavel">
-                                <option value="high_school">High School</option>
-                                <option value="college">College</option>
-                                <option value="undergraduate">Undergraduate</option>
-                                <option value="masters">Masters</option>
-                                <option value="phd">PhD</option>
-                                <option value="hw">HW</option>
+                                <option value="high_school"><?php echo $lang['high_school']; ?></option>
+                                <option value="college"><?php echo $lang['college']; ?></option>
+                                <option value="undergraduate"><?php echo $lang['undergraduate']; ?></option>
+                                <option value="masters"><?php echo $lang['masters']; ?></option>
+                                <option value="phd"><?php echo $lang['phd']; ?></option>
+                                <option value="hw"><?php echo $lang['hw']; ?></option>
                             </select>
                         </div>
                         <div class="form-group col-md-5 col-sm-12">
-                            <h5 class="text-center"><b>Service</b></h5>
+                            <h5 class="text-center"><b><?php echo $lang['Service']; ?></b></h5>
                             <select class="form-control" id="service" name="service">
-                                <option value="writing">Writing</option>
-                                <option value="rewriting">Rewriting</option>
-                                <option value="editing">Editing</option>
-                                <option value="presentation">Presentation</option>
+                                <option value="Writing"><?php echo $lang['Writing']; ?></option>
+                                <option value="Re_Writing"><?php echo $lang['Re_Writing']; ?></option>
+                                <option value="Editing"><?php echo $lang['Editing']; ?></option>
+                                <option value="Presentation"><?php echo $lang['Presentation']; ?></option>
                             </select>
                         </div>
                         <div class="form-group col-md-5 col-sm-12">
-                            <h5 class="text-center"><b>Language</b></h5>
+                            <h5 class="text-center"><b><?php echo $lang['Language']; ?></b></h5>
                             <select class="form-control" id="language" name="language">
                                 <option value="english">English</option>
                                 <option value="arabic">Arabic</option>
@@ -107,61 +110,65 @@ require_once APPROOT . '/views/inc/panelHead.php';
 
 
                 <div id="phase2" class="col-md-12 card" style="display: none;">
-                    <h4 class="text-center">Order Specification.</h4>
+                    <h4 class="text-center"><?php echo $lang['Order Specification']; ?></h4>
                     <h3 style="font-size: 30px; color:green"><b id="price_estimation"></b></h3>
                     <hr>
                     <form id="form2" method="POST" action="<?php echo URLROOT . '/Student/OrderRequestsave'; ?>" class="row">
                         <div class="col-md-10 form-group">
-                            <h5 class="text-center text-capitalize"><b>Topic</b></h5>
+                            <h5 class="text-center text-capitalize"><b><?php echo $lang['Topic']; ?></b></h5>
                             <input type="text" name="topic" placeholder="Type a Topic Here" class="form-control">
                         </div>
                         <div class="col-md-5 form-group">
-                            <h5 class="text-center text-capitalize"><b>Resource </b></h5>
+                            <h5 class="text-center text-capitalize"><b><?php echo $lang['Resource']; ?> </b></h5>
                             <select name="resource" class="form-control">
                                 <?php for ($i = 1; $i < 10; $i++) {
-                                    echo "<option value='$i'>$i resource required</option>";
+                                    echo "<option value='$i'>$i Resource Required</option>";
                                 }
                                 ?>
                             </select>
                         </div>
                         <input type="hidden" name="token" value="<?php echo $token; ?>">
                         <div class="form-group col-md-5">
-                            <h5 class="text-center text-capitalize"><b>Subject</b></h5>
+                            <h5 class="text-center text-capitalize"><b><?php echo $lang['Subject']; ?></b></h5>
                             <select class="form-control" name="subject">
-                                <option value="aviation">Aviation</option>
-                                <option value="art">Art</option>
-                                <option value="architecture">Architecture</option>
-                                <option value="business">Business</option>
-                                <option value="management">Management</option>
-                                <option value="computer science">Computer Science</option>
-                                <option value="economics">Economics</option>
-                                <option value="engineering">Engineering</option>
-                                <option value="english">English</option>
-                                <option value="literature">Literature</option>
-                                <option value="health care">Health Care</option>
-                                <option value="life science">Life Science</option>
-                                <option value="sport">Sport</option>
-                                <option value="history">History</option>
-                                <option value="humanities">Humanities</option>
-                                <option value="law">Law</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="mathatics">Mathematics</option>
-                                <option value="statistics">Statistics</option>
-                                <option value="science">Science</option>
-                                <option value="philosophy">Philosophy</option>
-                                <option value="political_science">Political Science</option>
-                                <option value="psychology">Psychology</option>
-                                <option value="theology">Theology</option>
-                                <option value="social_science">Social Science</option>
-                                <option value="ethics">Ethics</option>
-                                <option value="geography">Geography</option>
-                                <option value="history">History</option>
-                                <option value="hospitality">Hospitality</option>
-                                <option value="other">Other</option>
+                                <?php $subject = [
+                                    'Aviation',
+                                    'Art',
+                                    'Architecture',
+                                    'Business',
+                                    'Management',
+                                    'Computer_Science',
+                                    'Economics',
+                                    'Engineering',
+                                    'English',
+                                    'Literature',
+                                    'Health_Care',
+                                    'Life_Science',
+                                    'Sport',
+                                    'History',
+                                    'Humanities',
+                                    'Law',
+                                    'Marketing',
+                                    'Mathematics',
+                                    'Statistics',
+                                    'Science',
+                                    'Philosophy',
+                                    'Political_Science',
+                                    'Psychology',
+                                    'Theology',
+                                    'Ethics',
+                                    'Social_Science', 'History', 'Geography', 'Hospitality', 'Other'
+                                ];
+                                foreach ($subject as $sub) {
+                                    echo "<option value=" . $sub . "> $lang[$sub] </option>";
+                                }
+
+                                ?>
+
                             </select>
                         </div>
                         <div class="form-group col-md-5">
-                            <h5 class="text-center text-capitalize"><b>Style</b></h5>
+                            <h5 class="text-center text-capitalize"><b><?php echo $lang['Style']?></b></h5>
                             <select class="form-control" name="style">
                                 <option value="mla">MLA</option>
                                 <option value="apa">APA</option>

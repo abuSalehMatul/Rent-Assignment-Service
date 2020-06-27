@@ -42,7 +42,7 @@
             <div class="page-header">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Order requests List</li>
+                    <li class="breadcrumb-item active" aria-current="page">Review List</li>
                 </ol>
 
             </div>

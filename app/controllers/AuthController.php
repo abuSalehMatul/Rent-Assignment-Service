@@ -24,22 +24,15 @@ class AuthController extends Controller
 
     public function register()
     {
-
-
-        //writerRedirect();
         //        check for post method
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //            process form data
-            // echo "nishan";
-            // exit();
-
             $token = mt_rand(100000, 999999);;
             //            Sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             extract($_POST);
             $data = [
                 'email' => trim($email),
-                'pass' => hash($pass),
+                'pass' => password_hash($pass, PASSWORD_DEFAULT),
                 'role' => $role,
                 'email_err' => '',
                 'pass_err' => '',
@@ -240,19 +233,24 @@ class AuthController extends Controller
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
+                    $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
                     $this->view('backend/dashboard', $_SESSION['id'], $_SESSION['role']);
                 } else if ($fetchLoggedData->role == 3) {
                     //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('writer/dashboard', $_SESSION['id'], $_SESSION['role']);
+                    $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
+                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/writer/dashboard");
+                  //  $this->view('writer/dashboard', $_SESSION['id'], $_SESSION['role']);
                 } else if ($fetchLoggedData->role == 4) {
                     //                  redirect to dashboard
 
                     $_SESSION['id'] = $fetchLoggedData->id;
                     $_SESSION['role'] = $fetchLoggedData->role;
-                    $this->view('student/dashboard', $_SESSION['id'], $_SESSION['role']);
+                    $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
+                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
+                  //  $this->view('student/dashboard', $_SESSION['id'], $_SESSION['role']);
                 } else {
                     $this->view('backend/verification_page');
                 }

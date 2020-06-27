@@ -3,9 +3,11 @@
 
 class WriterController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->userModel = $this->model('User');
-        $this->websiteModel= $this->model('Website');
+        $this->websiteModel = $this->model('Website');
+        $this->orderRequestModel = $this->model('OrderRequest');
     }
 
     public function __call($method, $arguments = [])
@@ -17,11 +19,10 @@ class WriterController extends Controller
             ) {
                 return call_user_func_array(array($this, $method), $arguments);
             } else {
-                header("Location: ".URLROOT."/".$_SESSION['lang']. "/auth/login");
-               
+                header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/auth/login");
             }
         }
-    } 
+    }
 
     private function saveSubject()
     {
@@ -33,7 +34,6 @@ class WriterController extends Controller
         }
         $subjects = $this->websiteModel->saveSubject($_SESSION['id'], $_POST['subject']);
         print_r($subjects);
-
     }
 
     private function saveService()
@@ -46,7 +46,6 @@ class WriterController extends Controller
         }
         $subjects = $this->websiteModel->saveService($_SESSION['id'], $_POST['subject']);
         print_r($subjects);
-
     }
 
     private function saveType()
@@ -59,7 +58,6 @@ class WriterController extends Controller
         }
         $subjects = $this->websiteModel->saveType($_SESSION['id'], $_POST['subject']);
         print_r($subjects);
-
     }
 
     private function deletePreference()
@@ -84,9 +82,46 @@ class WriterController extends Controller
         $this->data['writer_subject'] = $this->websiteModel->getWriterSubject($_SESSION['id']);
         $this->data['writer_type'] = $this->websiteModel->getWriterType($_SESSION['id']);
         $this->data['writer_service'] = $this->websiteModel->getWriterService($_SESSION['id']);
-       
+
         $this->view('writer/dashboard', $this->data, 'data');
     }
 
-    
+    private function offerRequest()
+    {
+        $this->data['offer_request'] =
+            $this->orderRequestModel->getOrderRequestBySuggesstionByUserId($_SESSION['id']);
+        $this->view('writer/offerRequest', $this->data, 'data');
+    }
+
+    private function denyRequest()
+    {
+        if (!empty($_POST['token'])) {
+            if (!hash_equals($_SESSION['token'], $_POST['token'])) {
+                echo "un-authentic access.. ";
+                die();
+            }
+        }
+        $authority = $this->orderRequestModel->checkWriterAuthorityToPerformOrder($_POST['requestId'], $_SESSION['id']);
+        if ($authority == "success") {
+            return $this->orderRequestModel->denyRequest($_POST['requestId'], $_SESSION['id']);
+        } else {
+            return 'un-authentic access..';
+        }
+    }
+
+    private function acceptRequest()
+    {
+        if (!empty($_POST['token'])) {
+            if (!hash_equals($_SESSION['token'], $_POST['token'])) {
+                echo "un-authentic access.. ";
+                die();
+            }
+        }
+        $authority = $this->orderRequestModel->checkWriterAuthorityToPerformOrder($_POST['requestId'], $_SESSION['id']);
+        if ($authority == "success") {
+            return $this->orderRequestModel->acceptRequest($_POST['requestId'], $_SESSION['id']);
+        } else {
+            return 'un-authentic access..';
+        }
+    }
 }

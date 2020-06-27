@@ -68,11 +68,14 @@ class StudentController extends Controller
                 $this->validator($_POST['day']),
             );
             $price = $this->orderRequestModel->calculatePrice($_SESSION['draft_id']);
+            $this->orderRequestModel->savePrices($_SESSION['draft_id'], $price);
             print_r($price);
         } else {
             print_r('all data required');
         }
     }
+
+    
 
     private function OrderRequestsave()
     {

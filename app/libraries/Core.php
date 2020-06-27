@@ -14,12 +14,6 @@
 //            print_r($this->getUrl());
             $url = $this->getUrl();
 
-            //echo 'Session Language : '. $_SESSION["lang"];
-            //echo "<br>";
-            //echo 'Session url : '. $url;
-            //print_r($url);
-            //exit();
-
             //get params
             if(is_array($url)) {
                 $this->params = $url ? array_values($url) : [];

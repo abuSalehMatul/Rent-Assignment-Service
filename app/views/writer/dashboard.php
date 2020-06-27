@@ -85,7 +85,8 @@ require_once APPROOT . '/views/inc/panelHead.php';
                             <br>
                             <label><?php echo $lang['Your Prefered Subjects']; ?> </label>
                             <select class="subject form-control" name="subject" onchange="saveSubject(this)">
-                                <?php foreach ($data['subjects'] as $subject) {
+                               <option></option>
+                               <?php foreach ($data['subjects'] as $subject) {
                                     echo "<option value=" . $subject["name"] . ">" . $lang[$subject["name"]] . " </option>";
                                 } ?>
                             </select>
@@ -113,6 +114,7 @@ require_once APPROOT . '/views/inc/panelHead.php';
 
                             <label><?php echo $lang['Your Prefered Service']; ?> </label>
                             <select class="subject form-control" name="subject" onchange="saveService(this)">
+                            <option></option>
                                 <?php foreach ($data['services'] as $service) {
                                     echo "<option value=" . $service["name"] . ">" . $lang[$service["name"]] . " </option>";
                                 } ?>
@@ -136,9 +138,11 @@ require_once APPROOT . '/views/inc/panelHead.php';
                                 }
                                 ?>
                             </span>
+                            <br>
                             <label><?php echo $lang['Your Prefered Type']; ?> </label>
                             <select class="subject form-control" name="subject" onchange="saveType(this)">
-                                <?php foreach ($data['type'] as $service) {
+                            <option></option>
+                               <?php foreach ($data['type'] as $service) {
                                     echo "<option value=" . $service["name"] . ">" . $lang[$service["name"]] . " </option>";
                                 } ?>
                             </select>

@@ -21,6 +21,14 @@
                 <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" 
                 aria-hidden="true"></i>Completed</a>
             </li>
+            <?php if($_SESSION['role'] == 3): ?>
+                <li>
+                <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/writer/offerRequest'; ?>" class="waves-effect"><i class="fa fa-columns fa-fw" 
+                aria-hidden="true"></i><?php echo $lang['Offer Request']; ?>
+                <span id="offer_request_count"></span>
+                </a>
+            </li>
+            <?php endif; ?>
             <li>
                 <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Canceled</a>
             </li>

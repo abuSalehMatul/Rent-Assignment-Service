@@ -36,9 +36,9 @@
             <div class="page-header">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Writers List</li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
                 </ol>
-                <div class="ml-auto">
+                <!-- <div class="ml-auto">
                     <a href="#" class="btn btn-primary btn-icon btn-sm text-white mr-2">
 									<span>
 										<i class="fe fe-plus"></i>
@@ -49,7 +49,7 @@
 										<i class="fe fe-log-in"></i>
 									</span> Export
                     </a>
-                </div>
+                </div> -->
             </div>
             <!-- PAGE-HEADER END -->
 
@@ -62,7 +62,7 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Student's list</div>
+                            <div class="card-title">Contact list</div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -78,11 +78,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($data['contact_us'] as $writers) {
-                                        foreach ($writers as $key => $val) {
-
-
-                                            ?>
+                                    <?php  foreach ($data['contact_us'] as $val): ?> 
                                             <tr>
                                                 <td><?php echo $val['name']; ?></td>
                                                 <td><?php echo $val['email']; ?></td>
@@ -93,7 +89,7 @@
 
 
                                             </tr>
-                                        <?php }} ?>
+                                    <?php endforeach; ?>
 
                                     </tbody>
                                 </table>

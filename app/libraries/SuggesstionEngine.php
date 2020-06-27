@@ -29,6 +29,7 @@ class SuggesstionEngine
                 $this->engine($request);
             }
         }
+        return "success";
     }
 
     public function createOrGetQueue($requestId)
@@ -36,7 +37,7 @@ class SuggesstionEngine
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM `request_writer_queue` WHERE `request_id` = ?;");
         $stmt->execute([$requestId]);
         if ($stmt->rowCount() > 0) {
-            $this->currentQueue = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $this->currentQueue = $stmt->fetch(\PDO::FETCH_ASSOC);
         } else {
             $this->createQueue($requestId);
         }
@@ -63,44 +64,72 @@ class SuggesstionEngine
 
         $this->getForbiddenWriters();
         $this->getWritersBySubjectServiceType();
-        echo "this is form writersubjectServiceType";
-        print_r($this->list);
         if (sizeof($this->list) < 3) {
-            echo "this is form writerSubjectService";
-            print_r($this->list);
             $this->getWritersBySubjectService();
+            // echo "this is form writerSubjectService";
+            // print_r($this->list);
         }
         if (sizeof($this->list) < 3) {
-            echo "this is form writerSubject";
-            print_r($this->list);
+
             $this->getWritersBySubject();
         }
         if (sizeof($this->list) < 4) {
-            echo "this is form writerTypeService";
-            print_r($this->list);
+
             $this->getWritersByTypeService();
         }
         if (sizeof($this->list) < 1) {
-            echo "this is form writerType";
-            print_r($this->list);
+
             $this->getWritersByType();
         }
         if (sizeof($this->list) < 2) {
-            echo "this is form weriterService";
-            print_r($this->list);
+
             $this->getWritersByService();
         }
         if (sizeof($this->list) < 1) {
-            echo "this is form anywriter";
-            print_r($this->list);
+
             $this->assignAnyWriter();
         }
-        // $this->getWritersBySubject();
-        // $this->getWritersByTypeService();
-        // $this->getWritersByType();
-        // $this->getWritersByService();
-        // $this->assignAnyWriter();
-        print_r($this->list);
+        $this->saveQueue();
+        $this->setCurrentWriter();
+        return "success";
+    }
+
+    public function setCurrentWriter()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `request_writer_queue` WHERE `id` = ?;");
+        $stmt->execute([$this->currentQueue['id']]);
+        $executingQuery = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $writerLists = json_decode($executingQuery['writer_id_on_queue_list']);
+        $selectedCurrentWriter = '';
+        
+        for($i = 0 ;$i < sizeof($writerLists); $i++){
+            $stmt = $this->db->dbConnection->prepare("SELECT * FROM `request_writer_queue` WHERE `current_writer_id` = ?;");
+            $stmt->execute([$writerLists[$i]]);
+            if($stmt->rowCount() > 3){ 
+                
+              //  continue;
+            }
+            else{
+                $stmt = $this->db->dbConnection->prepare("UPDATE `request_writer_queue` SET `current_writer_id`=? WHERE `id` = ?;");
+                $stmt->execute([$writerLists[$i], $this->currentQueue['id']]);
+                $selectedCurrentWriter = $writerLists[$i];
+                break;
+            }
+        }
+        if($selectedCurrentWriter == ''){
+            $stmt = $this->db->dbConnection->prepare("UPDATE `request_writer_queue` SET `current_writer_id`=? WHERE `id` = ?;");
+            $stmt->execute([$this->list[0], $this->currentQueue['id']]);
+        }
+    }
+
+    public function saveQueue()
+    {
+        $stmt = $this->db->dbConnection->prepare("UPDATE `request_writer_queue` SET `writer_id_on_queue_list` = ?,
+         `itteration_no`=?, `updated_at`=? WHERE `id` = ?;");
+        $stmt->execute([
+            json_encode($this->list),
+            $this->currentQueue['itteration_no'] + 1,time(), $this->currentQueue['id']
+        ]);
     }
 
     public function getForbiddenWriters()
@@ -113,10 +142,9 @@ class SuggesstionEngine
     public function getWritersBySubjectServiceType()
     {
 
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user` JOIN `writer_subject` ON 
-        `user`.`id` = `writer_subject`.`user_id`
-            JOIN `writer_service` ON `user`.`id` =`writer_service`.`user_id`   
-            JOIN `writer_type` ON `user`.`id` = `writer_type`.`user_id`
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_subject`
+            LEFT JOIN `writer_service` ON `writer_subject`.`user_id` =`writer_service`.`user_id`   
+            LEFT JOIN `writer_type` ON `writer_subject`.`user_id` = `writer_type`.`user_id`
             WHERE `writer_subject`.`subject_id` = ? 
             AND `writer_service`.`service_id` =? AND `writer_type`.`type_id` = ?
             ORDER BY `writer_subject`.`priority` 
@@ -127,22 +155,19 @@ class SuggesstionEngine
 
     public function getWritersBySubjectService()
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user` RIGHT JOIN `writer_subject` ON 
-        `user`.`id` = `writer_subject`.`user_id`
-           RIGHT JOIN `writer_service` ON `user`.`id` =`writer_service`.`user_id`   
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_subject`
+            JOIN `writer_service` ON `writer_subject`.`user_id` =`writer_service`.`user_id`   
             WHERE `writer_subject`.`subject_id` = ? 
             AND `writer_service`.`service_id` =?
             ORDER BY `writer_subject`.`priority` 
         ");
         $stmt->execute([$this->subjectId['id'], $this->serviceId['id']]);
-        //  $this->list = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $this->assignInList($stmt->fetchAll(\PDO::FETCH_ASSOC));
     }
 
     public function getWritersBySubject()
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user` JOIN `writer_subject` ON 
-        `user`.`id` = `writer_subject`.`user_id`  
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_subject`
             WHERE `writer_subject`.`subject_id` = ? 
             ORDER BY `writer_subject`.`priority` 
         ");
@@ -152,9 +177,8 @@ class SuggesstionEngine
 
     public function getWritersByTypeService()
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user`
-            JOIN `writer_service` ON `user`.`id` =`writer_service`.`user_id`   
-            JOIN `writer_type` ON `user`.`id` = `writer_type`.`user_id`
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_service`
+            LEFT JOIN `writer_type` ON `writer_service`.`user_id` = `writer_type`.`user_id`
              WHERE `writer_service`.`service_id` =? AND `writer_type`.`type_id` = ?
             ORDER BY `writer_service`.`priority` 
         ");
@@ -164,8 +188,7 @@ class SuggesstionEngine
 
     public function getWritersByType()
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user` 
-        JOIN `writer_type` ON `user`.`id` = `writer_type`.`user_id`
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_type`     
          WHERE  `writer_type`.`type_id` = ?
         ORDER BY `writer_type`.`priority` 
     ");
@@ -175,8 +198,7 @@ class SuggesstionEngine
 
     public function getWritersByService()
     {
-        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `user` 
-        JOIN `writer_service` ON `user`.`id` = `writer_service`.`user_id`
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM `writer_service` 
          WHERE  `writer_service`.`service_id` = ?
         ORDER BY `writer_service`.`priority` 
     ");
@@ -209,11 +231,11 @@ class SuggesstionEngine
         if (sizeof($array) > 0) {
             foreach ($array as $result) {
                 if (isset($this->forbiddenWritersId)) {
-                    if (!in_array($result['id'], $this->forbiddenWritersId)) {
-                        array_push($this->list, $result['id']);
+                    if (!in_array($result['user_id'], $this->forbiddenWritersId)) {
+                        array_push($this->list, $result['user_id']);
                     }
                 } else {
-                    array_push($this->list, $result['id']);
+                    array_push($this->list, $result['user_id']);
                 }
             }
         }

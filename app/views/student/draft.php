@@ -38,6 +38,7 @@ require_once APPROOT . '/views/inc/panelHead.php';
                                         <td>
                                             <button onclick="deleteRequest(<?php echo $request['id']; ?>)" class="btn btn-danger"><?php echo $lang['Delete']; ?></button>
                                         </td>
+                                        <td><a href="<?php echo URLROOT . '/User/getMyRequest?myrequest='.$request['id']; ?>"><?php echo $lang['See Details']; ?></a></td>
 
                                     </tr>
                                 <?php endforeach; ?>

@@ -74,7 +74,7 @@ require_once APPROOT . '/helpers/sessionHelper.php';
                 </div>
                 <div class="form-group">
                     <label>Password <span class="text-danger">*</span></label>
-                    <input name="pass" type="password" class="form-control form-control-lg fs-15px" value="" minlength="8" required />
+                    <input name="pass" type="password" class="form-control form-control-lg fs-15px" value="" minlength="6" required />
                 </div>
 
                 <div class="form-group">
