@@ -54,47 +54,59 @@
 
             <!-- ROW-2 -->
 
-                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/insert_review/';?>" method="POST" name="edit_form">
+                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/insert_website_data/';?>" method="POST" name="edit_form">
                     <div class="row">
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">customer name</label>
-                                <input type="text" class="form-control" name="customer_name" placeholder="Enter customer name.." >
+                                <label class="form-label">Color</label>
+                                <input type="color" class="form-control" name="color" placeholder="Enter customer name.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">writer name</label>
-                                <input type="text" class="form-control" name="writer_name" placeholder="Writer name.."  >
+                                <label class="form-label">Font</label>
+                                <input type="text" class="form-control" name="font" placeholder="Writer name.."  >
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Topic</label>
-                                <input type="text" class="form-control" name="topic" placeholder="Topic.." >
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Topic.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Comment</label>
-                                <input type="text" class="form-control" name="comment" placeholder="comment.." >
+                                <label class="form-label">Phone number</label>
+                                <input type="text" class="form-control" name="phone" placeholder="Topic.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Rating</label>
-                                <input type="number" class="form-control" name="rating" placeholder="rating.." >
+                                <label class="form-label">Facebook</label>
+                                <input type="text" class="form-control" name="facebook" placeholder="comment.." >
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label">Date</label>
-                                <input class="form-control" name="date" placeholder="MM/DD/YYYY"  type="datetime-local">
-<!--                                <input type="text" class="form-control" name="date" placeholder="Date..">-->
+                                <label class="form-label">Twitter</label>
+                                <input type="text" class="form-control" name="twitter" placeholder="rating.." >
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Instagram</label>
+                                <input type="text" class="form-control" name="instagram" placeholder="rating.." >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Linkedin</label>
+                                <input type="text" class="form-control" name="linkedin" placeholder="rating.." >
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">ADD</button>
                         </div>

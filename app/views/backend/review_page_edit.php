@@ -90,13 +90,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="form-label">Date</label>
-                            <input class="form-control fc-datepicker" name="date" placeholder="MM/DD/YYYY"  value="<?php echo $val['date']?>" type="text">
+                            <label class="form-label">Date (previous time: <?php echo date('m/d/Y h:i A',strtotime($val['date']))?>)</label>
+                            <input class="form-control" name="date" placeholder="MM/DD/YYYY"  value="<?php echo date('m/d/Y h:i s',strtotime($val['date']))?>" type="datetime-local">
 <!--                            <input type="text" class="form-control" name="date" placeholder="Date.." value="--><?php //echo $val['date']?><!--">-->
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">ADD</button>
+                        <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">UPDATE</button>
                     </div>
                     <!--                <div class="col-lg-6">-->
                     <!--                    <div class="form-group">-->

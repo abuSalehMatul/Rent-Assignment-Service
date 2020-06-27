@@ -26,6 +26,7 @@ class DemoTestController extends Controller
         $data['total_order'] = $this->userModel->total_order();
         $data['total_visitor'] = $this->userModel->total_visitor();
         $data['total_transaction'] = $this->userModel->total_transaction();
+        $data['transaction'] = $this->userModel->transaction();
         $data['writer'] = [];
         $data['student'] = [];
 
@@ -73,6 +74,21 @@ class DemoTestController extends Controller
         }
 
         $this->view('/backend/admin_dash',$data);
+    }
+    public function voiceChat()
+    {
+
+
+
+        $this->view('/chat/chat');
+    }
+    public function save_voice()
+    {
+
+        $input = $_FILES['audio_data']['tmp_name']; //get the temporary name that PHP gave to the uploaded file
+        $output = $_FILES['audio_data']['name'].".wav"; //letting the client control the filename is a rather bad idea
+//move the file from temp name to local folder using $output name
+        move_uploaded_file($input, $output);
     }
     public function order()
     {
@@ -201,6 +217,101 @@ class DemoTestController extends Controller
 
         $this->view('/backend/review', $data);
     }
+    public function website_setting()
+    {
+
+
+        $data['website'] = $this->userModel->get_website();
+
+        $this->view('/backend/website/website', $data);
+    }
+    public function add_website_setting()
+    {
+        $this->view('/backend/website/add_website');
+    }
+    public function insert_website_data()
+    {
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            extract($_POST);
+            $data = [
+                'color' => $color,
+                'font' => $font,
+                'email' => $email,
+                'phone' => $phone,
+                'facebook' => $facebook,
+                'twitter' => $twitter,
+                'instagram' => $instagram,
+                'linkedin' => $linkedin,
+            ];
+        }
+
+//        echo '<pre>';
+//
+//        print_r($data);
+//        exit();
+//        echo '</pre>';
+
+//
+        $update = $this->userModel->add_website_data($data);
+        if ($update == true) {
+            $this->website_setting();
+        } else {
+            echo 'error';
+        }
+    }
+    public function get_website_data($root, $opt, $id)
+    {
+
+
+        $data['website'] = $this->userModel->get_website_data($id);
+
+        $this->view('/backend/website/website_page_edit', $data);
+    }
+    public function get_type_data($root, $opt, $id)
+    {
+
+
+        $data = $this->userModel->get_type_data($id);
+
+        echo json_encode($data);
+    }
+    public function update_website_data($root, $opt, $id)
+    {
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            extract($_POST);
+            $data = [
+                'color' => $color,
+                'font' => $font,
+                'email' => $email,
+                'phone' => $phone,
+                'facebook' => $facebook,
+                'twitter' => $twitter,
+                'instagram' => $instagram,
+                'linkedin' => $linkedin,
+
+            ];
+        }
+
+        $update = $this->userModel->edit_website($id,$data);
+
+        if ($update == true) {
+            $this->website_setting();
+        }
+
+        else {
+            $this->get_website_data();
+        }
+    }
     public function add_review()
     {
         $this->view('/backend/add_review');
@@ -269,6 +380,18 @@ class DemoTestController extends Controller
             echo 'error';
         }
     }
+    public function writer_type()
+    {
+
+        $data['writer_type'] = $this->userModel->get_writer_type_data();
+
+        $this->view('/backend/top_writer/top_writer_type', $data);
+    }
+
+
+
+
+
     public function see_review_info($root, $opt, $id)
     {
 
@@ -557,6 +680,20 @@ class DemoTestController extends Controller
 
         if ($delete == true) {
             $this->see_reviews();
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    public function delete_website($root, $opt, $id)
+    {
+
+
+        $delete = $this->userModel->delete_website($id);
+
+        if ($delete == true) {
+            $this->website_setting();
         } else {
             echo 'error';
         }

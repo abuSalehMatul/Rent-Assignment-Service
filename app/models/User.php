@@ -68,6 +68,29 @@ class User
             return false;
         }
     }
+    public function add_website_data($data)
+    {
+        $this->db->query('INSERT INTO website (color, font, email, phone,facebook,twitter,instagram,linkedin) VALUES (:color, :font, :email, :phone, :facebook,:twitter,:instagram,:linkedin)');
+
+        //        Bind values
+        $this->db->bind(':color', $data['color']);
+        $this->db->bind(':font', $data['font']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':facebook', $data['facebook']);
+        $this->db->bind(':twitter', $data['twitter']);
+        $this->db->bind(':instagram', $data['instagram']);
+        $this->db->bind(':linkedin', $data['linkedin']);
+
+
+        //        Execute
+        if ($this->db->execute()) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function setUserRole($data)
     {
@@ -161,6 +184,14 @@ class User
         $total_row = $this->db->rowCount();
         return $total_row;
     }
+    public function transaction()
+    {
+
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM payment");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
     public function update_writer_info($id, $data)
     {
         $changeToken = 0;
@@ -193,6 +224,31 @@ class User
         $this->db->bind(':comment', $data['comment']);
         $this->db->bind(':rating', $data['rating']);
         $this->db->bind(':date', $data['date']);
+
+
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    public function edit_website($id, $data)
+    {
+        $changeToken = 0;
+        $this->db->query('UPDATE website SET color=:color,font=:font,email=:email,phone=:phone,facebook=:facebook,twitter=:twitter,instagram=:instagram,linkedin=:linkedin  WHERE id='.$id.'.');
+
+        $this->db->bind(':color', $data['color']);
+        $this->db->bind(':font', $data['font']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':facebook', $data['facebook']);
+        $this->db->bind(':twitter', $data['twitter']);
+        $this->db->bind(':instagram', $data['instagram']);
+        $this->db->bind(':linkedin', $data['linkedin']);
 
 
 
@@ -269,6 +325,12 @@ class User
     public function review_info_list_id($userId)
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM review WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+    public function get_website_data($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM website WHERE `id` = ?");
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
@@ -371,6 +433,13 @@ class User
         return  $stmt->fetchAll();
 
     }
+    public function get_website()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM website");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
     public function get_submission_list()
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM submission");
@@ -383,6 +452,20 @@ class User
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM contact_us");
         $stmt->execute();
         return  $stmt->fetchAll();
+
+    }
+    public function get_writer_type_data()
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM writer_type ORDER BY priority DESC");
+        $stmt->execute();
+        return  $stmt->fetchAll();
+
+    }
+    public function get_type_data($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM type WHERE `id` = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
 
     }
     public function get_transaction_list()
@@ -489,6 +572,12 @@ class User
     public function delete_review($userId)
     {
         $stmt = $this->db->dbConnection->prepare("DELETE FROM review WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function delete_website($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM website WHERE id=?");
        $stmt->execute([$userId]);
        return true;
     }

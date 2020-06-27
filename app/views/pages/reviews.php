@@ -34,7 +34,7 @@ require_once APPROOT . '/views/inc/reviewPage/head.php';
                                                     </div>
                                                     <div class="c-5__cs-n"><?php echo $val['customer_name']; ?></div>
                                                 </div>
-                                                <div class="c-5__dt"><?php echo $val['date']; ?></div>
+                                                <div class="c-5__dt"><?php echo date('d M,Y h:i A',strtotime($val['date'])); ?></div>
                                             </div>
                                             <div class="c-5__i-b">
                                                 <div class="c-5__ct">Coursework <span><?php echo $val['id']; ?></span> on <a

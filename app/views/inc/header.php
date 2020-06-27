@@ -110,7 +110,9 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
     }
 
 </style>
-<header class="header" style="background: #236896!important;">
+<header class="header" style="background: <?php foreach ($data['website'] as $key=>$val){
+    echo $val['color'].'!important';
+}  ?>">
     <div class="header__mobile-buttons">
         <div id="mNavMain" class="m-nav__button for__m-nav-main"><i class="n--icon n--icon__main-nav"></i> <i
                     class="n--icon n--icon__main-nav--tablet"></i> <i class="n--icon n--icon__nav-close"></i></div>
