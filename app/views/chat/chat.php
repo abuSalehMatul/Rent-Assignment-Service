@@ -54,60 +54,25 @@
 
             <!-- ROW-2 -->
 
-                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/insert_review/';?>" method="POST" name="edit_form">
-                    <div class="row">
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">customer name</label>
-                                <input type="text" class="form-control" name="customer_name" placeholder="Enter customer name.." >
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">writer name</label>
-                                <input type="text" class="form-control" name="writer_name" placeholder="Writer name.."  >
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">Topic</label>
-                                <input type="text" class="form-control" name="topic" placeholder="Topic.." >
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">Comment</label>
-                                <input type="text" class="form-control" name="comment" placeholder="comment.." >
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">Rating</label>
-                                <input type="number" class="form-control" name="rating" placeholder="rating.." >
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="form-label">Date</label>
-                                <input class="form-control" name="date" placeholder="MM/DD/YYYY"  type="datetime-local">
-<!--                                <input type="text" class="form-control" name="date" placeholder="Date..">-->
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">ADD</button>
-                        </div>
-                        <!--                <div class="col-lg-6">-->
-                        <!--                    <div class="form-group">-->
-                        <!--                        <label class="form-label">Text</label>-->
-                        <!--                        <input type="image" class="form-control" name="example-text-input" placeholder="Text..">-->
-                        <!--                    </div>-->
-                        <!--                </div>-->
+                <div class="row">
 
 
+
+                    <div class="form-group">
+                        <button type="submit" id="record" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Record</button>
+                        <button type="submit" id="stop" class="btn btn-danger btn-lg fs-15px fw-500 btn-block d-none">Stop</button>
                     </div>
-                </form>
+                    <!--                <div class="col-lg-6">-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label class="form-label">Text</label>-->
+                    <!--                        <input type="image" class="form-control" name="example-text-input" placeholder="Text..">-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+
+
+                </div>
+
 
         </div>
         <!-- ROW-2 END -->
@@ -137,6 +102,9 @@
 <a href="#top" id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 <!-- JQUERY SCRIPTS JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.js"></script>
+<script src="<?php echo URLROOT.'/public/app/app.js';?>"></script>
 <script src="<?php echo URLROOT.'/public/admin/assets/js/vendors/jquery-3.2.1.min.js';?>"></script>
 
 <!-- BOOTSTRAP SCRIPTS JS-->

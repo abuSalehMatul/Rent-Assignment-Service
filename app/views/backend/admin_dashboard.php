@@ -210,7 +210,7 @@
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Browsing Status</div>
+                                <div class="card-title">Transaction Status</div>
                                 <div class="card-options">
                                     <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i
                                                 class="fe fe-chevron-up"></i></a>
@@ -219,42 +219,23 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                <?php
+                                $i =0;
+
+                                foreach ($data['transaction'] as $writers) {
+                                foreach ($writers as $key => $val) {
+
+
+                                ?>
                                 <div class="mb-5">
-                                    <p class="mb-2">Chrome<span class="float-right text-muted">80%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-primary w-80 " role="progressbar"></div>
-                                    </div>
+                                    <p class="mb-2">Chrome<span class="float-right text-muted"><?php echo '#'.$val['transaction_id'].' complete payment using '.$val['payment_type'].' by '.$val['ammount'].' '.$val['currency']; ?></span></p>
+
                                 </div>
-                                <div class="mb-5">
-                                    <p class="mb-2">Firefox<span class="float-right text-muted">70%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-pink w-70" role="progressbar"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-5">
-                                    <p class="mb-2">Safari<span class="float-right text-muted">80%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-warning w-65" role="progressbar"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-5">
-                                    <p class="mb-2">Opera<span class="float-right text-muted">80%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-danger w-80" role="progressbar"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-5">
-                                    <p class="mb-2">UC Browser<span class="float-right text-muted">70%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-success w-60" role="progressbar"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-0">
-                                    <p class="mb-2">Internet Explore<span class="float-right text-muted">50%</span></p>
-                                    <div class="progress h-2">
-                                        <div class="progress-bar bg-info w-50" role="progressbar"></div>
-                                    </div>
-                                </div>
+                                <?php }
+                                    if($i++ == 5) {
+                                        break;
+                                    }
+                                } ?>
                             </div>
                         </div>
                     </div>

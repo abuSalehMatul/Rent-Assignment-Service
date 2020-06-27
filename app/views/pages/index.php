@@ -344,6 +344,12 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
                 <div class="or">OR</div>
             </div>
         </section>
+        <section class="s-16">
+            <h2 style="font-size:50px;text-align: center"><b>Watch our video</b></h2>
+            <iframe width="820" height="415" style="margin-left: 380px;border-radius: 10px"
+                    src="https://www.youtube.com/embed/YoHD9XEInc0">
+            </iframe>
+        </section>
 
 
     </div>
@@ -371,6 +377,7 @@ require_once APPROOT . '/views/inc/footer.php';
     gtag('js', new Date());
 
     gtag('config', 'UA-170165335-1');
+
 </script>
 
 </body>

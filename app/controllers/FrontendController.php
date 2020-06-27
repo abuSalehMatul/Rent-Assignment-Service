@@ -9,9 +9,9 @@ class FrontendController extends Controller
 
     public function index(){
 
-
+        $data['website'] = $this->userModel->get_website();
             //session is set
-            $this->view('pages/index');
+            $this->view('pages/index',$data);
 
 
     }
