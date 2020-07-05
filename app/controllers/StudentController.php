@@ -17,6 +17,7 @@ class StudentController extends Controller
 
         $this->mediaModel = $this->model('Media');
         $this->orderRequestModel = $this->model('OrderRequest');
+        $this->chatRequestModel = $this->model('Chat');
     }
 
     public function __call($method, $arguments = [])
@@ -40,8 +41,104 @@ class StudentController extends Controller
         $data = htmlspecialchars($data);
         return $data;
     }
+    private function client_chat()
+    {
+
+//        $data['get_chat'] =
+//            $this->chatRequestModel->getChatUserId($_SESSION['id']);
+        $this->view('writer/client_chat');
+    }
+
+    private function insert_chat()
+    {
+        $data = array(
+            'sender_id'=>$_SESSION['id'],
+            'message'=>$_POST['message'],
+            'receiver_id'=>$_POST['receiver_id'],
+
+        );
+//        $sender_id = $_SESSION['id'];
+//        $message = $this->input->post('message');
+//        $receiver_id = $this->input->post('receiver_id');
+        $this->chatRequestModel->saverecords($data);
+        echo json_encode(array(
+            "statusCode" => 200
+        ));
+
+    }
+    private function fetch_user_chat_history()
+    {
+
+        $sender_id = $_SESSION['id'];
+        $receiver_id = $_POST['receiver_id'];
 
 
+        $result = $this->chatRequestModel->all_records($sender_id, $receiver_id);
+
+        $output = '<li class="sent">';
+        foreach ($result as $row) {
+            $user_name = '';
+            $chat_message = '';
+            if ($row["sender_id"] == $sender_id) {
+
+                $chat_message = $row['message'];
+                $user_name = '<b class="text-success">You</b>';
+                $output .= '
+	
+			<p>' . $user_name . ' - ' . $chat_message . '
+				<br>
+					- <small><em>' . $row['created_at'] . '</em></small>
+				</br></p><br>
+		
+	
+		';
+
+            } else {
+
+                $chat_message = $row["message"];
+
+                $user_name = '<b class="text-danger">anonymous </b>';
+                $output .= '
+	
+			<p style="margin-left: 400px">' . $user_name . ' - ' . $chat_message . '
+				<br>
+					- <small><em>' . $row['created_at'] . '</em></small>
+				</br></p><br>
+		
+	
+		';
+
+            }
+
+        }
+        $output .= '</li>';
+        echo $output;
+//        echo json_encode(array(
+//            "statusCode" => 200
+//        ));
+
+    }
+    private function fetch_user_name()
+    {
+
+
+        $id = $_POST['id'];
+
+
+        $result = $this->chatRequestModel->user_name_fetch($id);
+echo $result['f_name'];
+
+
+    }
+
+    function get_user_name($user_id)
+    {
+
+        $result = $this->chatRequestModel->get_user_name($user_id);
+        foreach ($result as $row) {
+            return $row['f_name'];
+        }
+    }
 
     private function draftSave()
     {

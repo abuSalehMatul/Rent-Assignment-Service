@@ -57,18 +57,51 @@
 
                 <div class="row">
 
+<!--                    <input type="file" accept="audio/*" capture id="recorder">-->
+<!--                    <audio id="player" controls></audio>-->
+<!--                    <script>-->
+<!--                        const recorder = document.getElementById('recorder');-->
+<!--                        const player = document.getElementById('player');-->
+<!---->
+<!--                        recorder.addEventListener('change', function(e) {-->
+<!--                            const file = e.target.files[0];-->
+<!--                            const url = URL.createObjectURL(file);-->
+<!--                            // Do something with the audio file.-->
+<!--                            player.src = url;-->
+<!--                        });-->
+<!--                    </script>-->
+<!--                    <script>-->
+<!--                        const player = document.getElementById('player');-->
+<!---->
+<!--                        const handleSuccess = function(stream) {-->
+<!--                            if (window.URL) {-->
+<!--                                player.srcObject = stream;-->
+<!--                            } else {-->
+<!--                                player.src = stream;-->
+<!--                            }-->
+<!--                        };-->
+<!---->
+<!--                        navigator.mediaDevices.getUserMedia({ audio: true, video: false })-->
+<!--                            .then(handleSuccess);-->
+<!--                    </script>-->
+<!--                    <script>-->
+<!--                        const handleSuccess = function(stream) {-->
+<!--                            const context = new AudioContext();-->
+<!--                            const source = context.createMediaStreamSource(stream);-->
+<!--                            const processor = context.createScriptProcessor(1024, 1, 1);-->
+<!---->
+<!--                            source.connect(processor);-->
+<!--                            processor.connect(context.destination);-->
+<!---->
+<!--                            processor.onaudioprocess = function(e) {-->
+<!--                                // Do something with the data, e.g. convert it to WAV-->
+<!--                                console.log(e.inputBuffer);-->
+<!--                            };-->
+<!--                        };-->
+<!--                        </script>-->
 
-
-                    <div class="form-group">
-                        <button type="submit" id="record" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Record</button>
-                        <button type="submit" id="stop" class="btn btn-danger btn-lg fs-15px fw-500 btn-block d-none">Stop</button>
-                    </div>
-                    <!--                <div class="col-lg-6">-->
-                    <!--                    <div class="form-group">-->
-                    <!--                        <label class="form-label">Text</label>-->
-                    <!--                        <input type="image" class="form-control" name="example-text-input" placeholder="Text..">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
+                    <a id="download">Download</a>
+                    <button id="stop">Stop</button>
 
 
                 </div>
@@ -102,9 +135,9 @@
 <a href="#top" id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 <!-- JQUERY SCRIPTS JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.js"></script>
-<script src="<?php echo URLROOT.'/public/app/app.js';?>"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.js"></script>-->
+<!--<script src="--><?php //echo URLROOT.'/public/app/app.js';?><!--"></script>-->
 <script src="<?php echo URLROOT.'/public/admin/assets/js/vendors/jquery-3.2.1.min.js';?>"></script>
 
 <!-- BOOTSTRAP SCRIPTS JS-->
@@ -166,6 +199,43 @@
 <!-- CUSTOM JS -->
 <script src="<?php echo URLROOT.'/public/admin/assets/js/custom.js';?>"></script>
 
+<script>
+    let shouldStop = false;
+    let stopped = false;
+    const downloadLink = document.getElementById('download');
+    const stopButton = document.getElementById('stop');
 
+    stopButton.addEventListener('click', function() {
+        shouldStop = true;
+    });
+
+    const handleSuccess = function(stream) {
+        const options = {mimeType: 'audio/webm'};
+        const recordedChunks = [];
+        const mediaRecorder = new MediaRecorder(stream, options);
+
+        mediaRecorder.addEventListener('dataavailable', function(e) {
+            if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+            }
+
+            if(shouldStop === true && stopped === false) {
+                mediaRecorder.stop();
+                stopped = true;
+            }
+        });
+
+        mediaRecorder.addEventListener('stop', function() {
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'acetest.wav';
+        });
+
+        mediaRecorder.start();
+    };
+
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+        .then(handleSuccess);
+
+</script>
 </body>
 </html>
