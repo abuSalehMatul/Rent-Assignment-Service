@@ -47,7 +47,7 @@ require_once APPROOT . '/views/inc/panelHead.php';
                         <?php if($_SESSION['role']== 3): ?>
                             <div class="row white-box">
                                 <button onclick="acceptOffer(<?php echo $data['order_request']['id'] ?>)" class="btn btn-success"><?php echo $lang['Accept The Offer']; ?></button>
-                                <a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/Writer/gotoChat/'.$data['order_request']['user_id'] ?>" class="btn btn-info"><?php echo $lang['Go For Chat'] ?></a>
+                                <a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/Writer/gotoChat/'.$data['order_request']['user_id'].'/'.$data['order_request']['id'] ?>" class="btn btn-info"><?php echo $lang['Go For Chat'] ?></a>
                             </div>
                         <?php endif; ?>
                         <div class="white-box">

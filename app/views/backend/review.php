@@ -97,7 +97,7 @@
                                             <td><?php echo $val['date']; ?></td>
                                             <td>
                                                 <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/see_review_info/'.$val['id'];?>" class="btn btn-sm btn-primary badge" ><i class="fa fa-edit" style="color: white"></i></a>
-                                                <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_review/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
+                                                <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_review/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a>
                                             <td>
                                         </tr>
                                     <?php } ?>

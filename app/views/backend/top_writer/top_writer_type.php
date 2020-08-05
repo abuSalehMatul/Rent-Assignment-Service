@@ -42,18 +42,18 @@
             <div class="page-header">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">website setting change</li>
+                    <li class="breadcrumb-item active" aria-current="page">All writer by type</li>
                 </ol>
 
             </div>
-            <div class="ml-auto">
-                <a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/add_website_setting' ?>" class="btn btn-primary btn-icon btn-sm text-white mr-2">
-									<span>
-										<i class="fe fe-plus"></i>
-									</span> Add Review
-                </a>
-
-            </div>
+<!--            <div class="ml-auto">-->
+<!--                <a href="--><?php //echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/add_website_setting' ?><!--" class="btn btn-primary btn-icon btn-sm text-white mr-2">-->
+<!--									<span>-->
+<!--										<i class="fe fe-plus"></i>-->
+<!--									</span> Add Review-->
+<!--                </a>-->
+<!---->
+<!--            </div>-->
             <br>
             <!-- PAGE-HEADER END -->
 
@@ -75,6 +75,7 @@
                                     <tr>
                                         <th class="border-bottom-0 border-top-0">Writer name</th>
                                         <th class="border-bottom-0 border-top-0">Type</th>
+                                        <th class="border-bottom-0 border-top-0">Action</th>
 
                                     </tr>
                                     </thead>
@@ -85,9 +86,10 @@
 
                                         ?>
                                         <tr>
-                                            <td><?php echo $val['user_id']; ?></td>
-                                            <td id="type_name" id="<?php echo $val['type_id']; ?>" onloadstart="getType(this.id)"><?php echo $val['type_id']; ?><input type="hidden" name="type_data" id="type_data" value="<?php echo $val['type_id'];?>"></td>
-
+                                            <td><span class="writer"><?php echo $val['user_id']; ?></span></td>
+                                            <td  id="<?php echo $val['type_id']; ?>"><span id="type_name"><?php echo $val['type_id']; ?></span></td>
+                                           <td> <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_writer_type/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a>
+                                           </td>
                                         </tr>
                                     <?php } ?>
 
@@ -132,35 +134,59 @@ require_once APPROOT . '/views/inc/admin/scripts.php';
 ?>
 <script>
 
-// var type = $('#type_data').val();
-// var type = document.querySelectorAll('[id^=type_data]');
-// // var type = $('input[name="type_data"]').val();
-// var type_id;
-// for(var i in type){
-//     type_id = type[i].value;
-//     /* do your thing */
-// }
-// console.log(type_id);
-function getType(id) {
-    alert(id)
-    var requestUrl = "<?php echo URLROOT.'/DemoTest/get_type_data/'; ?>"+id ;
-    var packJsonData= (function() {
+
+
+
+$('tr').each(function (i, el) {
+    var id = $(el).children('td').children('#type_name').text();
+    var requestUrl = "<?php echo URLROOT.'/DemoTest/get_type_data/' ?>" + id;
+    var packJsonData = (function () {
         var result;
         $.ajax({
-            type:'GET',
-            url:requestUrl,
-            dataType:'json',
-            async:false,
-            success:function(data){
+            type: 'GET',
+            url: requestUrl,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
                 result = data;
             }
         });
         return result;
     })();
-    console.log(packJsonData.name)
+    // var pack = JSON.parse(packJsonData)
+    // console.log(packJsonData);
+    $(packJsonData).each(function(key,val){
+        $(el).children('td').children('#type_name').html(val.name);
+        // console.log(val.name);
+    })
+    // $(el).children('td').children('.user_id').html(packJsonData.name);
+});
 
-    document.getElementById('type_name').innerHTML = packJsonData.name;
-}
+
+$('tr').each(function (i, el) {
+    var id = $(el).children('td').children('.writer').text();
+    var requestUrl = "<?php echo URLROOT.'/DemoTest/get_writer_name_by_id/' ?>" + id;
+    var packJsonData = (function () {
+        var result;
+        $.ajax({
+            type: 'GET',
+            url: requestUrl,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    })();
+    // var pack = JSON.parse(packJsonData)
+    // console.log(packJsonData);
+    $(packJsonData).each(function(key,val){
+        $(el).children('td').children('.writer').html(val.f_name+' '+val.l_name);
+        // console.log(val.name);
+    })
+    // $(el).children('td').children('.user_id').html(packJsonData.name);
+});
 
 </script>
 </body>

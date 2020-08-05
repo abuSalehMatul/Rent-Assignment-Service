@@ -2,7 +2,13 @@
 require_once APPROOT . '/views/inc/servicePage/head.php';
 
 ?>
-<body>
+<body style="<?php foreach ($data['website'] as $key=>$val){
+
+    ?>;
+        font-family: <?php echo $val['font'].'!important'; ?> ;
+
+      <?php
+      }  ?>;">
 <div class="wrapper">
     <?php
     require_once APPROOT . '/views/inc/header.php';
@@ -11,10 +17,10 @@ require_once APPROOT . '/views/inc/servicePage/head.php';
     <p></p>
     <div class="p-13" data-page-name="p-13__as__custom-essay">
         <section class="c-51 c-51-3 pt-64">
-            <picture>
 
-                <img src="<?php echo URLROOT.'\public\shared\images\services.jpg'?>"
-                     alt="Blue background" class="bg__image--top picture__images"></picture>
+
+                <img src="<?php echo URLROOT.'\public\assets\site_images\sort.jpeg'?>"
+                     alt="Blue background" class="bg__image--top picture__images" style="background-position: center">
             <div class="l-0">
 
                 <div class="c-51__w">
@@ -652,7 +658,7 @@ require_once APPROOT . '/views/inc/servicePage/head.php';
             <div class="l-0">
                 <div class="sb-2__w">
                     <div class="h--md">What to expect</div>
-                    <p class="p--md">Deadlines starting from just 3 hours:
+                    <p class="p--md" style="text-align: left">Deadlines starting from just 3 hours:
                         Need an urgent essay? Our professional writers can master a custom essay on any topic, and any academic level, in only 3 hours after you have made the order.
                         On schedule delivery:
                         Afraid to miss the deadline? We do not tolerate lateness and we often deliver orders before time. The writing progress is transparent, as every customer can track it by communicating with the writer.
@@ -819,10 +825,6 @@ require_once APPROOT . '/views/inc/servicePage/head.php';
                     <fieldset>
                         <input placeholder="Your Email Address" name="email" type="email" tabindex="2" required>
                     </fieldset>
-                    <fieldset>
-                        <input placeholder="Your Phone Number" name="phone_number" type="tel" tabindex="3" required>
-                    </fieldset>
-
                     <fieldset>
                         <textarea placeholder="Type your Message Here...." name="message" tabindex="5" required></textarea>
                     </fieldset>

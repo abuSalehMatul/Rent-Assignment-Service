@@ -3,7 +3,13 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
 require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
 ?>
 
-<body>
+<body style="<?php foreach ($data['website'] as $key=>$val){
+
+    ?>;
+        font-family: <?php echo $val['font'].'!important'; ?> ;
+
+      <?php
+      }  ?>;">
     <div class="wrapper">
         <?php
         require_once APPROOT . '/views/inc/header.php';
@@ -13,111 +19,157 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
         <div class="p-1 main">
             <section class="s-1 pt-header">
                 <picture>
-                    <img src="<?php echo URLROOT . '\public\shared\images\assignments.png' ?>" alt="Essay Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important"></picture>
+                    <img src="<?php echo URLROOT . '\public\assets\site_images\new.jpeg' ?>" alt="Essay Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important;position: cover;margin-top: -40px!important;"></picture>
                 <div class="l-0" style="margin-top: 40px">
                     <div class="s-1__wrapper">
                         <div class="s-1__left">
-                            <h1 class="h--lg h--is-inverse" style="text-align: center">Top Assignment Service<br>with
-                                Professional Essay Writers</h1>
+                            <h1 class="h--lg h--is-inverse" style="text-align: left!important;font-size:60px;margin-top: 150px!important;">
+                                Professional Writers</h1>
 
-                            <p class="p--lg p--is-inverse" style="text-align:center">Increase your chance of success with our Assignment Writing
-                                Service</p>
+                            <p class="p--lg p--is-inverse" style="text-align:left">Raise your GPA with our
+                                Services</p>
 
-                            <div class="button-group" style="margin-left: 250px!important;"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/register'; ?>" class="button-filled__primary ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="Find Your Writer!"><span class="button-text">Write my assignment</span>
+                            <div class="button-group" style="margin-left: 10px!important;"><a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/register'; ?>" class="button-filled__primary ga-event" data-ga-category="home" data-ga-action="click" data-ga-label="Find Your Writer!"><span class="button-text">Write my assignment</span>
                                 </a><span data-link="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/register'; ?>"></span>
                             </div>
                         </div>
                         <div class="s-1__right">
                             <div class="c-7 js-calculator-landing" data-component-name="c-7__as__calculator-primary">
                                 <div class="js-calculator-landing__form">
-                                   
+                                    <form action="https://app.essaypro.com/auth/register" method="get">
                                         <div class="c-7__header">
-                                            <div id="pages_fields_1" class="c-7__row">
-                                                <h5 class="text-center"><b>Number Of Pages</b></h5>
-                                                <select class="form-control" id="page" name="page">
-                                                    <?php for ($i = 1; $i < 30; $i++) {
-                                                        echo "<option value='$i'> $i Page </option>";
-                                                    } ?>
-
-                                                </select>
-                                            </div>
+                                            <div class="h--sm">Calculate the price</div>
                                         </div>
                                         <div class="c-7__main">
                                             <div class="c-7__row" id="servicesDropdownWrapLanding">
                                                 <div class="c-9 dropdown">
-
-                                                    <h5 class="text-center"><b><?php echo $lang['Service']; ?></b></h5>
-                                                    <select class="form-control" id="service" name="service">
-                                                        <option value="Writing"><?php echo $lang['Writing']; ?></option>
-                                                        <option value="Re_Writing"><?php echo $lang['Re_Writing']; ?></option>
-                                                        <option value="Editing"><?php echo $lang['Editing']; ?></option>
-                                                        <option value="Presentation"><?php echo $lang['Presentation']; ?></option>
-                                                    </select>
+                                                    <button id="calculator_service_selected_1" type="button"
+                                                            class="c-9__dropdown" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false"><span
+                                                                class="c-9__selected" data-calc-value="1">Writing</span> <span
+                                                                class="c-9__placeholder">Service</span> <span
+                                                                class="c-9__select-arrow"></span></button>
+                                                    <div class="c-9__menu dropdown-menu"
+                                                         aria-labelledby="calculator_service_selected_1">
+                                                        <ul class="c-9__ul"></ul>
+                                                    </div>
                                                 </div>
-                                                <h5 class="text-center"><b><?php echo $lang['Lavel']; ?></b> </h5>
-                                                <select class="form-control" id="lavel" name="lavel">
-                                                    <option value="high_school"><?php echo $lang['high_school']; ?></option>
-                                                    <option value="college"><?php echo $lang['college']; ?></option>
-                                                    <option value="undergraduate"><?php echo $lang['undergraduate']; ?></option>
-                                                    <option value="masters"><?php echo $lang['masters']; ?></option>
-                                                    <option value="phd"><?php echo $lang['phd']; ?></option>
-                                                    <option value="hw"><?php echo $lang['hw']; ?></option>
-                                                </select>
+                                                <div class="select"><select id="calculator_service_1"
+                                                                            aria-label="Calculator services"
+                                                                            class="c-9__select"></select> <span
+                                                            class="c-9__select-arrow"></span></div>
                                             </div>
                                             <div class="c-7__row">
-                                                <h5 class="text-center text-capitalize"><b><?php echo $lang['Subject']; ?></b></h5>
-                                                <select class="form-control" id="subject" name="subject">
-                                                    <?php $subject = [
-                                                        'Aviation',
-                                                        'Art',
-                                                        'Architecture',
-                                                        'Business',
-                                                        'Management',
-                                                        'Computer_Science',
-                                                        'Economics',
-                                                        'Engineering',
-                                                        'English',
-                                                        'Literature',
-                                                        'Health_Care',
-                                                        'Life_Science',
-                                                        'Sport',
-                                                        'History',
-                                                        'Humanities',
-                                                        'Law',
-                                                        'Marketing',
-                                                        'Mathematics',
-                                                        'Statistics',
-                                                        'Science',
-                                                        'Philosophy',
-                                                        'Political_Science',
-                                                        'Psychology',
-                                                        'Theology',
-                                                        'Ethics',
-                                                        'Social_Science', 'History', 'Geography', 'Hospitality', 'Other'
-                                                    ];
-                                                    foreach ($subject as $sub) {
-                                                        echo "<option value=" . $sub . "> $lang[$sub] </option>";
-                                                    }
-
-                                                    ?>
-
-                                                </select>
+                                                <div class="c-9 dropdown">
+                                                    <button id="calculator_type_selected_1" type="button"
+                                                            class="c-9__dropdown" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false"><span
+                                                                class="c-9__selected"
+                                                                data-calc-value="1">Assignment (any type)</span> <span
+                                                                class="c-9__placeholder">Type of paper</span> <span
+                                                                class="c-9__select-arrow"></span></button>
+                                                    <div class="c-9__menu dropdown-menu"
+                                                         aria-labelledby="calculator_type_selected_1"><input
+                                                                id="searchTypesInput" class="c-9__search" type="text"
+                                                                placeholder="Type to find">
+                                                        <div class="c-9__ul"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="select"><select id="calculator_type_1"
+                                                                            aria-label="Type of calculator"
+                                                                            class="c-9__select"></select> <span
+                                                            class="c-9__select-arrow"></span></div>
                                             </div>
                                             <div class="c-7__row">
-                                                <h5 class="text-center"><b>Number Of Day</b></h5>
-                                                <select class="form-control" id="day" name="day">
-                                                    <?php for ($i = 1; $i < 8; $i++) {
-                                                        echo "<option value='$i'> $i Day </option>";
-                                                    } ?>
-
-                                                </select>
+                                                <div class="c-9 dropdown">
+                                                    <button id="calculator_deadline_selected_1" type="button"
+                                                            class="c-9__dropdown" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false"><span
+                                                                class="c-9__selected" data-calc-value="336">2 weeks</span> <span
+                                                                class="c-9__placeholder">Deadline</span> <span
+                                                                class="c-9__select-arrow"></span></button>
+                                                    <div class="c-9__menu dropdown-menu"
+                                                         aria-labelledby="calculator_deadline_selected_1">
+                                                        <ul class="c-9__ul">
+                                                            <li class="c-9__li" data-calc-value="6">6 hours</li>
+                                                            <li class="c-9__li" data-calc-value="12">12 hours</li>
+                                                            <li class="c-9__li" data-calc-value="24">1 day</li>
+                                                            <li class="c-9__li" data-calc-value="48">2 days</li>
+                                                            <li class="c-9__li" data-calc-value="72">3 days</li>
+                                                            <li class="c-9__li" data-calc-value="120">5 days</li>
+                                                            <li class="c-9__li" data-calc-value="168">7 days</li>
+                                                            <li class="c-9__li" data-calc-value="240">10 days</li>
+                                                            <li class="c-9__li" data-calc-value="336">2 weeks</li>
+                                                            <li class="c-9__li" data-calc-value="720">1 month</li>
+                                                            <li class="c-9__li" data-calc-value="1440">2 months</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="select"><select id="calculator_deadline_1"
+                                                                            aria-label="Calculators's deadline"
+                                                                            class="c-9__select">
+                                                        <option value="6">6 hours</option>
+                                                        <option value="12">12 hours</option>
+                                                        <option value="24">1 day</option>
+                                                        <option value="48">2 days</option>
+                                                        <option value="72">3 days</option>
+                                                        <option value="120">5 days</option>
+                                                        <option value="168">7 days</option>
+                                                        <option value="240">10 days</option>
+                                                        <option value="336" selected="selected">2 weeks</option>
+                                                        <option value="720">1 month</option>
+                                                        <option value="1440">2 months</option>
+                                                    </select> <span class="c-9__select-arrow"></span></div>
                                             </div>
-
+                                            <div id="pages_fields_1" class="c-7__row">
+                                                <div class="c-7__group">
+                                                    <div class="c-7__element">
+                                                        <button id="calculator_pages_decrement_1" type="button"
+                                                                class="c-9__button-decrement"></button>
+                                                    </div>
+                                                    <div class="c-7__element">
+                                                        <div class="dropdown dropdown-half">
+                                                            <button id="calculator_pages_selected_1" type="button"
+                                                                    class="c-9__dropdown-half" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"><span
+                                                                        class="c-9__selected" data-calc-value="1">1 page</span>
+                                                                <span class="c-9__placeholder">Pages</span> <span
+                                                                        class="c-9__select-arrow"></span></button>
+                                                            <div class="c-9__menu dropdown-menu"
+                                                                 aria-labelledby="calculator_pages_selected_1">
+                                                                <ul class="c-9__ul pages__list">
+                                                                    <li class="c-9__li" data-calc-value="1">1 page</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="select"><select id="calculator_pages_1"
+                                                                                    aria-label="Calculators pages"
+                                                                                    class="c-9__select-half">
+                                                                <option value="1" selected="selected">1 page</option>
+                                                            </select> <span class="c-9__select-arrow"></span></div>
+                                                    </div>
+                                                    <div class="c-7__element">
+                                                        <button id="calculator_pages_increment_1" type="button"
+                                                                class="c-9__button-increment"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="c-7__footer">
-                                            <button id="calculate_button" style="display: block;" onclick="event.preventDefault();calculate()" class="btn"><?php echo $lang["Calcualte Price"]; ?></button>
-                                            <button id="confirm_button" style="display: none;" onclick="event.preventDefault();goForOrder()"  class="btn-success"></button>
+                                            <div class="c-7__price"><span class="c-7__price-label">Minimum Price:</span>
+                                                <span class="c-7__price-value">$<span
+                                                            id="calculator_total_1">0</span></span></div>
+                                            <button type="submit" class="button-filled__primary ga-event"
+                                                    data-ga-category="calculator" data-ga-action="click"
+                                                    data-ga-label="Continue"><span class="button-text">Continue</span>
+                                            </button>
                                         </div>
+                                    </form>
+                                </div>
+<!--                                        <div class="c-7__footer">-->
+<!--                                            <button id="calculate_button" style="display: block;" onclick="event.preventDefault();calculate()" class="btn">--><?php //echo $lang["Calcualte Price"]; ?><!--</button>-->
+<!--                                            <button id="confirm_button" style="display: none;" onclick="event.preventDefault();goForOrder()"  class="btn-success"></button>-->
+<!--                                        </div>-->
                                    
                                 </div>
                             </div>
@@ -160,9 +212,10 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
             #login-box {
                 position: relative;
                 margin: 5% auto;
+                color: white;
                 height: 600px;
                 width: 1200px;
-                background: #fff;
+                background: #1a2942;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             }
 
@@ -174,11 +227,13 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
                 padding: 40px;
                 width: 600px;
                 height: 600px;
+                background: url("../public/assets/site_images/about_us.jpeg");
+
             }
 
             h1 {
                 margin: 0 0 20px 0;
-                font-weight: 300;
+                font-weight: 500;
                 font-size: 28px;
             }
 
@@ -227,12 +282,13 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
             .right-box {
                 position: absolute;
                 top: 0;
+
                 right: 0;
                 box-sizing: border-box;
                 padding: 40px;
                 width: 600px;
                 height: 600px;
-                background: #1a2942;
+                background: url("../public/assets/site_images/WhatsApp Image 2020-07-12 at 12.44.10 AM.jpeg");
                 background-size: cover;
                 background-position: center;
             }
@@ -289,7 +345,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
         <section class="s-16">
             <div id="login-box">
                 <div class="left-box">
-                    <h1 style="font-size: 40px; margin-top: 90px"> Already you are a part of Assignment Guru family?</h1>
+                    <h1 style="color:black!important;margin-left:12px!important;font-size: 40px; margin-top: 90px"> Raise your GPA today! </h1>
 
                     <br>
                     <br>
@@ -297,11 +353,11 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
                     <br>
                     <br>
 
-                    <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/login'; ?>" class="signup">Login<a>
+                    <a href="<?php echo URLROOT . '/' . $_SESSION["lang"] . '/auth/login'; ?>" class="signup">Sign up<a>
 
                 </div>
-                <div class="right-box">
-                    <h1 style="font-size: 40px; margin-top: 90px;color: white;text-align: center"> Want to be a part of Assignment Guru?</h1>
+                <div class="right-box" >
+                    <h1 style="font-size: 40px; margin-top: 90px;color: black!important;text-align: center"> Become a writer</h1>
 
 
                     <br>
@@ -319,7 +375,7 @@ require_once APPROOT . '/views/lang/' . $_SESSION["lang"] . '.php';
         <section class="s-16">
             <h2 style="font-size:50px;text-align: center"><b>Watch our video</b></h2>
             <iframe width="820" height="415" style="margin-left: 380px;border-radius: 10px"
-                    src="https://www.youtube.com/embed/YoHD9XEInc0">
+                    src="<?= URLROOT . '\public\assets\site_images\video.jpeg';?>">
             </iframe>
         </section>
 

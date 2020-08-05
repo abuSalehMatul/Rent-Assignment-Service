@@ -145,7 +145,7 @@ class AuthController extends Controller
 
                                     $_SESSION['id'] = $loggedInUser->id;
                                     $_SESSION['role'] = $loggedInUser->role;
-                                   
+
 
 //                        redirect to dashboard
                                     $this->view('backend/admin_dashboard', $_SESSION['id'],$_SESSION['role']);
@@ -157,7 +157,7 @@ class AuthController extends Controller
 
                                     //                        redirect to writer dashboard
                                     header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/writer/dashboard");
-                                     //$this->view('writer/dashboard', $_SESSION['id'],$_SESSION['role']);
+                                    //$this->view('writer/dashboard', $_SESSION['id'],$_SESSION['role']);
                                 } else if ($loggedInUser->role == 4) {
 
                                     $_SESSION['id'] = $loggedInUser->id;
@@ -202,6 +202,94 @@ class AuthController extends Controller
             }
         }
     }
+//    public function admin_as_writer($root,$url,$pass,$email)
+//    {
+//
+//        if (!isset($_SESSION['id']) || (isset($_SESSION['id']) && empty($_SESSION['id']))) {
+//            //session is not set
+//            writerRedirect();
+//
+//                //            Sanitize post data
+////                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+////                extract($_POST);
+////            $user_id = $_REQUEST['pass'];
+////            $email = $_REQUEST['email'];
+//                $data = [
+//                    'email' => $email,
+//                    'pass' => $pass,
+//                    'email_err' => '',
+//                    'pass_err' => '',
+//                ];
+//
+//
+//                if (empty($pass)) {
+//                    $data['pass_err'] = 'Please enter password';
+//                }
+//
+//                if ($this->userModel->checkEmail($data['email'])) {
+//
+//                    if (empty($data['pass_err'])) {
+//                        $loggedInUser = $this->userModel->login($data['email'], $data['pass']);
+//
+//                        if ($loggedInUser) {
+//                            if ($loggedInUser->token != 0) {
+//                                $this->view('backend/verification_page');
+//                            } else {
+//                                $_SESSION['user'] = $this->userModel->findUserById($_SESSION['id']);
+//                                if ($loggedInUser->role == 2) {
+//
+//                                    $_SESSION['id'] = $loggedInUser->id;
+//                                    $_SESSION['role'] = $loggedInUser->role;
+//
+//
+////                        redirect to dashboard
+//                                    $this->view('backend/admin_dashboard', $_SESSION['id'],$_SESSION['role']);
+//                                }
+//                                else if ($loggedInUser->role == 3) {
+//
+//                                    $_SESSION['id'] = $loggedInUser->id;
+//                                    $_SESSION['role'] = $loggedInUser->role;
+//
+//                                    //                        redirect to writer dashboard
+//                                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/writer/dashboard");
+//                                    //$this->view('writer/dashboard', $_SESSION['id'],$_SESSION['role']);
+//                                } else if ($loggedInUser->role == 4) {
+//
+//                                    $_SESSION['id'] = $loggedInUser->id;
+//                                    $_SESSION['role'] = $loggedInUser->role;
+//
+//                                    //                        redirect to student dashboard
+//                                    header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
+//                                    // $this->view('student/dashboard', $_SESSION['id'],$_SESSION['role']);
+//                                } else if ($loggedInUser->role == 1) {
+//
+//                                    $_SESSION['id'] = $loggedInUser->id;
+//                                    $_SESSION['role'] = $loggedInUser->role;
+//
+//                                    //                        redirect to root dashboard
+//                                    $this->view('root/dashboard', $_SESSION['id'], $_SESSION['role']);
+//                                } else {
+//                                    $this->view('backend/login');
+//                                }
+//                            }
+//                        } else {
+//                            $data['pass_err'] = 'Incorrect Password';
+//                        }
+//                    }
+//                } else {
+//                    $data['email_err'] = 'This email doesn\'t exist';
+//                }
+//
+//
+//                if (empty($data['email_err']) && empty($data['pass_err'])) {
+//                    die('Success');
+//                } else {
+//
+//                    $this->view('/backend/login', $data);
+//                }
+//
+//        }
+//    }
 
     public function verify()
     {

@@ -214,6 +214,29 @@ class User
             return false;
         }
     }
+    public function update_transaction_info($id, $data)
+    {
+        $changeToken = 0;
+        $this->db->query('UPDATE payment SET payment_type=:payment_type,currency=:currency,ammount=:ammount,transaction_id=:transaction_id,medium=:medium,order_id=:order_id,created_at=:created_at  WHERE id='.$id.'.');
+        $this->db->bind(':payment_type', $data['payment_type']);
+        $this->db->bind(':currency', $data['currency']);
+        $this->db->bind(':ammount', $data['ammount']);
+        $this->db->bind(':transaction_id', $data['transaction_id']);
+        $this->db->bind(':medium', $data['medium']);
+        $this->db->bind(':order_id', $data['order_id']);
+        $this->db->bind(':created_at', date("Y-m-d H:i:s"));
+
+
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
     public function edit_review($id, $data)
     {
         $changeToken = 0;
@@ -249,6 +272,29 @@ class User
         $this->db->bind(':twitter', $data['twitter']);
         $this->db->bind(':instagram', $data['instagram']);
         $this->db->bind(':linkedin', $data['linkedin']);
+
+
+
+        if( $this->db->execute())
+        {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    public function edit_submission_info_by_id($id, $data)
+    {
+        $changeToken = 0;
+        $this->db->query('UPDATE submission SET stubmissionTime=:stubmissionTime,note=:note,status=:status,order_id=:order_id,created_at=:created_at  WHERE id='.$id.'.');
+
+        $this->db->bind(':stubmissionTime', $data['stubmissionTime']);
+        $this->db->bind(':note', $data['note']);
+        $this->db->bind(':status', $data['status']);
+        $this->db->bind(':order_id', $data['order_id']);
+        $this->db->bind(':created_at', date("Y-m-d H:i:s"));
+
 
 
 
@@ -304,9 +350,16 @@ class User
         }
     }
 
+
     public function findUserById($userId)
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    public function findRoleById($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user_role WHERE `user_id` = ?");
         $stmt->execute([$userId]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
@@ -331,6 +384,12 @@ class User
     public function get_website_data($userId)
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM website WHERE `id` = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+    public function get_submission_info($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM submission WHERE `id` = ?");
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
@@ -468,6 +527,13 @@ class User
         return $stmt->fetch();
 
     }
+    public function get_writer_name_by_id($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+
+    }
     public function get_transaction_list()
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM payment");
@@ -493,6 +559,12 @@ class User
     {
         $stmt = $this->db->dbConnection->prepare("SELECT * FROM user WHERE `id` = ?");
         $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+    public function get_transaction_list_by_id($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("SELECT * FROM payment WHERE `id` = ?");
+        $stmt->execute([$id]);
         return $stmt->fetchAll();
     }
 
@@ -539,6 +611,9 @@ class User
         }
         return false;
     }
+
+
+    //all delete operation
     public function deleteWriter($userId)
     {
         $stmt = $this->db->dbConnection->prepare("DELETE FROM user WHERE id=?");
@@ -581,4 +656,23 @@ class User
        $stmt->execute([$userId]);
        return true;
     }
+    public function deleteWriterType($userId)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM writer_type WHERE id=?");
+       $stmt->execute([$userId]);
+       return true;
+    }
+    public function deleteTransactionById($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM payment WHERE id=?");
+       $stmt->execute([$id]);
+       return true;
+    }
+    public function deleteSubmission($id)
+    {
+        $stmt = $this->db->dbConnection->prepare("DELETE FROM submission WHERE id=?");
+       $stmt->execute([$id]);
+       return true;
+    }
+    //end
 }

@@ -8,7 +8,7 @@
 //    define approot
     define('APPROOT', dirname(dirname(__FILE__)));
 //    define url root
-    define('URLROOT', 'http://localhost:8888/');
+    define('URLROOT', 'http://essay-lite.io');
     define('ROOTDIR', 'http://localhost/Assignment/');
 //    define site name
     define('SITENAME', 'Essay Lite');

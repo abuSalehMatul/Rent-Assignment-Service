@@ -41,7 +41,7 @@
       include("inc/footerStyle.php");
       include("inc/headerScript.php");
       include("inc/footerScript.php");
-      session_start();
+//      session_start();
       if (empty($_SESSION['token'])) {
             if (function_exists('mcrypt_create_iv')) {
                   $_SESSION['token'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));

@@ -93,7 +93,7 @@
                                                 <td><?php echo $val['lavel']; ?></td>
                                                 <td><?php echo $val['style']; ?></td>
                                                 <td>
-                                                    <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_order/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
+                                                    <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_order/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a>
                                                 <td>
                                             </tr>
                                         <?php } ?>

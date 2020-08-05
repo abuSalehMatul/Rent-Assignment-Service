@@ -1461,7 +1461,8 @@
     }
 
     .header__nav {
-        display: none
+        display: none;
+        float: right!important;
     }
 
     @media (min-width: 1024px) {
@@ -1532,25 +1533,29 @@
 
     @media (max-width: 767px) {
         .logo {
-            height: 30px
+            height: 60px!important;
+            margin-left:12px!important;
         }
     }
 
     @media (min-width: 768px) {
         .logo {
-            height: 40px
+            height: 60px!important;
+            margin-left:12px!important;
         }
     }
 
     @media (max-width: 767px) {
         .logo_img {
-            height: 30px
+            height: 60px!important;
+            margin-left:12px!important;
         }
     }
 
     @media (min-width: 768px) {
         .logo_img {
-            height: 40px
+            height: 60px!important;
+            margin-left:12px!important;
         }
     }
 
@@ -1592,7 +1597,7 @@
         -webkit-border-radius: 3px;
         border-radius: 3px;
         cursor: pointer;
-        color: #fff;
+        color: black!important;
         font-size: 16px;
         line-height: 18px;
         white-space: nowrap
@@ -1603,7 +1608,8 @@
     }
 
     .nav-a.is--active, .nav-a:not(.disabled):hover {
-        background-color: #464a51
+        background-color: #464a51!important;
+        color: white!important;
     }
 
     .nav-a .arrow-down {
@@ -1630,12 +1636,26 @@
     }
 
     .n--auth__link {
+        cursor: pointer;
+        background-color: #e89b00!important;
+        border: 1px solid #e89b00!important;
+        color: #fff!important;
+
+        padding: 8px 18px!important;
+        border-radius: 55px!important;
         margin-right: 16px;
-        color: #fff;
+
         font-size: 16px;
         line-height: 18px
     }
+        .n--auth__link:hover{
+            background-color: #edbc53!important;
+            border: 1px solid #e89b00!important;
 
+            color: white!important;
+            transition: background .3s ease, border .3s ease, color .3s ease!important;
+
+        }
     .subnav {
         display: none;
         position: absolute;
@@ -2160,9 +2180,10 @@
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
-        display: flex;
-        position: relative;
-        z-index: 10
+        /*display: flex;*/
+        /*position: relative;*/
+        z-index: 10;
+        margin-left: 2px;
     }
 
     @media (max-width: 767px) {

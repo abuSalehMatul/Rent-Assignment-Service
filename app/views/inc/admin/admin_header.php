@@ -75,73 +75,14 @@
                         <i class="fe fe-mail"></i>
                         <span class=" nav-unread badge badge-warning badge-pill">6</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a href="#" class="dropdown-item d-flex mt-2 pb-3">
-                            <div class="avatar avatar-md brround mr-3 d-block cover-image"
-                                 data-image-src="../../assets/images/users/male/4.jpg">
-                                <span class="avatar-status bg-green"></span>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">Lucas Walsh</h6>
-                                <p class="mb-0 fs-13 ">Hey! there I' am available</p>
-                                <div class="small text-muted">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item d-flex pb-3">
-                            <div class="avatar avatar-md brround mr-3 d-block cover-image"
-                                 data-image-src="../../assets/images/users/female/1.jpg">
-                                <span class="avatar-status bg-red"></span>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">Rebecca Short</h6>
-                                <p class="mb-0 fs-13 ">New product Launching</p>
-                                <div class="small text-muted">5 hour ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item d-flex pb-3">
-                            <div class="avatar avatar-md brround mr-3 d-block cover-image"
-                                 data-image-src="../../assets/images/users/female/8.jpg">
-                                <span class="avatar-status bg-yellow"></span>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">Nicola Vance</h6>
-                                <p class="mb-0 fs-13">New Schedule Realease</p>
-                                <div class="small text-muted">45 mintues ago</div>
-                            </div>
-                        </a>
-                        <div class="border-top">
-                            <a href="#" class="dropdown-item text-center">See all Messages</a>
-                        </div>
-                    </div>
+
                 </div><!-- MESSAGE-BOX -->
                 <div class="dropdown header-user">
                     <a href="#" class="nav-link icon" data-toggle="dropdown">
                                 <span><img src="../../assets/images/users/female/7.jpg"
                                            class="avatar brround cover-image mb-0 ml-0"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <div class=" dropdown-header noti-title text-center border-bottom p-3">
-                            <div class="header-usertext">
-                                <h5 class="mb-1">Sonia Rees</h5>
-                                <p class="mb-0">Web Developer</p>
-                            </div>
-                        </div>
-                        <a class="dropdown-item" href="profile.html">
-                            <i class="mdi mdi-account-outline mr-2"></i> <span>My profile</span>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="mdi mdi-settings mr-2"></i> <span>Settings</span>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fe fe-calendar mr-2"></i> <span>Activity</span>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="mdi mdi-compass-outline mr-2"></i> <span>Support</span>
-                        </a>
-                        <a class="dropdown-item" href="login.html">
-                            <i class="mdi  mdi-logout-variant mr-2"></i> <span>Logout</span>
-                        </a>
-                    </div>
+
                 </div><!-- SIDE-MENU -->
                 <div class="dropdown  header-fullscreen">
                     <a class="nav-link icon sidebar-right-mobile" data-toggle="sidebar-right"
@@ -163,6 +104,8 @@
 
                     </li>
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/order' ?>" class=""><i class="fe fe-grid"></i> Orders requests</a>
+
+
                     </li>
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/transaction' ?>" class="sub-icon"><i class="fe fe-life-buoy"></i> Transactions
                         </a>
@@ -171,14 +114,22 @@
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/submission' ?>" class="sub-icon"><i class="fe fe-pie-chart"></i> Submission history
                         </a>
                     </li>
-                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/messages' ?>" class="sub-icon"><i class="fe fe-package"></i> Messages list
+                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-package"></i> Messages list
                         </a>
-                    </li>
+                        <ul class="sub-menu">
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/system_chat' ?>"><i class="fe fe-message-square"></i> System message</a></li>
+                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/messages' ?>"><i class="fe fe-mail"></i> Users messages</a></li>
+                        </ul></li>
                     <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/see_reviews' ?>" class="sub-icon"><i class="fe fe-package"></i> Review
                         </a>
                     </li>
-                    <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/contact_us' ?>" class="sub-icon"><i class="fe fe-bookmark"></i> Contacts
+                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-cast"></i> Contacts
                         </a>
+
+                        <ul class="sub-menu">
+                            <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/website_setting' ?>"><i class="fe fe-calendar"></i> Website setting</a></li>
+                            <li aria-haspopup="true"><a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/contact_us' ?>"><i class="fe fe-message-circle"></i> Contact US</a></li>
+                        </ul>
                     </li>
 <!--                    <li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-layers"></i>Components-->
 <!--                            <i class="fa fa-angle-down horizontal-icon"></i></a>-->

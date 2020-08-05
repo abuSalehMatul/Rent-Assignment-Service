@@ -63,23 +63,32 @@ require_once APPROOT . '/views/inc/chatPanel.php';
                             <li class="contact">
                                 <div class="wrap">
 
+                                    <?php foreach ($data as $key => $val) {
+                                        foreach ($val as $keys => $vals) {
+                                            ?>
+                                            <input type="hidden" id="reciever_id" value="<?= $vals['id']; ?>"></input>
 
-                                        <input type="hidden" id="reciever_id" value="<?php echo $data; ?>" ></input>
-
-
+                                        <?php }} ?>
                                 </div>
                             </li>
-                            <li class="contact active">
-                                <div class="wrap">
-                                    <span class="contact-status busy"></span>
-                                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt=""/>
-                                    <div class="meta">
-                                        <p class="name"><?= $data ?></p>
+                            <?php foreach ($data as $key => $val) {
+                                foreach ($val as $keys => $vals) {
+                                    ?>
+                                    <li class="contact active">
 
-                                    </div>
-                                </div>
-                            </li>
+                                        <div class="wrap">
+                                            <span class="contact-status busy"></span>
+                                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt=""/>
 
+                                            <div class="meta">
+
+
+                                                <p class="name" id="<?= $vals['id'] ?>" onclick="showHiddenMessage(this.id)"><?= $vals['f_name'].' '.$vals['l_name'] ?></p>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php }} ?>
                         </ul>
                     </div>
                     <div id="bottom-bar">
@@ -89,7 +98,7 @@ require_once APPROOT . '/views/inc/chatPanel.php';
                         </button>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content" hidden>
                     <div class="contact-profile">
                         <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt=""/>
                         <p class="name"></p>
@@ -101,11 +110,11 @@ require_once APPROOT . '/views/inc/chatPanel.php';
                     </div>
                     <div id="chat_list" class="messages">
                         <ul class="send">
-<!--                            --><?php //foreach ($data['get_chat'] as $key=>$val){
+                            <!--                            --><?php //foreach ($data['get_chat'] as $key=>$val){
 
                             ?>
 
-<!--                            --><?php //} ?>
+                            <!--                            --><?php //} ?>
                             <li class="replies">
                                 <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt=""/>
                                 <p id="reply"></p>
@@ -145,50 +154,63 @@ require_once APPROOT . '/views/inc/panelScript.php';
 <script>
 
 
-
-
-
     $(window).on('load', function () {
         $('#chat_list').scrollTop($('#chat_list')[0].scrollHeight);
     });
-    var to_user = $('#reciever_id').val();
-    var user_id = "<?php echo $_SESSION['id'];?>";
 
+    var to_user;
+    function showHiddenMessage(id){
+        to_user = id;
+        var user_id = "<?php echo $_SESSION['id'];?>";
+        $('.content').prop('hidden',false);
 
-    setInterval(function(){
-        update_chat_history_data();
-        // access();
-    }, 50);
+        setInterval(function () {
+            update_chat_history_data();
+            // access();
+        }, 500);
+
+        $('.submit').click(function () {
+            var message = $(".message-input input").val();
+
+            $(".message-input").focus();
+            var to_name = 'test';
+            $.ajax({
+                url: "<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/insert_chat'?>",
+                method: "POST",
+                data: {receiver_id: to_user, message: message},
+                success: function (data) {
+                    console.log(data)
+                    // $('#chat_message_'+to_user_id).val('');
+                    // $('#chat_history_'+to_user_id).html(data);
+                }
+            })
+            newMessage(to_user, to_name);
+        });
+        $(window).on('keydown', function (e) {
+
+            if (e.which == 13) {
+                var message = $(".message-input input").val();
+                $.ajax({
+                    url: "<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/insert_chat'?>",
+                    method: "POST",
+                    data: {receiver_id: to_user, message: message},
+                    success: function (data) {
+                        console.log(data)
+                        // $('#chat_message_'+to_user_id).val('');
+                        // $('#chat_history_'+to_user_id).html(data);
+                    }
+                })
+                return false;
+            }
+        });
+    }
+
 
 
     //receiver_name
 
-        var id = $('.name').text();
-        var requestUrl = "<?php echo URLROOT.'/Writer/get_user_name_by_id/' ?>" + id;
-        var packJsonData = (function () {
-            var result;
-            $.ajax({
-                type: 'GET',
-                url: requestUrl,
-                dataType: 'json',
-                async: false,
-                success: function (data) {
-                    result = data;
-                }
-            });
-            return result;
-        })();
-        // var pack = JSON.parse(packJsonData)
-        // console.log(packJsonData);
-        $(packJsonData).each(function(key,val){
-           $('.name').html(val.f_name+' '+val.l_name);
-            // console.log(val.name);
-        })
-        // $(el).children('td').children('.user_id').html(packJsonData.name);
-
-    //end
-    var id ="<?php echo  $_SESSION['id'] ?>";
-    var requestUrl = "<?php echo URLROOT.'/Writer/get_user_name_by_id/' ?>" + id;
+    var id = $('.name').text();
+    var requestUrl = "<?php echo URLROOT . '/Writer/get_user_name_by_id/' ?>" + id;
     var packJsonData = (function () {
         var result;
         $.ajax({
@@ -204,19 +226,35 @@ require_once APPROOT . '/views/inc/panelScript.php';
     })();
     // var pack = JSON.parse(packJsonData)
     // console.log(packJsonData);
-    $(packJsonData).each(function(key,val){
-        $('.username').html(val.f_name+' '+val.l_name);
+    $(packJsonData).each(function (key, val) {
+        $('.name').html(val.f_name + ' ' + val.l_name);
         // console.log(val.name);
     })
-    function access(){
+    // $(el).children('td').children('.user_id').html(packJsonData.name);
 
+    //end
+    var id = "<?php echo $_SESSION['id'] ?>";
+    var requestUrl = "<?php echo URLROOT . '/Writer/get_user_name_by_id/' ?>" + id;
+    var packJsonData = (function () {
+        var result;
+        $.ajax({
+            type: 'GET',
+            url: requestUrl,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    })();
+    // var pack = JSON.parse(packJsonData)
+    // console.log(packJsonData);
+    $(packJsonData).each(function (key, val) {
+        $('.username').html(val.f_name + ' ' + val.l_name);
+        // console.log(val.name);
+    })
 
-            // var d = $('#chat_list');
-            // d.scrollTop(d.prop("scrollHeight"));
-
-            // $("#chat_list").animate({ scrollTop: $('#chat_list').prop("scrollHeight")}, 1000);
-
-    }
 
     $(".messages").animate({scrollTop: $(document).height()}, "fast");
 
@@ -266,39 +304,22 @@ require_once APPROOT . '/views/inc/panelScript.php';
 
     };
 
-    $('.submit').click(function () {
-        var message = $(".message-input input").val();
-        
-        $(".message-input").focus();
-        var to_name = 'test';
-        $.ajax({
-            url: "<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/insert_chat'?>",
-            method: "POST",
-            data: {receiver_id: to_user, message: message},
-            success: function (data) {
-                console.log(data)
-                // $('#chat_message_'+to_user_id).val('');
-                // $('#chat_history_'+to_user_id).html(data);
-            }
-        })
-        newMessage(to_user, to_name);
-    });
 
-    function update_chat_history_data()
-    {
-        $('.send').each(function(){
+
+    function update_chat_history_data() {
+        $('.send').each(function () {
 
             fetch_own_chat_history();
         });
     }
-    function fetch_own_chat_history()
-    {
+
+    function fetch_own_chat_history() {
 
         $.ajax({
-            url:"<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/fetch_user_chat_history'?>",
-            method:"POST",
-            data:{receiver_id:to_user},
-            success:function(data){
+            url: "<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/fetch_user_chat_history'?>",
+            method: "POST",
+            data: {receiver_id: to_user},
+            success: function (data) {
                 $('.send').html(data);
                 console.log(data)
             }
@@ -317,23 +338,7 @@ require_once APPROOT . '/views/inc/panelScript.php';
     //    })
     //}
 
-    $(window).on('keydown', function (e) {
 
-        if (e.which == 13) {
-            var message = $(".message-input input").val();
-            $.ajax({
-                url: "<?php echo URLROOT . '/' . $_SESSION['lang'] . '/writer/insert_chat'?>",
-                method: "POST",
-                data: {receiver_id: to_user, message: message},
-                success: function (data) {
-                    console.log(data)
-                    // $('#chat_message_'+to_user_id).val('');
-                    // $('#chat_history_'+to_user_id).html(data);
-                }
-            })
-            return false;
-        }
-    });
 
 </script>
 </body>

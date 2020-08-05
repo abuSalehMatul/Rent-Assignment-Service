@@ -1,7 +1,13 @@
 <?php
 require_once APPROOT . '/views/inc/indexPage/head.php';
 ?>
-<body>
+<body style="<?php foreach ($data['website'] as $key=>$val){
+
+    ?>;
+        font-family: <?php echo $val['font'].'!important'; ?> ;
+
+      <?php
+      }  ?>;">
 <div class="wrapper">
     <?php
     require_once APPROOT . '/views/inc/header.php';
@@ -9,14 +15,14 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
     ?>
     <p></p>
     <div class="p-1 main">
-        <section class="s-1 pt-header">
+        <section class="s-1 pt-header" >
             <picture>
-                <img src="<?php echo URLROOT . '\public\shared\images\about.png' ?>"
-                     alt="Assignment Writing Resources" class="bg__image--top lazy" style="opacity: 0.4!important">
+                <img src="<?php echo URLROOT . '\public\assets\site_images\student_portal.jpeg' ?>"
+                     alt="Assignment Writing Resources" class="bg__image--top lazy" style="opacity: 0.3!important">
             </picture>
-            <div class="l-0">
+            <div class="l-0" style="margin-left: 12px;">
                 <div class="s-1__wrapper">
-                    <div class="s-1__left"  style="margin-top: 100px!important;"><h1 class="h--lg h--is-inverse" style="font-size: 70px!important;text-align: center">About Us</h1>
+                    <div class="s-1__left"  style="margin-top: 100px!important;"><h1 class="h--lg h--is-inverse" style="font-size: 70px!important;text-align: left">About Us</h1>
                         <br>
                         <p class="p--lg p--is-inverse" style="font-size: 30px!important;">The Assignment Guru is a professional team of hand-picked authors, editors, and
                             proofreaders, available 24/7 and ready to handle any written assignment in any subject. Our custom
@@ -33,7 +39,7 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
         <section class="s-2 bggrey" style="text-align: center">
             <div class="l-0">
                 <h3><b>Rely on The Assignment Guru if:</b></h3>
-                <p>Mur Assignment writers can help with these assignments and more:</p>
+
       <br>
                 <div class="s-2__w">
                     <div class="s-2__c">
@@ -99,13 +105,18 @@ require_once APPROOT . '/views/inc/indexPage/head.php';
         </section>
         <br>
         <br>
-        <section class="s-2 bggrey">
-            <div class="l-0">
-                <div class="h--md"><b>Is it safe to buy an essay from us?</b></div>
-                <p class="p--md">In short, absolutely!
+        <section class="s-2 bggrey" style="background:<?php echo URLROOT . '\public\assets\site_images\about_us.jpeg' ?> "> <img src="<?php echo URLROOT . '\public\assets\site_images\see.jpeg' ?>"
+                                                                                                                                 alt="Assignment Writing Resources" class="bg__image--top lazy" style="opacity: 0.3!important;width: 100%;
+    height: 600px;
+    margin-top: -55px;">
+
+            <div class="l-0" style="margin-left: 12px!important;">
+
+                <div class="h--md" style="text-align: left"><b>Is it safe to buy an essay from us?</b></div>
+                <p class="p--md" style="text-align: left">In short, absolutely!
                     We guarantee that no one will know that you are using our service. All the information you provide to us is highly confidential. We will only ask you to share your essay paper instructions, a username, and an email to create an account. This data, as well as your chats with the assigned paper writer, will be secured with Data Encryption.
-                    Our policy is simple: We don’t store or resell papers. Your custom essay will be deleted 30 days after the delivery. We don’t give your personal information to any third parties under any circumstances. There is no chance for it to ever appear on the web. That is why none of our clients were caught using our essay writing service.
-                    Our security methods include: Confidential orders and chats. We communicate with our clients on a no-name basis and never ask them to specify their personal details. We won’t know your full name, the name of your college or city.
+                   <br> Our policy is simple: We don’t store or resell papers. Your custom essay will be deleted 30 days after the delivery. We don’t give your personal information to any third parties under any circumstances. There is no chance for it to ever appear on the web. That is why none of our clients were caught using our essay writing service.
+                   <br> Our security methods include: Confidential orders and chats. We communicate with our clients on a no-name basis and never ask them to specify their personal details. We won’t know your full name, the name of your college or city.
                     Reliable payment methods. We work only with reliable payment companies, i.e., MasterCard and Visa, escrow to ensure safe payments for your orders.
                 </p>
 

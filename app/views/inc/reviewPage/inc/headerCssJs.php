@@ -4303,7 +4303,7 @@
             -webkit-border-radius: 3px;
             border-radius: 3px;
             cursor: pointer;
-            color: #fff;
+            color: black!important;
             font-size: 16px;
             line-height: 18px;
             white-space: nowrap
@@ -4314,7 +4314,8 @@
         }
 
         .nav-a.is--active, .nav-a:not(.disabled):hover {
-            background-color: #464a51
+            background-color: #464a51!important;
+            color: white!important;
         }
 
         .nav-a .arrow-down {
@@ -4341,10 +4342,25 @@
         }
 
         .n--auth__link {
+            cursor: pointer;
+            background-color: #e89b00!important;
+            border: 1px solid #e89b00!important;
+            color: #fff!important;
+
+            padding: 8px 18px!important;
+            border-radius: 55px!important;
             margin-right: 16px;
-            color: #fff;
+
             font-size: 16px;
             line-height: 18px
+        }
+        .n--auth__link:hover{
+            background-color: #edbc53!important;
+            border: 1px solid #e89b00!important;
+
+            color: white!important;
+            transition: background .3s ease, border .3s ease, color .3s ease!important;
+
         }
 
         .subnav {
@@ -4899,7 +4915,7 @@
         .p-5__c {
             width: 100%;
             max-width: 785px;
-            margin: 0 auto
+            /*margin: 0 auto*/
         }
 
         .p-5__b-g {

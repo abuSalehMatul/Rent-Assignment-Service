@@ -87,12 +87,71 @@ class WriterController extends Controller
         $this->view('writer/dashboard', $this->data, 'data');
     }
 
-    private function gotoChat($root, $url, $id)
+    private function gotoChat($root, $url, $receiver_id,$order_id)
     {
-        $data['receiver_id'] = $id;
-//        $data['get_chat'] =
-//            $this->chatRequestModel->getChatUserId($_SESSION['id']);
+
+
+
+        $check_chatroom =
+        $data['check_room_data'] =$this->chatRequestModel->check_exist_chatroom($_SESSION['id'],$receiver_id);
+        if($data['check_room_data']){
+
+
+            $datas['user_id'] = $_SESSION['id'];
+            $datas['big_id_participent'] = $receiver_id;
+            $datas['offer_id'] = $order_id;
+
+            $update= $this->chatRequestModel->update_chatroom($datas);
+        }
+     else{
+            $info['user_id'] = $_SESSION['id'];
+         $info['big_id_participent'] = $receiver_id;
+         $info['offer_id'] = $order_id;
+            $insert= $this->chatRequestModel->insert_chatroom($info);
+        }
+        $data['receiver_id'] = $receiver_id;
+        $data['user_id'] = $_SESSION['id'];
+//       $datas['insert_room_data'] =  $this->chatRequestModel->getChatUserId($_SESSION['id']);
         $this->view('writer/chat', $data['receiver_id']);
+    }
+    private function adminChat($root, $url, $id)
+    {
+
+        $data['get_admin'] =$this->chatRequestModel->get_admin_id();
+
+        $admin_id['data'] = [];
+        foreach ($data['get_admin'] as $admins){
+                $admin = $this->chatRequestModel->get_admin_details_by_id($admins['user_id']);
+                array_push($admin_id,$admin);
+        }
+//print_r($admin_id);
+//        exit();
+
+        $this->view('system_chat/admin_chat', $admin_id);
+    }
+    private function allChat()
+    {
+        $id = $_SESSION['id'];
+        $data= [];
+        $get =
+            $this->chatRequestModel->getChatUserId($id);
+//       echo '<pre>';
+       foreach ($get as $key=>$val){
+           $info = $this->chatRequestModel->user_by_id($val['big_id_participent']);
+           array_push($data,$info);
+       }
+
+//print_r($data);
+//       echo '</pre>';
+//       exit();
+        $this->view('writer/all_chat', $data);
+    }
+    private function get_user_name_by_id($root, $url, $id)
+    {
+//        $id = $_SESSION['id'];
+        $data =
+            $this->chatRequestModel->user_by_id($id);
+       echo json_encode($data);
     }
 
     private function insert_chat()
@@ -123,28 +182,42 @@ class WriterController extends Controller
         $result = $this->chatRequestModel->all_records($sender_id, $receiver_id);
 
 
+if($result){
+    $output = '<li class="sent">';
+    foreach ($result as $row) {
+        $user_name = '';
+        $chat_message = '';
+        $login = strtotime($row['created_at']);
+        $date = date('Y-m-d H:i:s');
+        $data = strtotime($date);
 
-        $output = '<li class="sent">';
-        foreach ($result as $row) {
-            $user_name = '';
-            $chat_message = '';
-            $login = strtotime($row['created_at']);
-            $date = date('Y-m-d H:i:s');
-            $data = strtotime($date);
 
+        $diff = $data - $login;
 
-            $diff = $data - $login;
+        if ($diff > 86400) {
+            $time = round($diff / 86400) . " days ago";
+        } elseif ($diff > 3600) {
+            $time = round($diff / 3600) . " hours ago";
+        } else {
+            $time = round($diff / 60) . " minutes ago";
+        }
+        if ($row["sender_id"] == $sender_id) {
 
-            if ($diff > 86400) {
-                $time = round($diff / 86400) . " days ago";
-            } elseif ($diff > 3600) {
-                $time = round($diff / 3600) . " hours ago";
-            } else {
-                $time = round($diff / 60) . " minutes ago";
+            $chat_message = $row['message'];
+            if (strpos($chat_message, '.wav') !== false) {
+                $user_name = '<b class="text-success">You</b>';
+                $output .= '
+	
+			<audio controls preload="none">' . $user_name . ' - 
+				<source src="' . URLROOT . '/uploads/' . $chat_message . '" type="audio/ogg">
+					- <small><em>' . $time . '</em></small>
+				</audio><br>
+		
+	
+		';
+
             }
-            if ($row["sender_id"] == $sender_id) {
-
-                $chat_message = $row['message'];
+            else{
                 $user_name = '<b class="text-success">You</b>';
                 $output .= '
 	
@@ -154,16 +227,16 @@ class WriterController extends Controller
 				</br></p><br>
 		
 	
-		';
+		';}
 
-            } else {
+        } else {
 
-                $chat_message = $row["message"];
+            $chat_message = $row["message"];
 
-                $user_name = '<b class="text-danger">anonymous </b>';
-                $output .= '
+            $user_name = $row["sender_id"];
+            $output .= '
 	
-			<p id="chat_list" style="margin-left: 400px">' . $user_name . ' - ' . $chat_message . '
+			<p  style="margin-left: 400px">' . $this->get_user_name($user_name) . ' - ' . $chat_message . '
 				<br>
 					- <small><em>' . $time . '</em></small>
 				</br></p><br>
@@ -171,11 +244,17 @@ class WriterController extends Controller
 	
 		';
 
-            }
-
         }
-        $output .= '</li>';
-        echo $output;
+
+    }
+    $output .= '</li>';
+    echo $output;
+}
+else{
+    $output = '';
+    echo $output;
+}
+
 //        echo json_encode(array(
 //            "statusCode" => 200
 //        ));
@@ -186,22 +265,22 @@ class WriterController extends Controller
     {
 
         $result = $this->chatRequestModel->get_user_name($user_id);
-        foreach ($result as $row) {
-            return $row['f_name'];
-        }
-    }
-    private function fetch_user_name()
-    {
 
-
-        $id = $_POST['id'];
-
-
-        $result = $this->chatRequestModel->user_name_fetch($id);
-        echo $result['f_name'];
-
+            return $result['f_name'].' '.$result['l_name'];
 
     }
+//    private function fetch_user_name()
+//    {
+//
+//
+//        $id = $_POST['id'];
+//
+//
+//        $result = $this->chatRequestModel->user_by_id($id);
+//        echo $result;
+//
+//
+//    }
     private function offerRequest()
     {
         $this->data['offer_request'] =

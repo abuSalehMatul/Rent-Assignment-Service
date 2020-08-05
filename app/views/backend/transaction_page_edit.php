@@ -46,6 +46,7 @@
                 </ol>
                 <div class="ml-auto">
 
+
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
@@ -56,82 +57,83 @@
 
             <!-- ROW-2 -->
             <?php foreach ($data as $key=>$val){ ?>
-            <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_writer_info/'.$val['id'];?>" method="POST" name="edit_form">
-            <div class="row">
+                <form action="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_transaction_info/'.$val['id'];?>" method="POST" name="edit_form">
+                    <div class="row">
 
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">First name</label>
-                        <input type="text" class="form-control" name="f_name" placeholder="Enter first name.." value="<?php echo $val['f_name']?>">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">Last name</label>
-                        <input type="text" class="form-control" name="l_name" placeholder="Text.." value="<?php echo $val['l_name']?>">
-                    </div>
-                </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Payment Type</label>
+                                <input type="text" class="form-control" name="payment_type" placeholder="Enter first name.." value="<?php echo $val['payment_type']?>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Currency</label>
+                                <input type="text" class="form-control" name="currency" placeholder="Text.." value="<?php echo $val['currency']?>">
+                            </div>
+                        </div>
 
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Text.." value="<?php echo $val['email']?>">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">Address</label>
-                        <input type="text" class="form-control" name="address" placeholder="Text.." value="<?php echo $val['address']?>">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" name="phone_number" placeholder="Text.." value="<?php echo $val['phone_number']?>">
-                    </div>
-                </div>
-                    <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="form-label">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Text.." value="<?php echo $val['title']?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Update</button>
-                </div>
-<!--                <div class="col-lg-6">-->
-<!--                    <div class="form-group">-->
-<!--                        <label class="form-label">Text</label>-->
-<!--                        <input type="image" class="form-control" name="example-text-input" placeholder="Text..">-->
-<!--                    </div>-->
-<!--                </div>-->
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Amount</label>
+                                <input type="number" class="form-control" name="ammount" placeholder="Text.." value="<?php echo $val['ammount']?>">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Transaction ID</label>
+                                <input type="number" class="form-control" name="transaction_id" placeholder="Text.." value="<?php echo $val['transaction_id']?>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Medium</label>
+                                <input type="text" class="form-control" name="medium" placeholder="Text.." value="<?php echo $val['medium']?>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label">Order ID</label>
+                                <input type="number" class="form-control" name="order_id" placeholder="Text.." value="<?php echo $val['order_id']?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg fs-15px fw-500 btn-block">Update</button>
+                        </div>
+                        <!--                <div class="col-lg-6">-->
+                        <!--                    <div class="form-group">-->
+                        <!--                        <label class="form-label">Text</label>-->
+                        <!--                        <input type="image" class="form-control" name="example-text-input" placeholder="Text..">-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
 
 
-                </div>
-            </form>
+                    </div>
+                </form>
             <?php } ?>
-            </div>
-            <!-- ROW-2 END -->
+        </div>
+        <!-- ROW-2 END -->
 
-            <!-- CONTAINER END -->
+        <!-- CONTAINER END -->
+    </div>
+</div>
+
+<!-- Right-sidebar-->
+<!-- End Rightsidebar-->
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12 col-sm-12 text-center">
+                Copyright © 2020 <a href="#">Dashmint</a>. Designed by <a href="https://spruko.com/">Spruko
+                    Technologies Pvt.Ltd</a> All rights reserved.
+            </div>
         </div>
     </div>
-
-    <!-- Right-sidebar-->
-    <!-- End Rightsidebar-->
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row align-items-center flex-row-reverse">
-                <div class="col-md-12 col-sm-12 text-center">
-                    Copyright © 2020 <a href="#">Dashmint</a>. Designed by <a href="https://spruko.com/">Spruko
-                        Technologies Pvt.Ltd</a> All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER END -->
+</footer>
+<!-- FOOTER END -->
 </div>
 
 <!-- BACK-TO-TOP -->

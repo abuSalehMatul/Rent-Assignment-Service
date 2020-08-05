@@ -20,20 +20,24 @@ class FrontendController extends Controller
 
     }
     public function team(){
-        $this->view('pages/team');
+        $data['website'] = $this->userModel->get_website();
+        $this->view('pages/team',$data);
 
     }
     public function services(){
-        $this->view('pages/services');
+        $data['website'] = $this->userModel->get_website();
+        $this->view('pages/services',$data);
 
     }
     public function reviews(){
+        $data['website'] = $this->userModel->get_website();
         $data['review'] = $this->userModel->see_reviews();
         $this->view('pages/reviews',$data);
 
     }
     public function aboutUs(){
-        $this->view('pages/aboutUs');
+        $data['website'] = $this->userModel->get_website();
+        $this->view('pages/aboutUs',$data);
 
     }
     public function oauth(){

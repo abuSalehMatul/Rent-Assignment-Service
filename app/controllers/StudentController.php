@@ -41,6 +41,7 @@ class StudentController extends Controller
         $data = htmlspecialchars($data);
         return $data;
     }
+
     private function client_chat()
     {
 
@@ -49,12 +50,55 @@ class StudentController extends Controller
         $this->view('writer/client_chat');
     }
 
+    private function adminChat($root, $url, $id)
+    {
+
+        $data['get_admin'] = $this->chatRequestModel->get_admin_id();
+
+        $admin_id['data'] = [];
+        foreach ($data['get_admin'] as $admins) {
+            $admin = $this->chatRequestModel->get_admin_details_by_id($admins['user_id']);
+            array_push($admin_id, $admin);
+        }
+//print_r($admin_id);
+//        exit();
+
+        $this->view('system_chat/admin_chat', $admin_id);
+    }
+
+    private function allChat()
+    {
+        $id = $_SESSION['id'];
+        $data = [];
+        $get = $this->chatRequestModel->getChatReceiverUserId($id);
+
+        foreach ($get as $key => $val) {
+            array_push($data, $val[0]);
+        }
+        $datas = array_unique($data);
+
+        $get_data = [];
+        foreach ($datas as $key => $val) {
+            $info = $this->chatRequestModel->user_by_id($val);
+            array_push($get_data, $info);
+        }
+        $this->view('student/all_chat', $get_data);
+    }
+
+    private function get_user_name_by_id($root, $url, $id)
+    {
+//        $id = $_SESSION['id'];
+        $data =
+            $this->chatRequestModel->user_by_id($id);
+        echo json_encode($data);
+    }
+
     private function insert_chat()
     {
         $data = array(
-            'sender_id'=>$_SESSION['id'],
-            'message'=>$_POST['message'],
-            'receiver_id'=>$_POST['receiver_id'],
+            'sender_id' => $_SESSION['id'],
+            'message' => $_POST['message'],
+            'receiver_id' => $_POST['receiver_id'],
 
         );
 //        $sender_id = $_SESSION['id'];
@@ -66,6 +110,7 @@ class StudentController extends Controller
         ));
 
     }
+
     private function fetch_user_chat_history()
     {
 
@@ -75,59 +120,82 @@ class StudentController extends Controller
 
         $result = $this->chatRequestModel->all_records($sender_id, $receiver_id);
 
-        $output = '<li class="sent">';
-        foreach ($result as $row) {
-            $user_name = '';
-            $chat_message = '';
-            if ($row["sender_id"] == $sender_id) {
 
-                $chat_message = $row['message'];
-                $user_name = '<b class="text-success">You</b>';
-                $output .= '
+        if ($result) {
+            $output = '<li class="sent">';
+            foreach ($result as $row) {
+                $user_name = '';
+                $chat_message = '';
+                $login = strtotime($row['created_at']);
+                $date = date('Y-m-d H:i:s');
+                $data = strtotime($date);
+
+
+                $diff = $data - $login;
+
+                if ($diff > 86400) {
+                    $time = round($diff / 86400) . " days ago";
+                } elseif ($diff > 3600) {
+                    $time = round($diff / 3600) . " hours ago";
+                } else {
+                    $time = round($diff / 60) . " minutes ago";
+                }
+                if ($row["sender_id"] == $sender_id) {
+
+                    $chat_message = $row['message'];
+                    if (strpos($chat_message, '.wav') !== false) {
+                        $user_name = '<b class="text-success">You</b>';
+                        $output .= '
+	
+			<audio controls preload="none">' . $user_name . ' - 
+				<source src="' . URLROOT . '/uploads/' . $chat_message . '" type="audio/ogg">
+					- <small><em>' . $time . '</em></small>
+				</audio><br>
+		
+	
+		';
+
+                    } else {
+                        $user_name = '<b class="text-success">You</b>';
+                        $output .= '
 	
 			<p>' . $user_name . ' - ' . $chat_message . '
 				<br>
-					- <small><em>' . $row['created_at'] . '</em></small>
+					- <small><em>' . $time . '</em></small>
 				</br></p><br>
 		
 	
 		';
+                    }
 
-            } else {
+                } else {
 
-                $chat_message = $row["message"];
+                    $chat_message = $row["message"];
 
-                $user_name = '<b class="text-danger">anonymous </b>';
-                $output .= '
+                    $user_name = $row["sender_id"];
+                    $output .= '
 	
-			<p style="margin-left: 400px">' . $user_name . ' - ' . $chat_message . '
+			<p  style="margin-left: 400px">' . $this->get_user_name($user_name) . ' - ' . $chat_message . '
 				<br>
-					- <small><em>' . $row['created_at'] . '</em></small>
+					- <small><em>' . $time . '</em></small>
 				</br></p><br>
 		
 	
 		';
+
+                }
 
             }
-
+            $output .= '</li>';
+            echo $output;
+        } else {
+            $output = '';
+            echo $output;
         }
-        $output .= '</li>';
-        echo $output;
+
 //        echo json_encode(array(
 //            "statusCode" => 200
 //        ));
-
-    }
-    private function fetch_user_name()
-    {
-
-
-        $id = $_POST['id'];
-
-
-        $result = $this->chatRequestModel->user_name_fetch($id);
-echo $result['f_name'];
-
 
     }
 
@@ -135,9 +203,9 @@ echo $result['f_name'];
     {
 
         $result = $this->chatRequestModel->get_user_name($user_id);
-        foreach ($result as $row) {
-            return $row['f_name'];
-        }
+
+        return $result['f_name'] . ' ' . $result['l_name'];
+
     }
 
     private function draftSave()
@@ -148,11 +216,11 @@ echo $result['f_name'];
                 die();
             }
         }
-        
+
         if (
             $this->required($_POST['type']) && $this->required($_POST['page']) && $this->required($_POST['day'])
             && $this->required($_POST['lavel']) &&
-              $this->required($_POST['service'] 
+            $this->required($_POST['service']
             )
         ) {
             $this->orderRequestModel->draftSave(
@@ -172,7 +240,6 @@ echo $result['f_name'];
         }
     }
 
-    
 
     private function OrderRequestsave()
     {
@@ -189,7 +256,7 @@ echo $result['f_name'];
                 $this->validator($_POST['style']),
                 $this->validator($_POST['topic']),
                 $this->validator($_POST['resource'])
-               
+
             );
             header("Location: " . URLROOT . "/" . $_SESSION['lang'] . "/student/dashboard");
         } else {
@@ -210,16 +277,16 @@ echo $result['f_name'];
     }
 
     private function RequestDelete()
-    {  
+    {
         if (!empty($_POST['token'])) {
             if (!hash_equals($_SESSION['token'], $_POST['token'])) {
                 return "un-authentic access.. ";
                 die();
             }
         }
-       
-        if ($this->required($_POST['id'])){
-           return $this->orderRequestModel->deleteById($_POST['id']);
+
+        if ($this->required($_POST['id'])) {
+            return $this->orderRequestModel->deleteById($_POST['id']);
         }
     }
 

@@ -2,68 +2,106 @@
 require_once APPROOT . '/views/inc/reviewPage/head.php';
 
 ?>
-<body>
-<div class="wrapper">
+<style>
+    body,html{
+
+        height: 100%;
+    }
+</style>
+<body style="<?php foreach ($data['website'] as $key=>$val){
+
+    ?>;
+        font-family: <?php echo $val['font'].'!important'; ?> ;
+
+        <?php
+}  ?>;">
+
+<div class="wrapper" style="background: url('../public/assets/site_images/homepage.jpeg');">
+
     <?php
     require_once APPROOT . '/views/inc/header.php';
 
     ?>
-    <div class="p-5 main">
-        <div class="p-5__h">
-            <div class="l-0">
-                <div class="p-5__h-w"><h1 class="h--md">Latest Service Reviews (Customer Feedback)</h1>
-                    <p class="p--sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium adipisci atque cum deserunt dicta dignissimos dolore doloribus earum excepturi fugiat magni modi nulla praesentium quas, quis sit veniam vero.</p></div>
+
+
+
+    <div class="" style="">
+
+        <div class="" style="background-position: center;height: 600px!important; ">
+            <div class="l-0" style="margin-left: 2px!important;text-align: left!important;" >
+                <div class="p-5__h-w" style="color: white!important;">
+
+                    <p style="color:black!important;font-weight:bold;text-align: left;font-size:50px!important;margin-top: 100px;" >Customer's Reviews</p></div>
+                    <p class="p--sm" style="color:black!important;font-weight:bolder;font-size:35px!important;text-align: left" >See for yourself what our customers have to say!</p></div>
             </div>
         </div>
-        <div class="p-5__m">
-            <div class="l-0">
-                <div class="p-5__c">
-                    <div class="c-5">
-                        <div id="feedbacks-list" class="c-5__ul">
-                <?php foreach ($data['review'] as $key=>$val){
+    <div class="">
+        <div class="l-0">
 
-                ?>
-                            <div class="c-5__li" data-feedback-id="193192" style="background: palegreen!important">
+
+            <div class="p-5__c">
+                <div class="c-5">
+                    <div id="feedbacks-list" class="c-5__ul">
+                        <?php foreach ($data['review'] as $key=>$val){
+
+                            ?>
+                            <div class="c-5__li" data-feedback-id="193192" style="background: white!important;color: black!important;-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);">
                                 <div class="c-5__w">
                                     <div class="c-5__h">
                                         <div class="c-5__i">
                                             <div class="c-5__i-t">
-                                                <div class="c-5__cs">
-                                                    <div class="c-5__av">
-                                                        <div class="avatar--placeholder"></div>
-                                                    </div>
-                                                    <div class="c-5__cs-n"><?php echo $val['customer_name']; ?></div>
-                                                </div>
-                                                <div class="c-5__dt"><?php echo date('d M,Y h:i A',strtotime($val['date'])); ?></div>
+
+                                                <div><?php echo date('d M,Y ',strtotime($val['date'])); ?></div>
+
+                                            </div>
+                                            <div class="c-5__i-t">
+
+                                                <div><?php echo $val['customer_name']; ?></div>
                                             </div>
                                             <div class="c-5__i-b">
-                                                <div class="c-5__ct">Coursework <span><?php echo $val['id']; ?></span> on <a
-                                                            href="#" class="c-5__ct-a"><?php echo $val['topic']; ?></a></div>
-                                                <div class="c-5__wr"><span class="c-5__wr-l">Writer:</span> <span
-                                                            class="h-l" data-link="#"><span><span
-                                                                    class="c-5__wr-v"><?php echo $val['writer_name']; ?></span></span></span></div>
+                                                <div class="">Coursework <span><?php echo $val['id']; ?></span> on <a
+                                                            href="#" style="color: black!important;"><?php echo $val['topic']; ?></a></div>
+
                                             </div>
                                         </div>
-                                        <div class="c-5__r"><span class="c-5__r-v"><?php echo $val['rating']; ?></span>
+                                        <div class="c-5__r"><span class="c-5__r-v">
+
+                                                <?php for($i=0;$i<5;$i++){
+                                                    ?>
+
+                                                    <img src="<?php echo URLROOT.'\public\assets\site_images\star.png'?>"
+                                                         alt="star" style="height: 16px;width: 16px">
+                                                    <?php
+
+                                                }
+                                                ?>
+
+
+                                            </span>
                                             <div class="rating-stars">
                                                 <div class="rating-stars__bar"></div>
                                                 <div class="rating-stars__bar is--active" style="width:100%"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="c-5__c"><p class="p--sm"><i>" <?php echo $val['comment']; ?> "</i></p></div>
+                                    <div class="c-5__c"><p><i>" <?php echo $val['comment']; ?> "</i></p></div>
                                 </div>
                             </div>
-          <?php  } ?>
-                        </div>
-                    </div>
-                    <div id="more_feedbacks" class="p-5__b-g">
-                        <button type="button" class="button-outline__primary"><span class="button-text">Show more</span>
-                        </button>
+                        <?php  } ?>
                     </div>
                 </div>
+
+            </div>
+
+            <div id="more_feedbacks" class="p-5__b-g">
+                <button type="button" class="button-outline__primary"><span class="button-text">Show more</span>
+                </button>
             </div>
         </div>
+    </div>
+
     </div>
 
 
@@ -71,15 +109,7 @@ require_once APPROOT . '/views/inc/reviewPage/head.php';
     require_once APPROOT . '/views/inc/footer.php';
     ?>
 </div>
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?GTM-KZ3B2L" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<noscript>
-    <div style="display:inline"><img height="1" width="1" style="border-style:none" alt
-                                     src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/878019161/?guid=ON&amp;script=0">
-    </div>
-</noscript>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170165335-1"></script>
 <script>

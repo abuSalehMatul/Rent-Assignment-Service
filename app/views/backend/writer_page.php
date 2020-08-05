@@ -75,8 +75,8 @@
                                     <table id="example-1" class="table table-striped table-bordered nowrap">
                                         <thead>
                                         <tr>
-                                            <th class="border-bottom-0 border-top-0">First name</th>
-                                            <th class="border-bottom-0 border-top-0">Last name</th>
+                                            <th class="border-bottom-0 border-top-0">Name</th>
+                                            <th class="border-bottom-0 border-top-0">Login as writer</th>
                                             <th class="border-bottom-0 border-top-0">Email</th>
                                             <th class="border-bottom-0 border-top-0">Address</th>
                                             <th class="border-bottom-0 border-top-0">Phone Number</th>
@@ -92,18 +92,17 @@
 
                                         ?>
                                         <tr>
-                                            <td><?php echo $val['f_name']; ?></td>
-                                            <td><?php echo $val['l_name']; ?></td>
+                                            <td><?php echo $val['f_name'].' '.$val['l_name']; ?></td>
+                                            <td><a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/auth/admin_as_writer/'.$val['password'].'/'.$val['email'];?>" class="badge badge-info">Login as writer <i class="fa fa-lock"></i></a></td>
                                             <td><?php echo $val['email']; ?></td>
                                             <td><?php echo $val['address']; ?></td>
                                             <td><?php echo $val['phone_number']; ?></td>
                                             <td><?php if($val['status'] == 1){
-
-                                                echo "<a class='btn btn-light btn-sm' id='".$val['id']."' onclick='changeActive(this.id)'>Active</a>";
+                                                    echo "<a class='btn btn-success btn-sm' id='".$val['id']."' onclick='changeActive(this.id)' style='color: white'>Active</a>";
 
                                                 }
                                                 else{
-                                                    echo "<a class='btn btn-warning btn-sm'>Deactivate</a>";
+                                                    echo "<a class='btn btn-warning btn-sm' id='".$val['id']."' onclick='changeDeActive(this.id)' style='color: white'>Deactivate</a>";
                                                 }
 
 
@@ -162,12 +161,12 @@ require_once APPROOT . '/views/inc/admin/scripts.php';
 <script>
 
     function changeActive(id){
-
+// console.log('hi');
         //
         //var url = "<?php //echo URLROOT.'/DemoTest/update_active_status'; ?>//";
         //console.log(url)
         $.ajax({
-            url: "<?php echo URLROOT.'/DemoTest/update_active_status'; ?>",
+            url: "<?php echo URLROOT.'/DemoTest/update_active_status/'; ?>"+id,
             type: "POST",
             cache: false,
             data:{
@@ -176,15 +175,40 @@ require_once APPROOT . '/views/inc/admin/scripts.php';
             },
             success: function(data){
                 var dataResult = JSON.parse(data);
-                console.log(dataResult)
+                // console.log(dataResult)
                 if(dataResult.statusCode==200){
                     // $('#update_country').modal().hide();
-                    alert('Status updated successfully !');
+                    // alert('Status updated successfully !');
                     location.reload();
                 }
             }
         });
     }
+    function changeDeActive(id){
+// console.log('hi');
+        //
+        //var url = "<?php //echo URLROOT.'/DemoTest/update_active_status'; ?>//";
+        //console.log(url)
+        $.ajax({
+            url: "<?php echo URLROOT.'/DemoTest/update_deactive_status/'; ?>"+id,
+            type: "POST",
+            cache: false,
+            data:{
+                id: id,
+
+            },
+            success: function(data){
+                var dataResult = JSON.parse(data);
+                // console.log(dataResult)
+                if(dataResult.statusCode==200){
+                    // $('#update_country').modal().hide();
+                    // alert('Status updated successfully !');
+                    location.reload();
+                }
+            }
+        });
+    }
+
 
 
 </script>

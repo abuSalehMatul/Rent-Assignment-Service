@@ -44,18 +44,7 @@
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Writers List</li>
                 </ol>
-                <div class="ml-auto">
-                    <a href="#" class="btn btn-primary btn-icon btn-sm text-white mr-2">
-									<span>
-										<i class="fe fe-plus"></i>
-									</span> Add Account
-                    </a>
-                    <a href="#" class="btn btn-secondary btn-icon  btn-sm text-white">
-									<span>
-										<i class="fe fe-log-in"></i>
-									</span> Export
-                    </a>
-                </div>
+
             </div>
             <!-- PAGE-HEADER END -->
 
@@ -78,6 +67,7 @@
                                         <th>Transaction ID</th>
                                         <th>Medium</th>
                                         <th>Amount</th>
+                                        <th>Action</th>
 
 
                                     </tr>
@@ -96,6 +86,8 @@
                                         <td><?php echo $val['transaction_id'];?></td>
                                         <td><?php echo $val['medium'];?></td>
                                         <td><?php echo $val['ammount'];?></td>
+                                        <td> <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_transaction/'.$val['id'];?>" class="btn btn-sm btn-primary badge" ><i class="fa fa-edit" style="color: white"></i></a>
+                                            <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_transaction/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
 
                                         <!--                                            <td><span class="badge badge-success">Delivered</span></td>-->
                                         <?php

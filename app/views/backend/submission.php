@@ -44,18 +44,7 @@
                     <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Writers List</li>
                 </ol>
-                <div class="ml-auto">
-                    <a href="#" class="btn btn-primary btn-icon btn-sm text-white mr-2">
-									<span>
-										<i class="fe fe-plus"></i>
-									</span> Add Account
-                    </a>
-                    <a href="#" class="btn btn-secondary btn-icon  btn-sm text-white">
-									<span>
-										<i class="fe fe-log-in"></i>
-									</span> Export
-                    </a>
-                </div>
+
             </div>
             <!-- PAGE-HEADER END -->
 
@@ -79,6 +68,7 @@
                                         <th>Notes</th>
                                         <th>Status</th>
                                         <th>Order ID</th>
+                                        <th>Action</th>
 
 
                                     </tr>
@@ -96,7 +86,8 @@
                                         <td><?php echo $val['note'];?></td>
                                         <td><?php echo $val['status'];?></td>
                                         <td><?php echo $val['order_id'];?></td>
-
+                                        <td> <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/edit_submission/'.$val['id'];?>" class="btn btn-sm btn-primary badge" ><i class="fa fa-edit" style="color: white"></i></a>
+                                            <a href="<?php echo URLROOT.'/'.$_SESSION["lang"].'/DemoTest/delete_submission/'.$val['id'];?>" onclick="alert('Do you want to delete this user?')" class="btn btn-sm btn-primary badge" ><i class="fa fa-trash" style="color: white"></i></a></td>
                                         <!--                                            <td><span class="badge badge-success">Delivered</span></td>-->
                                         <?php
                                         }

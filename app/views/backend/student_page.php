@@ -92,12 +92,11 @@
                                                 <td><?php echo $val['address']; ?></td>
                                                 <td><?php echo $val['phone_number']; ?></td>
                                                 <td><?php if($val['status'] == 1){
-
-                                                    echo "<a class='btn btn-light btn-sm' id='".$val['id']."' onclick='changeActive(this.id)'>Active</a>";
+                                                        echo "<a class='btn btn-success btn-sm' id='".$val['id']."' onclick='changeActive(this.id)' style='color: white'>Active</a>";
 
                                                     }
                                                     else{
-                                                        echo "<a class='btn btn-warning btn-sm'>Deactivate</a>";
+                                                        echo "<a class='btn btn-warning btn-sm' id='".$val['id']."' onclick='changeDeActive(this.id)' style='color: white'>Deactivate</a>";
                                                     }
 
 
@@ -151,6 +150,59 @@ require_once APPROOT . '/views/inc/admin/scripts.php';
 
 
 ?>
+<script>
 
+
+
+    function changeActive(id){
+// console.log('hi');
+        //
+        //var url = "<?php //echo URLROOT.'/DemoTest/update_active_status'; ?>//";
+        //console.log(url)
+        $.ajax({
+            url: "<?php echo URLROOT.'/DemoTest/update_active_status/'; ?>"+id,
+            type: "POST",
+            cache: false,
+            data:{
+                id: id,
+
+            },
+            success: function(data){
+                var dataResult = JSON.parse(data);
+                // console.log(dataResult)
+                if(dataResult.statusCode==200){
+                    // $('#update_country').modal().hide();
+                    // alert('Status updated successfully !');
+                    location.reload();
+                }
+            }
+        });
+    }
+    function changeDeActive(id){
+// console.log('hi');
+        //
+        //var url = "<?php //echo URLROOT.'/DemoTest/update_active_status'; ?>//";
+        //console.log(url)
+        $.ajax({
+            url: "<?php echo URLROOT.'/DemoTest/update_deactive_status/'; ?>"+id,
+            type: "POST",
+            cache: false,
+            data:{
+                id: id,
+
+            },
+            success: function(data){
+                var dataResult = JSON.parse(data);
+                // console.log(dataResult)
+                if(dataResult.statusCode==200){
+                    // $('#update_country').modal().hide();
+                    // alert('Status updated successfully !');
+                    location.reload();
+                }
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

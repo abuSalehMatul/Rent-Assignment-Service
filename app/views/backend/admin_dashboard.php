@@ -222,22 +222,25 @@
                                 <?php
                                 $i =0;
 
-                                foreach ($data['transaction'] as $writers) {
-                                foreach ($writers as $key => $val) {
+                                foreach ($data['transaction'] as $key => $val) {
+
 
 
                                 ?>
-                                <div class="mb-5">
-                                    <p class="mb-2">Chrome<span class="float-right text-muted"><?php echo '#'.$val['transaction_id'].' complete payment using '.$val['payment_type'].' by '.$val['ammount'].' '.$val['currency']; ?></span></p>
+                                <div>
+                                    <p style="color: #536d96;font-weight: bold!important;"><?php echo $val['transaction_id'].'#'.' complete payment using '.$val['payment_type'].' by '.$val['ammount'].' '.$val['currency'].' in '.date('M,d Y h:i a',strtotime($val['created_at'])); ?></p>
 
                                 </div>
-                                <?php }
+                                <?php
                                     if($i++ == 5) {
                                         break;
                                     }
                                 } ?>
+                            </div>  <div class="btn-list">
+                                <a href="<?php echo URLROOT.'/'.$_SESSION['lang'].'/DemoTest/transaction'; ?>" class="btn btn-blue" style="float:right;margin: 20px">See more >></a>
                             </div>
                         </div>
+
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                         <div class="card">
